@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ChevronDown, Moon, Phone, Sun } from 'lucide-react'
-import { useDarkMode } from '../hooks/useDarkMode'
+import { ChevronDown, Phone } from 'lucide-react'
 import { useNavigateTo } from '../hooks/useNavigateTo'
 import { useLanguage, t } from '../hooks/useLanguage'
 import { useData } from '../hooks/useData'
@@ -25,7 +24,6 @@ const NAV_ITEMS = [
 
 export default function Hero() {
   const navigateTo = useNavigateTo()
-  const { darkMode, toggleDarkMode } = useDarkMode()
   const { lang, toggle: toggleLang } = useLanguage()
   const { data } = useData<StartseiteData>('/data/startseite.json')
   const ref = useRef<HTMLDivElement>(null)
@@ -47,17 +45,10 @@ export default function Hero() {
       <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex items-center gap-2">
         <button
           onClick={toggleLang}
-          className="px-3 py-1.5 rounded-lg text-xs font-bold border border-white/30 text-white hover:bg-white/10 transition-all backdrop-blur-sm"
+          className="text-xl leading-none rounded-lg hover:bg-white/10 transition-all backdrop-blur-sm p-1.5"
           aria-label={lang === 'de' ? 'Türkçeye geç' : 'Auf Deutsch wechseln'}
         >
-          {lang === 'de' ? 'TR' : 'DE'}
-        </button>
-        <button
-          onClick={toggleDarkMode}
-          className="p-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors"
-          aria-label="Dark mode umschalten"
-        >
-          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+          {lang === 'de' ? '🇹🇷' : '🇩🇪'}
         </button>
       </div>
 

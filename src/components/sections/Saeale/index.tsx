@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import { MapPin, Users } from 'lucide-react'
+import { ChevronLeft, ChevronRight, MapPin, Users, ZoomIn } from 'lucide-react'
 import { useSectionPage } from '@/hooks/useSectionPage.ts'
 import { useLanguage, t } from '@/hooks/useLanguage.ts'
 import { useSheetState } from '@/hooks/useSheetState.ts'
@@ -33,8 +33,17 @@ export default function Saeale() {
   const { ref, isInView, data } = useSectionPage<VenuesData>('/data/venues.json')
   const { lang } = useLanguage()
   const { state: activeSaal, set: openSaal, close: closeSaal } = useSheetState<Saal | null>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [lightboxIndex, setLightboxIndex] = useState(-1)
   const openLightbox = useCallback((i: number) => setLightboxIndex(i), [])
+
+  const openSaalHandler = useCallback(
+    (saal: Saal) => {
+      setCurrentImageIndex(0)
+      openSaal(saal)
+    },
+    [openSaal],
+  )
 
   const saalSlides = activeSaal
     ? (activeSaal.bilder ?? []).map((url, i) => ({
@@ -70,7 +79,7 @@ export default function Saeale() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  onClick={() => openSaal(saal)}
+                  onClick={() => openSaalHandler(saal)}
                   className="text-left rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer border border-gray-100 dark:border-gray-700 hover:border-gold/30"
                 >
                   <div className="relative aspect-4/3 bg-[#0a0a0a] overflow-hidden">
@@ -147,22 +156,77 @@ export default function Saeale() {
             </div>
 
             {activeSaal.bilder && activeSaal.bilder.length > 0 && (
-              <div className="grid grid-cols-2 gap-2 mb-5">
-                {activeSaal.bilder.map((url, i) => (
+              <div className="mb-5">
+                {/* Main slider image */}
+                <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-[#0a0a0a] mb-2">
                   <button
-                    key={i}
-                    onClick={() => openLightbox(i)}
-                    className="relative rounded-lg overflow-hidden aspect-4/3 group cursor-pointer"
-                    aria-label={`Bild ${i + 1} vergrößern`}
+                    onClick={() => openLightbox(currentImageIndex)}
+                    className="absolute inset-0 w-full h-full group"
+                    aria-label={`Bild ${currentImageIndex + 1} vergrößern`}
                   >
                     <img
-                      src={url}
-                      alt={`${activeSaal.name} ${i + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      src={activeSaal.bilder[currentImageIndex]}
+                      alt={`${activeSaal.name} ${currentImageIndex + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                       loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <ZoomIn
+                        size={28}
+                        className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg"
+                      />
+                    </div>
                   </button>
-                ))}
+
+                  {activeSaal.bilder.length > 1 && (
+                    <>
+                      <button
+                        onClick={() =>
+                          setCurrentImageIndex(
+                            i => (i - 1 + activeSaal.bilder!.length) % activeSaal.bilder!.length,
+                          )
+                        }
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors backdrop-blur-sm"
+                        aria-label="Vorheriges Bild"
+                      >
+                        <ChevronLeft size={18} />
+                      </button>
+                      <button
+                        onClick={() =>
+                          setCurrentImageIndex(i => (i + 1) % activeSaal.bilder!.length)
+                        }
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors backdrop-blur-sm"
+                        aria-label="Nächstes Bild"
+                      >
+                        <ChevronRight size={18} />
+                      </button>
+                      <div className="absolute bottom-2 right-3 text-xs text-white/70 bg-black/40 rounded-full px-2 py-0.5 backdrop-blur-sm">
+                        {currentImageIndex + 1} / {activeSaal.bilder.length}
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Dot / thumbnail strip */}
+                {activeSaal.bilder.length > 1 && (
+                  <div className="flex gap-1.5 justify-center">
+                    {activeSaal.bilder.map((url, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrentImageIndex(i)}
+                        aria-label={`Bild ${i + 1}`}
+                        className={`rounded overflow-hidden transition-all shrink-0 ${
+                          i === currentImageIndex
+                            ? 'ring-2 ring-gold opacity-100'
+                            : 'opacity-50 hover:opacity-80'
+                        }`}
+                        style={{ width: 44, height: 32 }}
+                      >
+                        <img src={url} alt="" className="w-full h-full object-cover" />
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 

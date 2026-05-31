@@ -40,7 +40,6 @@ export default function UeberUns() {
           sectionRef={ref}
           isInView={isInView}
           title={t(data?.titel, data?.titelTr, lang) || 'Über uns'}
-          description={t(data?.beschreibung, data?.beschreibungTr, lang)}
         />
 
         {data && (

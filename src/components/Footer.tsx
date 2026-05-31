@@ -5,7 +5,7 @@ import { useLanguage, t } from '../hooks/useLanguage'
 
 interface KontaktData {
   email?: string
-  telefon?: string
+  mobil?: string
   whatsapp?: string
   instagramUrl?: string
   facebookUrl?: string
@@ -50,7 +50,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   const email = data?.email ?? 'info@arslan-catering.de'
-  const telefon = data?.telefon ?? ''
+  const mobil = data?.mobil ?? ''
   const beschreibung = t(data?.footerBeschreibung, data?.footerBeschreibungTr, lang)
 
   return (
@@ -78,13 +78,13 @@ export default function Footer() {
                   {email}
                 </a>
               )}
-              {telefon && (
+              {mobil && (
                 <a
-                  href={`tel:${telefon.replace(/\s/g, '')}`}
+                  href={`tel:${mobil.replace(/\s/g, '')}`}
                   className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-gold transition-colors"
                 >
                   <Phone size={14} />
-                  {telefon}
+                  {mobil}
                 </a>
               )}
             </div>

@@ -6,7 +6,7 @@ function readPreference(): boolean {
   const saved = localStorage.getItem(STORAGE_KEY)
   if (saved === 'true') return true
   if (saved === 'false') return false
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
+  return true
 }
 
 /**

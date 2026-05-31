@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronLeft, Menu, Moon, Sun, X } from 'lucide-react'
+import { ChevronLeft, Menu, X } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
-import { useDarkMode } from '../hooks/useDarkMode'
 import { useNavigateTo } from '../hooks/useNavigateTo'
 import { useLanguage } from '../hooks/useLanguage'
 
@@ -26,7 +25,6 @@ const SECTION_LABELS: Record<string, { de: string; tr: string }> = {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { darkMode, toggleDarkMode } = useDarkMode()
   const { lang, toggle: toggleLang } = useLanguage()
   const navigateTo = useNavigateTo()
   const location = useLocation()
@@ -56,7 +54,7 @@ export default function Navbar() {
               className="flex items-center gap-2.5 group shrink-0"
               aria-label="Arslan Catering – Startseite"
             >
-              <span className="font-bold text-lg tracking-tight text-gray-900 dark:text-white hidden sm:block">
+              <span className="font-bold text-base tracking-tight text-gray-900 dark:text-white">
                 Arslan Catering
               </span>
             </button>
@@ -124,18 +122,10 @@ export default function Navbar() {
           <div className="flex items-center gap-1">
             <button
               onClick={toggleLang}
-              className="px-2.5 py-1.5 rounded-lg text-xs font-bold border border-gold/30 text-gold hover:bg-gold/10 transition-all"
+              className="text-xl leading-none rounded-lg p-1.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
               aria-label={lang === 'de' ? 'Türkçeye geç' : 'Auf Deutsch wechseln'}
             >
-              {lang === 'de' ? 'TR' : 'DE'}
-            </button>
-
-            <button
-              onClick={toggleDarkMode}
-              className="p-2.5 rounded-xl transition-all duration-200 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
-              aria-label="Dark mode umschalten"
-            >
-              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+              {lang === 'de' ? '🇹🇷' : '🇩🇪'}
             </button>
 
             <button
