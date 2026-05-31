@@ -75,7 +75,7 @@ export default function Hero() {
               muted
               loop
               playsInline
-              className="absolute inset-0 w-full h-full object-contain"
+              className="absolute inset-0 w-full h-full object-cover"
               aria-hidden="true"
             />
             <div className="absolute inset-0 bg-black/30" />
