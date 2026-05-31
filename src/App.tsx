@@ -1,0 +1,125 @@
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ArrowUp } from 'lucide-react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import PageLayout from './components/PageLayout'
+import ErrorBoundary from './components/ErrorBoundary'
+import LoadingSpinner from './components/LoadingSpinner'
+import SEOHead from './components/SEOHead'
+import { ROUTES, CATCH_ALL_ROUTE, PAGE_TITLES, DEPTH } from './routeConfig'
+
+const AdminApp = lazy(() => import('./admin/AdminApp'))
+
+export default function App() {
+  const [showScrollTop, setShowScrollTop] = useState(false)
+  const location = useLocation()
+  const prevPathRef = useRef(location.pathname)
+  const [direction, setDirection] = useState(1)
+
+  useEffect(() => {
+    const prev = prevPathRef.current
+    setDirection((DEPTH[location.pathname] ?? 1) >= (DEPTH[prev] ?? 0) ? 1 : -1)
+    prevPathRef.current = location.pathname
+  }, [location.pathname])
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+  }, [location.pathname])
+
+  useEffect(() => {
+    const onScroll = () => setShowScrollTop(window.scrollY > 400)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const isHome = location.pathname === '/'
+  const isAdmin = location.pathname.startsWith('/admin')
+
+  if (isAdmin) {
+    return (
+      <Suspense fallback={<LoadingSpinner className="min-h-screen bg-gray-950" />}>
+        <AdminApp />
+      </Suspense>
+    )
+  }
+
+  return (
+    <div className="relative min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <SEOHead />
+
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-gold focus:text-black focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold"
+      >
+        Zum Inhalt springen
+      </a>
+
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
+        {PAGE_TITLES[location.pathname] ??
+          PAGE_TITLES['/' + location.pathname.split('/')[1]] ??
+          PAGE_TITLES['/']}
+      </div>
+
+      {isHome ? null : <Navbar />}
+
+      <main id="main-content">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={'/' + location.pathname.split('/')[1]}
+            initial={{ opacity: 0, y: direction > 0 ? 36 : -28 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.46, ease: 'easeOut' } }}
+            exit={{
+              opacity: 0,
+              y: direction > 0 ? -24 : 36,
+              transition: { duration: 0.26, ease: 'easeIn' },
+            }}
+            className="relative min-h-screen flex flex-col"
+          >
+            <ErrorBoundary>
+              <Suspense fallback={<LoadingSpinner className="min-h-[60vh]" />}>
+                <Routes location={location}>
+                  <Route
+                    path="/"
+                    element={
+                      <PageLayout>
+                        <Hero />
+                      </PageLayout>
+                    }
+                  />
+                  {ROUTES.map(route => (
+                    <Route
+                      key={route.path}
+                      path={route.path}
+                      element={<PageLayout>{route.element}</PageLayout>}
+                    />
+                  ))}
+                  <Route
+                    path={CATCH_ALL_ROUTE.path}
+                    element={<PageLayout>{CATCH_ALL_ROUTE.element}</PageLayout>}
+                  />
+                </Routes>
+              </Suspense>
+            </ErrorBoundary>
+          </motion.div>
+        </AnimatePresence>
+      </main>
+
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-gold text-black rounded-xl shadow-lg shadow-gold/30 flex items-center justify-center hover:bg-gold-dark transition-colors cursor-pointer"
+            aria-label="Nach oben scrollen"
+          >
+            <ArrowUp size={18} />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}

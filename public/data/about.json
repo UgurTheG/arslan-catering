@@ -1,0 +1,33 @@
+{
+  "titel": "Unsere Geschichte",
+  "titelTr": "Hikayemiz",
+  "beschreibung": "Arslan Catering steht seit über 15 Jahren für erstklassige Hochzeitsorganisation und unvergessliche Erlebnisse. Wir begleiten Sie vom ersten Gespräch bis zum letzten Tanz — mit Leidenschaft, Liebe zum Detail und dem Ziel, Ihren schönsten Tag perfekt zu gestalten.",
+  "beschreibungTr": "Arslan Catering, 15 yılı aşkın süredir birinci sınıf düğün organizasyonu ve unutulmaz deneyimler sunmaktadır. İlk görüşmeden son dansa kadar yanınızdayız — tutku, detaylara özen ve en güzel gününüzü mükemmel kılma hedefiyle.",
+  "bildUrl": "",
+  "werte": [
+    {
+      "id": "1",
+      "titel": "Leidenschaft",
+      "titelTr": "Tutku",
+      "beschreibung": "Jede Hochzeit ist einzigartig — wir bringen unsere ganze Leidenschaft ein.",
+      "beschreibungTr": "Her düğün benzersizdir — tüm tutkumuzu ortaya koyarız.",
+      "icon": "Heart"
+    },
+    {
+      "id": "2",
+      "titel": "Perfektion",
+      "titelTr": "Mükemmellik",
+      "beschreibung": "Jedes Detail wird sorgfältig geplant und perfekt umgesetzt.",
+      "beschreibungTr": "Her ayrıntı titizlikle planlanır ve mükemmel şekilde hayata geçirilir.",
+      "icon": "Star"
+    },
+    {
+      "id": "3",
+      "titel": "Erfahrung",
+      "titelTr": "Deneyim",
+      "beschreibung": "Über 500 Hochzeiten — Ihre Feier in besten Händen.",
+      "beschreibungTr": "500'den fazla düğün — kutlamanız en iyi ellerde.",
+      "icon": "Award"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "beschreibung": "Informationen zum Umgang mit Ihren personenbezogenen Daten gemäß DSGVO.",
+  "sections": [
+    {
+      "title": "Einleitung",
+      "content": "Uns ist der verantwortungsvolle Umgang mit personenbezogenen Daten wichtig. Die Vorgaben durch Gesetze und Verordnungen – BDSG, TMG und DSGVO – sind Grundlage unseres Handelns."
+    },
+    {
+      "title": "Verantwortlich",
+      "content": "Arslan Catering & Events\nMusterstraße 1\n72458 Albstadt\n\nTelefon: +49 7431 000000\nE-Mail: info@arslan-catering.de"
+    },
+    {
+      "title": "Hosting",
+      "content": "Diese Website wird über Vercel Inc. gehostet. Nähere Informationen finden sich in der Datenschutzerklärung von Vercel: https://vercel.com/legal/privacy-policy"
+    },
+    {
+      "title": "Cookies",
+      "content": "Auf dieser Website werden nur technisch erforderliche Cookies verwendet."
+    },
+    {
+      "title": "Kontaktformular",
+      "content": "Das Kontaktformular überträgt Ihren Namen, Ihre E-Mail-Adresse und Ihre Nachricht. Die Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und danach gelöscht."
+    },
+    {
+      "title": "Nutzerrechte",
+      "content": "Gemäß DSGVO haben Sie das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Wenden Sie sich dazu an info@arslan-catering.de."
+    }
+  ]
+}
