@@ -24,9 +24,9 @@ export default function ErrorPage({ code }: ErrorPageProps) {
         <div className="flex flex-col items-center mb-8 select-none">
           {!hasIconInCode(code) && (
             <div className="relative w-20 h-20 sm:w-24 sm:h-24 mb-4">
-              <div className="absolute inset-0 rounded-full bg-spd-red/20 blur-xl animate-pulse" />
-              <div className="relative w-full h-full rounded-full bg-spd-red/10 dark:bg-spd-red/15 flex items-center justify-center shadow-[0_0_30px_rgba(227,6,19,0.15)]">
-                <Icon size={40} strokeWidth={1.5} className="text-spd-red sm:w-12 sm:h-12" />
+              <div className="absolute inset-0 rounded-full bg-gold/20 blur-xl animate-pulse" />
+              <div className="relative w-full h-full rounded-full bg-gold/10 dark:bg-gold/15 flex items-center justify-center shadow-[0_0_30px_rgba(227,6,19,0.15)]">
+                <Icon size={40} strokeWidth={1.5} className="text-gold sm:w-12 sm:h-12" />
               </div>
             </div>
           )}
@@ -45,14 +45,14 @@ export default function ErrorPage({ code }: ErrorPageProps) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={() => navigateTo('home')}
-            className="inline-flex items-center gap-2 bg-spd-red hover:bg-spd-red-dark text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer"
           >
             <Home size={16} />
             Zur Startseite
           </button>
           <button
             onClick={() => window.history.back()}
-            className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-spd-red font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gold font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer"
           >
             <ArrowLeft size={16} />
             Zurück

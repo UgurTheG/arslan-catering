@@ -137,7 +137,7 @@ export default function ArrayEditor({ fields, data, tabKey, onStructureChange }:
               placeholder="Einträge durchsuchen…"
               value={filter}
               onChange={e => setFilter(e.target.value)}
-              className="w-full bg-white/60 dark:bg-gray-800/40 border border-gray-200/80 dark:border-gray-700/60 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-spd-red/20 focus:border-spd-red/40 dark:text-white dark:placeholder-gray-500 transition-all"
+              className="w-full bg-white/60 dark:bg-gray-800/40 border border-gray-200/80 dark:border-gray-700/60 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold/40 dark:text-white dark:placeholder-gray-500 transition-all"
             />
           </div>
         )}
@@ -160,7 +160,7 @@ export default function ArrayEditor({ fields, data, tabKey, onStructureChange }:
           <button
             type="button"
             onClick={handleAdd}
-            className="w-full border-2 border-dashed border-gray-300/60 dark:border-gray-700/40 text-gray-400 hover:border-spd-red/60 hover:text-spd-red rounded-2xl py-5 text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 hover:bg-spd-red/3 dark:hover:bg-spd-red/5"
+            className="w-full border-2 border-dashed border-gray-300/60 dark:border-gray-700/40 text-gray-400 hover:border-gold/60 hover:text-gold rounded-2xl py-5 text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 hover:bg-gold/3 dark:hover:bg-gold/5"
           >
             <Plus size={16} /> Neuen Eintrag hinzufügen
           </button>

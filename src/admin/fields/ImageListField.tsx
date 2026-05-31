@@ -153,7 +153,7 @@ export default function ImageListField({ field, value, onChange, contextItem }: 
             ))}
             <button
               type="button"
-              className="text-xs text-spd-red font-semibold hover:underline flex items-center gap-1"
+              className="text-xs text-gold font-semibold hover:underline flex items-center gap-1"
               onClick={() => {
                 onChange([...list, ''], withCaps([...captions, '']))
               }}
@@ -219,7 +219,7 @@ function ImageListItem({
   const [showUrl, setShowUrl] = useState(!url)
   return (
     <div
-      className={`bg-white/50 dark:bg-gray-800/30 backdrop-blur-sm rounded-2xl p-3 sm:p-4 border border-gray-200/50 dark:border-gray-700/40 hover:border-gray-300 dark:hover:border-gray-600 transition-colors ${isDragging ? 'shadow-xl ring-2 ring-spd-red/30' : ''}`}
+      className={`bg-white/50 dark:bg-gray-800/30 backdrop-blur-sm rounded-2xl p-3 sm:p-4 border border-gray-200/50 dark:border-gray-700/40 hover:border-gray-300 dark:hover:border-gray-600 transition-colors ${isDragging ? 'shadow-xl ring-2 ring-gold/30' : ''}`}
     >
       <div className="flex gap-3 items-start">
         {total > 1 && (
@@ -236,7 +236,7 @@ function ImageListItem({
               type="button"
               disabled={index === 0}
               onClick={onMoveUp}
-              className="w-7 h-7 rounded-lg flex items-center justify-center text-gray-400 hover:text-spd-red hover:bg-spd-red/10 disabled:opacity-25 disabled:hover:text-gray-400 disabled:hover:bg-transparent transition-all"
+              className="w-7 h-7 rounded-lg flex items-center justify-center text-gray-400 hover:text-gold hover:bg-gold/10 disabled:opacity-25 disabled:hover:text-gray-400 disabled:hover:bg-transparent transition-all"
             >
               <ArrowUp size={13} />
             </button>
@@ -244,7 +244,7 @@ function ImageListItem({
               type="button"
               disabled={index >= total - 1}
               onClick={onMoveDown}
-              className="w-7 h-7 rounded-lg flex items-center justify-center text-gray-400 hover:text-spd-red hover:bg-spd-red/10 disabled:opacity-25 disabled:hover:text-gray-400 disabled:hover:bg-transparent transition-all"
+              className="w-7 h-7 rounded-lg flex items-center justify-center text-gray-400 hover:text-gold hover:bg-gold/10 disabled:opacity-25 disabled:hover:text-gray-400 disabled:hover:bg-transparent transition-all"
             >
               <ArrowDown size={13} />
             </button>
@@ -261,7 +261,7 @@ function ImageListItem({
           <button
             type="button"
             onClick={() => fileRef.current?.click()}
-            className="w-16 h-16 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center text-gray-400 hover:border-spd-red hover:text-spd-red transition-colors shrink-0"
+            className="w-16 h-16 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center text-gray-400 hover:border-gold hover:text-gold transition-colors shrink-0"
           >
             <ImagePlus size={16} />
           </button>
@@ -270,7 +270,7 @@ function ImageListItem({
           <div className="flex gap-2 flex-wrap">
             <button
               type="button"
-              className="bg-spd-red/10 text-spd-red hover:bg-spd-red/15 text-[11px] font-semibold px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5"
+              className="bg-gold/10 text-gold hover:bg-gold/15 text-[11px] font-semibold px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5"
               onClick={() => fileRef.current?.click()}
             >
               <Upload size={10} /> {url ? 'Ersetzen' : 'Hochladen'}

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, MessageCircle, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
 import { useSectionPage } from '@/hooks/useSectionPage.ts'
 import { useLanguage, t } from '@/hooks/useLanguage.ts'
 import SectionContainer from '../../SectionContainer'
@@ -85,7 +84,6 @@ export default function Kontakt() {
             >
               {formState === 'sent' ? (
                 <div className="flex flex-col items-center justify-center h-full py-12 text-center">
-                  <CheckCircle size={48} className="text-gold mb-4" />
                   <p className="text-lg font-semibold text-gray-900 dark:text-white">
                     {labels.sent}
                   </p>
@@ -135,7 +133,6 @@ export default function Kontakt() {
                     className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-black font-semibold text-sm transition-all hover:shadow-lg hover:shadow-gold/20 disabled:opacity-60 cursor-pointer"
                     style={{ backgroundColor: '#c9a227' }}
                   >
-                    <Send size={16} />
                     {formState === 'sending'
                       ? lang === 'de'
                         ? 'Wird gesendet…'
@@ -162,7 +159,6 @@ export default function Kontakt() {
                   className="flex items-center gap-3 p-5 rounded-2xl font-semibold text-white transition-all hover:shadow-lg hover:scale-[1.02]"
                   style={{ backgroundColor: '#25D366' }}
                 >
-                  <MessageCircle size={22} />
                   {labels.whatsapp}
                 </a>
               )}
@@ -174,10 +170,10 @@ export default function Kontakt() {
                   className="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-gold/30 transition-colors group"
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-black shrink-0"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-black shrink-0 font-bold text-sm"
                     style={{ backgroundColor: '#c9a227' }}
                   >
-                    <Phone size={18} />
+                    Tel
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 mb-0.5">
@@ -196,10 +192,10 @@ export default function Kontakt() {
                   className="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-gold/30 transition-colors group"
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-black shrink-0"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-black shrink-0 font-bold text-sm"
                     style={{ backgroundColor: '#c9a227' }}
                   >
-                    <Mail size={18} />
+                    Mail
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 mb-0.5">E-Mail</p>
@@ -213,10 +209,10 @@ export default function Kontakt() {
               {data?.adresse && (
                 <div className="flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-black shrink-0"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-black shrink-0 font-bold text-sm"
                     style={{ backgroundColor: '#c9a227' }}
                   >
-                    <MapPin size={18} />
+                    Adr
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 mb-0.5">

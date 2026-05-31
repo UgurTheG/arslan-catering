@@ -14,7 +14,7 @@ interface LegalData {
 }
 
 interface LegalPageProps {
-  icon: ReactNode
+  icon?: ReactNode
   title: string
   category: string
   dataUrl: string
@@ -45,9 +45,11 @@ export default function LegalPage({
             transition={{ duration: 0.5 }}
             className="flex items-center gap-4 mb-4"
           >
-            <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
-              {icon}
-            </div>
+            {icon && (
+              <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
+                {icon}
+              </div>
+            )}
             <span className="text-sm font-semibold uppercase tracking-widest text-gold/80">
               {category}
             </span>

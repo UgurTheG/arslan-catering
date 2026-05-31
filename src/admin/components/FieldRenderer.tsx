@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Plus, X } from 'lucide-react'
 import type { FieldConfig } from '../types'
-import { isoToDE, deToISO } from '../../utils/formatDate'
+import { isoToDE, deToISO } from '@/utils/formatDate.ts'
 import ImageField from '../fields/ImageField'
 import ImageListField from '../fields/ImageListField'
 import IconPickerField from '../fields/IconPickerField'
@@ -117,7 +117,7 @@ function FieldInput({
       return <Toggle id={inputId} value={value as boolean} onChange={v => onChange(v)} />
     default:
       return (
-        <div className="flex items-center gap-2.5 bg-white/60 dark:bg-gray-800/40 border border-gray-200/80 dark:border-gray-700/60 rounded-2xl px-4 py-3 focus-within:ring-2 focus-within:ring-spd-red/20 focus-within:border-spd-red/40 focus-within:bg-white dark:focus-within:bg-gray-800/80 transition-all duration-200 backdrop-blur-sm">
+        <div className="flex items-center gap-2.5 bg-white/60 dark:bg-gray-800/40 border border-gray-200/80 dark:border-gray-700/60 rounded-2xl px-4 py-3 focus-within:ring-2 focus-within:ring-gold/20 focus-within:border-gold/40 focus-within:bg-white dark:focus-within:bg-gray-800/80 transition-all duration-200 backdrop-blur-sm">
           {field.iconKey && (
             <span className="text-gray-400 dark:text-gray-500 shrink-0 flex items-center">
               <FieldIcon iconKey={field.iconKey} />
@@ -241,7 +241,7 @@ function DateField({
       <input
         id={id}
         type="text"
-        className={`${inputCls} max-w-40 ${!valid ? 'text-spd-red' : ''}`}
+        className={`${inputCls} max-w-40 ${!valid ? 'text-gold' : ''}`}
         placeholder="TT.MM.JJJJ"
         value={display}
         onChange={e => {
@@ -322,7 +322,7 @@ function StringListField({
       ))}
       <button
         type="button"
-        className="text-xs text-spd-red font-semibold hover:underline flex items-center gap-1.5 mt-1"
+        className="text-xs text-gold font-semibold hover:underline flex items-center gap-1.5 mt-1"
         onClick={() => onChange([...list, ''])}
       >
         <Plus size={12} /> Hinzufügen

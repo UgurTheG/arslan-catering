@@ -52,10 +52,10 @@ export default function SectionHeader({
       {label && (
         <div className="flex items-center gap-3 mb-4">
           <div
-            className={`h-1 w-12 rounded-full ${inverted ? 'bg-spd-red dark:bg-white/50' : 'bg-spd-red'}`}
+            className={`h-1 w-12 rounded-full ${inverted ? 'bg-gold dark:bg-white/50' : 'bg-gold'}`}
           />
           <span
-            className={`font-semibold text-sm uppercase tracking-wider ${inverted ? 'text-spd-red dark:text-white/70' : 'text-spd-red'}`}
+            className={`font-semibold text-sm uppercase tracking-wider ${inverted ? 'text-gold dark:text-white/70' : 'text-gold'}`}
           >
             {label}
           </span>

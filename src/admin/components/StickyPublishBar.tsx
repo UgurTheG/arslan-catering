@@ -33,7 +33,7 @@ export default function StickyPublishBar({ isDirty, publishing, onPublish, onSho
         >
           <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-gray-200/60 dark:border-gray-700/60 shadow-2xl shadow-black/10 dark:shadow-black/40 rounded-2xl p-3 flex items-center gap-2 sm:gap-3 [hyphens:none] [text-align:left]">
             <div className="flex items-center gap-2 px-1 sm:px-2 min-w-0 flex-1 sm:flex-initial">
-              <span className="w-2 h-2 rounded-full bg-spd-red animate-pulse shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-gold animate-pulse shrink-0" />
               <span className="text-xs font-semibold dark:text-gray-200 truncate [hyphens:none]">
                 Ungespeicherte Änderungen
               </span>
@@ -51,7 +51,7 @@ export default function StickyPublishBar({ isDirty, publishing, onPublish, onSho
               type="button"
               onClick={onPublish}
               disabled={publishing}
-              className="shrink-0 text-xs font-bold px-3.5 sm:px-4 py-2 rounded-xl bg-spd-red hover:bg-spd-red-dark text-white shadow-sm shadow-spd-red/25 hover:shadow-lg hover:shadow-spd-red/35 active:scale-[0.98] transition-colors transition-shadow flex items-center gap-2 disabled:cursor-wait disabled:active:scale-100 whitespace-nowrap [hyphens:none]"
+              className="shrink-0 text-xs font-bold px-3.5 sm:px-4 py-2 rounded-xl bg-gold hover:bg-gold-dark text-white shadow-sm shadow-gold/25 hover:shadow-lg hover:shadow-gold/35 active:scale-[0.98] transition-colors transition-shadow flex items-center gap-2 disabled:cursor-wait disabled:active:scale-100 whitespace-nowrap [hyphens:none]"
             >
               {publishing ? (
                 <Loader2 size={14} strokeWidth={2.5} className="animate-spin shrink-0" />

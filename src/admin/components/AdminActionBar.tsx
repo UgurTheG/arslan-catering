@@ -107,7 +107,7 @@ export default function AdminActionBar({
         title={hasLoadError ? 'Daten konnten nicht geladen werden — Seite neu laden' : undefined}
         className={`shrink-0 text-[10px] sm:text-xs font-bold px-3.5 sm:px-5 py-2 rounded-xl flex items-center gap-2 transition-colors whitespace-nowrap [hyphens:none] ${
           isDirty && !hasLoadError
-            ? 'bg-spd-red hover:bg-spd-red-dark text-white shadow-sm shadow-spd-red/25 hover:shadow-lg hover:shadow-spd-red/35 active:scale-[0.98] disabled:cursor-wait disabled:hover:bg-spd-red disabled:active:scale-100'
+            ? 'bg-gold hover:bg-gold-dark text-white shadow-sm shadow-gold/25 hover:shadow-lg hover:shadow-gold/35 active:scale-[0.98] disabled:cursor-wait disabled:hover:bg-gold disabled:active:scale-100'
             : 'bg-gray-200/60 dark:bg-gray-700/40 text-gray-400 dark:text-gray-500 cursor-not-allowed backdrop-blur-sm'
         }`}
       >

@@ -50,9 +50,9 @@ export function verifyState(signed: string): string | null {
 // ─── Origin allowlist ────────────────────────────────────────────────────────
 
 const ALLOWED_ORIGINS: string[] = [
-  'https://spd-albstadt.vercel.app',
-  'https://spd-albstadt.de',
-  'https://www.spd-albstadt.de',
+  'https://arslan-catering.vercel.app',
+  'https://arslan-catering.de',
+  'https://www.arslan-catering.de',
 ]
 
 function getAllowedOrigins(): string[] {

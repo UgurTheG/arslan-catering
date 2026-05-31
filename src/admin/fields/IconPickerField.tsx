@@ -4,7 +4,7 @@ import { Search } from 'lucide-react'
 import { ICON_LIST, loadIconSvg } from '../lib/icons'
 
 const inputCls =
-  'w-full bg-white/60 dark:bg-gray-800/40 border border-gray-200/80 dark:border-gray-700/60 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-spd-red/20 focus:border-spd-red/40 focus:bg-white dark:focus:bg-gray-800/80 dark:text-white dark:placeholder-gray-500 transition-all duration-200 backdrop-blur-sm'
+  'w-full bg-white/60 dark:bg-gray-800/40 border border-gray-200/80 dark:border-gray-700/60 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold/40 focus:bg-white dark:focus:bg-gray-800/80 dark:text-white dark:placeholder-gray-500 transition-all duration-200 backdrop-blur-sm'
 
 interface Props {
   id?: string
@@ -90,7 +90,7 @@ export default function IconPickerField({ id, value, onChange }: Props) {
               <input
                 type="text"
                 placeholder="Icon suchen…"
-                className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl pl-9 pr-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-spd-red/20 dark:text-white"
+                className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl pl-9 pr-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-gold/20 dark:text-white"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               />
@@ -138,7 +138,7 @@ function IconCell({
   return (
     <button
       type="button"
-      className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-150 hover:bg-spd-red/10 hover:scale-105 ${selected ? 'bg-spd-red/15 ring-2 ring-spd-red shadow-sm' : ''}`}
+      className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-150 hover:bg-gold/10 hover:scale-105 ${selected ? 'bg-gold/15 ring-2 ring-gold shadow-sm' : ''}`}
       title={name}
       onClick={onSelect}
     >

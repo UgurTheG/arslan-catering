@@ -96,9 +96,9 @@ export function renderCodeWithIcon(code: number, Icon: typeof Home) {
     <>
       {str.slice(0, idx)}
       <span className="relative inline-flex items-center justify-center w-[0.75em] h-[0.75em] mx-[0.01em]">
-        <span className="absolute inset-0 rounded-full bg-spd-red/20 blur-md animate-pulse" />
-        <span className="relative w-full h-full rounded-full bg-spd-red/10 dark:bg-spd-red/15 flex items-center justify-center shadow-[0_0_20px_rgba(227,6,19,0.15)]">
-          <Icon className="text-spd-red w-[0.4em] h-[0.4em]" strokeWidth={1.5} />
+        <span className="absolute inset-0 rounded-full bg-gold/20 blur-md animate-pulse" />
+        <span className="relative w-full h-full rounded-full bg-gold/10 dark:bg-gold/15 flex items-center justify-center shadow-[0_0_20px_rgba(227,6,19,0.15)]">
+          <Icon className="text-gold w-[0.4em] h-[0.4em]" strokeWidth={1.5} />
         </span>
       </span>
       {str.slice(idx + 1)}

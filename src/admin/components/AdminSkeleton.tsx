@@ -11,7 +11,7 @@ export default function AdminSkeleton() {
         <div className="h-8 w-16 bg-gray-200/70 dark:bg-gray-700/50 rounded-xl" />
         <div className="h-8 w-16 bg-gray-200/70 dark:bg-gray-700/50 rounded-xl" />
         <div className="ml-auto h-8 w-24 bg-gray-200/70 dark:bg-gray-700/50 rounded-xl" />
-        <div className="h-8 w-32 bg-spd-red/20 rounded-xl" />
+        <div className="h-8 w-32 bg-gold/20 rounded-xl" />
       </div>
       {/* Card skeletons */}
       {[1, 2, 3].map(i => (

@@ -29,7 +29,7 @@ export default class ErrorBoundary extends Component<Props, State> {
       return (
         this.props.fallback ?? (
           <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-            <div className="w-16 h-16 rounded-full bg-spd-red/10 dark:bg-spd-red/20 flex items-center justify-center mb-6">
+            <div className="w-16 h-16 rounded-full bg-gold/10 dark:bg-gold/20 flex items-center justify-center mb-6">
               <span className="text-3xl">⚠️</span>
             </div>
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
@@ -40,7 +40,7 @@ export default class ErrorBoundary extends Component<Props, State> {
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="inline-flex items-center gap-2 bg-spd-red hover:bg-spd-red-dark text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer"
             >
               Seite neu laden
             </button>

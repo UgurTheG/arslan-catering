@@ -10,7 +10,7 @@ interface Props {
  */
 export default function SectionIconBadge({ children }: Props) {
   return (
-    <div className="w-8 h-8 rounded-lg bg-spd-red/10 dark:bg-spd-red/15 flex items-center justify-center">
+    <div className="w-8 h-8 rounded-lg bg-gold/10 dark:bg-gold/15 flex items-center justify-center">
       {children}
     </div>
   )

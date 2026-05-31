@@ -84,13 +84,13 @@ export default function AdminSidebar({
           {/* Logo area */}
           <div className="relative px-5 pt-5 pb-4 overflow-hidden">
             {/* Accent line at top */}
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-spd-red via-spd-red/50 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-gold via-gold/50 to-transparent" />
             {/* Subtle gradient wash */}
-            <div className="absolute inset-0 bg-gradient-to-b from-spd-red/5 dark:from-spd-red/10 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-b from-gold/5 dark:from-gold/10 to-transparent pointer-events-none" />
             <div className="relative flex items-center gap-3">
               <div className="relative shrink-0">
-                <div className="absolute inset-0 bg-spd-red/20 blur-md" />
-                <div className="relative w-10 h-10 shadow-lg shadow-spd-red/30 overflow-hidden ring-1 ring-spd-red/10 dark:ring-spd-red/20">
+                <div className="absolute inset-0 bg-gold/20 blur-md" />
+                <div className="relative w-10 h-10 shadow-lg shadow-gold/30 overflow-hidden ring-1 ring-gold/10 dark:ring-gold/20">
                   <img src="/spd-logo.svg" alt="SPD" className="w-full h-full" />
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function AdminSidebar({
                   Daten-Editor
                 </h1>
                 <p className="text-[10px] text-gray-400 dark:text-gray-500 font-medium">
-                  SPD Albstadt
+                  Arslan Catering
                 </p>
               </div>
               <button
@@ -130,19 +130,19 @@ export default function AdminSidebar({
                   onClick={() => onSelectTab(tab.key)}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 group relative ${
                     isActive
-                      ? 'bg-spd-red/10 dark:bg-spd-red/15 text-spd-red dark:text-red-400 shadow-sm'
+                      ? 'bg-gold/10 dark:bg-gold/15 text-gold dark:text-red-400 shadow-sm'
                       : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/60 hover:text-gray-900 dark:hover:text-gray-200'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="sidebar-active"
-                      className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-spd-red rounded-r-full"
+                      className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-gold rounded-r-full"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                     />
                   )}
                   <span
-                    className={`transition-colors ${isActive ? 'text-spd-red dark:text-red-400' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300'}`}
+                    className={`transition-colors ${isActive ? 'text-gold dark:text-red-400' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300'}`}
                   >
                     {getTabIcon(tab.key)}
                   </span>
@@ -157,7 +157,7 @@ export default function AdminSidebar({
                         className="w-1.5 h-1.5 rounded-full bg-amber-400"
                       />
                     )}
-                    {isDirty && <span className="w-2 h-2 bg-spd-red rounded-full animate-pulse" />}
+                    {isDirty && <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />}
                   </span>
                 </button>
               )
@@ -202,7 +202,7 @@ export default function AdminSidebar({
                         ? 'Nicht möglich: Einige Daten konnten nicht geladen werden'
                         : undefined
                     }
-                    className="w-full bg-spd-red hover:bg-spd-red-dark text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm shadow-spd-red/25 hover:shadow-lg hover:shadow-spd-red/35 active:scale-[0.98] transition-colors flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-spd-red disabled:active:scale-100 whitespace-nowrap [hyphens:none]"
+                    className="w-full bg-gold hover:bg-gold-dark text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm shadow-gold/25 hover:shadow-lg hover:shadow-gold/35 active:scale-[0.98] transition-colors flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-gold disabled:active:scale-100 whitespace-nowrap [hyphens:none]"
                   >
                     {publishing ? (
                       <Loader2 size={14} strokeWidth={2.5} className="animate-spin shrink-0" />

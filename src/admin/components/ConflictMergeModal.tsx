@@ -135,11 +135,11 @@ export default function ConflictMergeModal({ tabKey, conflicts, onClose }: Props
                       onClick={() => setChoices(p => ({ ...p, [i]: 'ours' }))}
                       className={`text-left rounded-lg border p-3 text-[11px] transition-all ${
                         choice === 'ours'
-                          ? 'border-spd-red bg-spd-red/5 dark:bg-spd-red/10 ring-1 ring-spd-red'
-                          : 'border-gray-200 dark:border-gray-700 hover:border-spd-red/50 bg-white dark:bg-gray-900'
+                          ? 'border-gold bg-gold/5 dark:bg-gold/10 ring-1 ring-gold'
+                          : 'border-gray-200 dark:border-gray-700 hover:border-gold/50 bg-white dark:bg-gray-900'
                       }`}
                     >
-                      <p className="font-semibold text-spd-red mb-1 text-[10px] uppercase tracking-wide">
+                      <p className="font-semibold text-gold mb-1 text-[10px] uppercase tracking-wide">
                         Meine Version
                       </p>
                       <p className="text-gray-700 dark:text-gray-300 break-words">
@@ -190,7 +190,7 @@ export default function ConflictMergeModal({ tabKey, conflicts, onClose }: Props
               type="button"
               onClick={handlePublish}
               disabled={!allResolved || publishing}
-              className="text-[11px] font-bold px-4 py-2 rounded-lg bg-spd-red hover:bg-spd-red-dark text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
+              className="text-[11px] font-bold px-4 py-2 rounded-lg bg-gold hover:bg-gold-dark text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
             >
               <GitMerge size={12} />
               Zusammenführen & Veröffentlichen

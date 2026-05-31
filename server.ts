@@ -109,5 +109,5 @@ app.get('*', (_req, res) => {
 })
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 SPD Albstadt running on http://0.0.0.0:${PORT}`)
+  console.log(`🚀 Arslan Catering running on http://0.0.0.0:${PORT}`)
 })

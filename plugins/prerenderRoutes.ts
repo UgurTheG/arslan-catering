@@ -14,84 +14,58 @@ interface RouteSEO {
   imagePreloads?: ImagePreload[]
   chunkName?: string
 }
-const BASE_URL = 'https://www.spd-albstadt.de'
+const BASE_URL = 'https://www.arslan-catering.de'
 const ROUTES: RouteSEO[] = [
   {
-    path: '/aktuelles',
-    title: 'Aktuelles – SPD Albstadt',
+    path: '/ueber-uns',
+    title: 'Über uns – Arslan Catering',
     description:
-      'Aktuelle Nachrichten, Pressemitteilungen und Neuigkeiten der SPD Albstadt. Bleiben Sie informiert über die Stadtpolitik in Albstadt.',
-    canonical: `${BASE_URL}/aktuelles`,
-    chunkName: 'Aktuelles',
+      'Lernen Sie Arslan Catering kennen — 15 Jahre Erfahrung in der Hochzeitsorganisation, Leidenschaft für Details und über 500 unvergessliche Feiern.',
+    canonical: `${BASE_URL}/ueber-uns`,
+    chunkName: 'UeberUns',
   },
   {
-    path: '/partei',
-    title: 'Partei – SPD Albstadt',
+    path: '/galerie',
+    title: 'Galerie – Arslan Catering',
     description:
-      'Der SPD Ortsverein Albstadt: Vorstand, Mitglieder und Persnlichkeiten. Lernen Sie die Menschen hinter der sozialdemokratischen Politik in Albstadt kennen.',
-    canonical: `${BASE_URL}/partei`,
-    chunkName: 'Partei',
-    imagePreloads: [
-      {
-        href: '/images/abgeordnete/robin-mesarosch-sm.webp',
-        imagesrcset:
-          '/images/abgeordnete/robin-mesarosch-sm.webp 280w, /images/abgeordnete/robin-mesarosch.webp 450w',
-        imagesizes: '(max-width: 640px) 8rem, 15rem',
-      },
-    ],
+      'Entdecken Sie unsere Dekorationen: Elegante Tischgestaltungen, romantische Blumenarrangements und atemberaubende Raumkonzepte für Ihre Hochzeit.',
+    canonical: `${BASE_URL}/galerie`,
+    chunkName: 'Galerie',
   },
   {
-    path: '/fraktion',
-    title: 'Fraktion – SPD Albstadt',
+    path: '/saeale',
+    title: 'Hochzeitssäle – Arslan Catering',
     description:
-      'Die SPD-Gemeinderatsfraktion Albstadt: Mitglieder, Anträge und Haushaltsreden. Unsere Arbeit im Gemeinderat für eine soziale Stadtpolitik.',
-    canonical: `${BASE_URL}/fraktion`,
-    chunkName: 'Fraktion',
+      'Exklusive Hochzeitssäle in Baden-Württemberg: Stuttgart, Albstadt, Balingen und mehr. Finden Sie den perfekten Saal für Ihre Traumhochzeit.',
+    canonical: `${BASE_URL}/saeale`,
+    chunkName: 'Saeale',
   },
   {
-    path: '/kommunalpolitik',
-    title: 'Kommunalpolitik – SPD Albstadt',
+    path: '/videos',
+    title: 'Videos – Arslan Catering',
     description:
-      'Kommunalpolitik der SPD Albstadt: Unsere Positionen, Anträge und Initiativen für Albstadt. Für eine lebenswerte Stadt mit sozialer Gerechtigkeit.',
-    canonical: `${BASE_URL}/kommunalpolitik`,
-    chunkName: 'Kommunalpolitik',
-  },
-  {
-    path: '/historie',
-    title: 'Historie – SPD Albstadt',
-    description:
-      'Die Geschichte der SPD in Albstadt: Von den Anfängen bis heute. Erfahren Sie mehr über die sozialdemokratische Tradition in unserer Stadt.',
-    canonical: `${BASE_URL}/historie`,
-    chunkName: 'Historie',
+      'Erleben Sie die Magie vergangener Hochzeiten in unseren Videos. Echte Momente, echte Emotionen — lassen Sie sich inspirieren.',
+    canonical: `${BASE_URL}/videos`,
+    chunkName: 'Videos',
   },
   {
     path: '/kontakt',
-    title: 'Kontakt – SPD Albstadt',
+    title: 'Kontakt – Arslan Catering',
     description:
-      'Kontaktieren Sie die SPD Albstadt: Adresse, Telefonnummer und E-Mail. Wir freuen uns auf Ihre Nachricht und Ihr Engagement.',
+      'Kontaktieren Sie Arslan Catering für Ihre Traumhochzeit. Telefon, WhatsApp, E-Mail oder Kontaktformular — wir sind für Sie da.',
     canonical: `${BASE_URL}/kontakt`,
     chunkName: 'Kontakt',
-    imagePreloads: [
-      {
-        href: '/images/kontakt/gruppenbild-640.webp',
-        imagesrcset:
-          '/images/kontakt/gruppenbild-640.webp 640w, /images/kontakt/gruppenbild-800.webp 800w, /images/kontakt/gruppenbild.webp 1200w',
-        imagesizes: '(max-width: 1024px) 100vw, 40vw',
-      },
-    ],
   },
   {
     path: '/datenschutz',
-    title: 'Datenschutz – SPD Albstadt',
-    description:
-      'Datenschutzerklärung der SPD Albstadt. Informationen zur Verarbeitung Ihrer personenbezogenen Daten auf unserer Website.',
+    title: 'Datenschutz – Arslan Catering',
+    description: 'Datenschutzerklärung von Arslan Catering gemäß DSGVO.',
     canonical: `${BASE_URL}/datenschutz`,
   },
   {
     path: '/impressum',
-    title: 'Impressum – SPD Albstadt',
-    description:
-      'Impressum der SPD Albstadt gemäß § 5 TMG. Angaben zum Verantwortlichen und zur Haftung für Inhalte.',
+    title: 'Impressum – Arslan Catering',
+    description: 'Impressum von Arslan Catering gemäß § 5 TMG.',
     canonical: `${BASE_URL}/impressum`,
   },
 ]

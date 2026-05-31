@@ -43,7 +43,7 @@ export default function Avatar({ name, imageUrl, size = 'md', className }: Avata
   }
   return (
     <div
-      className={`${SIZES[size]} rounded-full bg-spd-red flex items-center justify-center text-white font-bold shrink-0${
+      className={`${SIZES[size]} rounded-full bg-gold flex items-center justify-center text-white font-bold shrink-0${
         className ? ` ${className}` : ''
       }`}
     >

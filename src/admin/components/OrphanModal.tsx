@@ -36,7 +36,7 @@ export default function OrphanModal({ orphans, onConfirm, onKeep, onCancel }: Pr
               type="checkbox"
               checked={checked[path]}
               onChange={e => setChecked(prev => ({ ...prev, [path]: e.target.checked }))}
-              className="accent-spd-red rounded w-4 h-4"
+              className="accent-gold rounded w-4 h-4"
             />
             <span className="truncate text-xs font-mono text-gray-500">{path}</span>
           </label>

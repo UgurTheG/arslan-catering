@@ -29,7 +29,7 @@ export default function Toggle({
       <div
         className={`w-12 h-7 rounded-full relative transition-all duration-300 ${
           value
-            ? 'bg-linear-to-r from-spd-red to-spd-red-dark shadow-sm shadow-spd-red/25'
+            ? 'bg-linear-to-r from-gold to-gold-dark shadow-sm shadow-gold/25'
             : 'bg-gray-200 dark:bg-gray-700'
         }`}
       >
@@ -41,7 +41,7 @@ export default function Toggle({
       </div>
       <span
         className={`text-sm font-medium transition-colors ${
-          value ? 'text-spd-red dark:text-red-400' : 'text-gray-400'
+          value ? 'text-gold dark:text-red-400' : 'text-gray-400'
         }`}
       >
         {value ? label.on : label.off}

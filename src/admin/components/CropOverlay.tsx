@@ -132,7 +132,7 @@ export default function CropOverlay({ file, onComplete }: Props) {
             type="button"
             onClick={exportCrop}
             disabled={!canExport}
-            className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-linear-to-r from-spd-red to-spd-red-dark text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 shadow-lg shadow-spd-red/25 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-linear-to-r from-gold to-gold-dark text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 shadow-lg shadow-gold/25 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Check size={14} /> Zuschneiden
           </button>

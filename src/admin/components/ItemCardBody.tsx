@@ -44,8 +44,8 @@ export default function ItemCardBody({
       <div className="flex items-center justify-between mb-4 sm:mb-5 gap-2">
         <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           {gripSlot}
-          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-linear-to-br from-spd-red/10 to-spd-red/5 dark:from-spd-red/20 dark:to-spd-red/10 flex items-center justify-center shrink-0">
-            <span className="text-[9px] sm:text-[10px] font-black text-spd-red">{index + 1}</span>
+          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-linear-to-br from-gold/10 to-gold/5 dark:from-gold/20 dark:to-gold/10 flex items-center justify-center shrink-0">
+            <span className="text-[9px] sm:text-[10px] font-black text-gold">{index + 1}</span>
           </div>
           <span className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 truncate">
             {previewText}

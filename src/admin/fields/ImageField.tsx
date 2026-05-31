@@ -97,7 +97,7 @@ export default function ImageField({ field, value, onChange, contextItem }: Prop
             <button
               type="button"
               onClick={() => fileRef.current?.click()}
-              className="w-24 h-24 rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex flex-col items-center justify-center gap-1 text-gray-400 hover:border-spd-red hover:text-spd-red transition-colors shrink-0"
+              className="w-24 h-24 rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex flex-col items-center justify-center gap-1 text-gray-400 hover:border-gold hover:text-gold transition-colors shrink-0"
             >
               <ImagePlus size={18} />
               <span className="text-[9px] font-medium">Hochladen</span>
@@ -107,7 +107,7 @@ export default function ImageField({ field, value, onChange, contextItem }: Prop
             <button
               type="button"
               onClick={() => fileRef.current?.click()}
-              className="text-xs font-medium px-3 py-2 rounded-xl bg-spd-red/10 text-spd-red hover:bg-spd-red/15 transition-colors flex items-center gap-1.5 w-fit"
+              className="text-xs font-medium px-3 py-2 rounded-xl bg-gold/10 text-gold hover:bg-gold/15 transition-colors flex items-center gap-1.5 w-fit"
             >
               <Upload size={12} /> {preview ? 'Ersetzen' : 'Bild hochladen'}
             </button>

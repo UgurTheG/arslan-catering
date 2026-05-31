@@ -24,7 +24,7 @@ export function renderTextContent(text: string): React.ReactNode {
           href={href}
           target={token.startsWith('http') ? '_blank' : undefined}
           rel={token.startsWith('http') ? 'noopener noreferrer' : undefined}
-          className="text-spd-red dark:text-red-400 hover:underline break-all"
+          className="text-gold dark:text-red-400 hover:underline break-all"
         >
           {token}
         </a>,

@@ -8,15 +8,14 @@ interface SitemapRoute {
   priority: number
 }
 
-const BASE_URL = 'https://www.spd-albstadt.de'
+const BASE_URL = 'https://www.arslan-catering.de'
 
 const ROUTES: SitemapRoute[] = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
-  { path: '/aktuelles', changefreq: 'daily', priority: 0.9 },
-  { path: '/partei', changefreq: 'monthly', priority: 0.8 },
-  { path: '/fraktion', changefreq: 'monthly', priority: 0.8 },
-  { path: '/kommunalpolitik', changefreq: 'monthly', priority: 0.7 },
-  { path: '/historie', changefreq: 'yearly', priority: 0.6 },
+  { path: '/ueber-uns', changefreq: 'monthly', priority: 0.8 },
+  { path: '/galerie', changefreq: 'weekly', priority: 0.9 },
+  { path: '/saeale', changefreq: 'monthly', priority: 0.8 },
+  { path: '/videos', changefreq: 'weekly', priority: 0.7 },
   { path: '/kontakt', changefreq: 'monthly', priority: 0.7 },
   { path: '/datenschutz', changefreq: 'yearly', priority: 0.3 },
   { path: '/impressum', changefreq: 'yearly', priority: 0.3 },

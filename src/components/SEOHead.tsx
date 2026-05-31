@@ -26,7 +26,7 @@ export default function SEOHead() {
       {seo.ogImageHeight && <meta property="og:image:height" content={String(seo.ogImageHeight)} />}
       <meta property="og:image:alt" content={seo.title} />
       <meta property="og:locale" content="de_DE" />
-      <meta property="og:site_name" content="SPD Albstadt" />
+      <meta property="og:site_name" content="Arslan Catering" />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />

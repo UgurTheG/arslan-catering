@@ -46,8 +46,8 @@ export default function PublishConfirmModal({ tabKey, onConfirm, onCancel }: Pro
   return (
     <ModalFrame
       onClose={onCancel}
-      icon={<Rocket size={18} className="text-spd-red" />}
-      iconBg="bg-spd-red/10 dark:bg-spd-red/20"
+      icon={<Rocket size={18} className="text-gold" />}
+      iconBg="bg-gold/10 dark:bg-gold/20"
       title="Veröffentlichen bestätigen"
       subtitle={subtitle}
     >
@@ -90,7 +90,7 @@ export default function PublishConfirmModal({ tabKey, onConfirm, onCancel }: Pro
         </button>
         <button
           type="button"
-          className="text-xs px-4 py-2.5 rounded-xl bg-spd-red hover:bg-spd-red-dark text-white font-bold shadow-sm shadow-spd-red/25 hover:shadow-lg hover:shadow-spd-red/35 active:scale-[0.98] transition-colors flex items-center gap-2 disabled:cursor-wait disabled:hover:bg-spd-red disabled:active:scale-100 whitespace-nowrap [hyphens:none]"
+          className="text-xs px-4 py-2.5 rounded-xl bg-gold hover:bg-gold-dark text-white font-bold shadow-sm shadow-gold/25 hover:shadow-lg hover:shadow-gold/35 active:scale-[0.98] transition-colors flex items-center gap-2 disabled:cursor-wait disabled:hover:bg-gold disabled:active:scale-100 whitespace-nowrap [hyphens:none]"
           onClick={onConfirm}
           disabled={publishing || totalChanges === 0}
         >
