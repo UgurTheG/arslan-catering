@@ -56,11 +56,8 @@ export default function Navbar() {
               className="flex items-center gap-2.5 group shrink-0"
               aria-label="Arslan Catering – Startseite"
             >
-              <div className="w-9 h-9 rounded-full bg-black dark:bg-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-                <span className="text-gold font-black text-xs tracking-tighter">AC</span>
-              </div>
               <span className="font-bold text-lg tracking-tight text-gray-900 dark:text-white hidden sm:block">
-                Arslan
+                Arslan Catering
               </span>
             </button>
 
