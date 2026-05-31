@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronLeft, Menu, X } from 'lucide-react'
+import { ChevronLeft, Menu, Moon, Sun, X } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
+import { useDarkMode } from '../hooks/useDarkMode'
 import { useNavigateTo } from '../hooks/useNavigateTo'
 import { useLanguage } from '../hooks/useLanguage'
 
@@ -25,6 +26,7 @@ const SECTION_LABELS: Record<string, { de: string; tr: string }> = {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { darkMode, toggleDarkMode } = useDarkMode()
   const { lang, toggle: toggleLang } = useLanguage()
   const navigateTo = useNavigateTo()
   const location = useLocation()
@@ -126,6 +128,14 @@ export default function Navbar() {
               aria-label={lang === 'de' ? 'Türkçeye geç' : 'Auf Deutsch wechseln'}
             >
               {lang === 'de' ? '🇹🇷' : '🇩🇪'}
+            </button>
+
+            <button
+              onClick={toggleDarkMode}
+              className="p-2.5 rounded-xl transition-all duration-200 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
+              aria-label="Dark mode umschalten"
+            >
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
             <button
