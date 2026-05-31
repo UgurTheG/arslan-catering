@@ -15,14 +15,6 @@ interface StartseiteData {
   heroVideoUrl?: string
 }
 
-const EVENT_TYPES = [
-  { de: 'Hochzeit', tr: 'Düğün' },
-  { de: 'Kına Gecesi', tr: 'Kına Gecesi' },
-  { de: 'Verlobung', tr: 'Nişan' },
-  { de: 'Geburtstag', tr: 'Doğum Günü' },
-  { de: 'Firmenfest', tr: 'Şirket Partisi' },
-]
-
 const NAV_ITEMS = [
   { id: 'ueber-uns', label: { de: 'Über uns', tr: 'Hakkımızda' } },
   { id: 'galerie', label: { de: 'Galerie', tr: 'Galeri' } },
@@ -202,27 +194,6 @@ export default function Hero() {
             ),
           )}
         </motion.h1>
-
-        {/* Event type chips */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.32 }}
-          className="flex flex-wrap justify-center gap-2 mb-6"
-        >
-          {EVENT_TYPES.map((ev, i) => (
-            <motion.span
-              key={ev.de}
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.35 + i * 0.06 }}
-              className="px-3.5 py-1 rounded-full text-xs font-semibold border border-gold/40 bg-gold/10 backdrop-blur-sm"
-              style={{ color: '#c9a227' }}
-            >
-              {ev[lang]}
-            </motion.span>
-          ))}
-        </motion.div>
 
         {/* Subtitle */}
         <motion.p
