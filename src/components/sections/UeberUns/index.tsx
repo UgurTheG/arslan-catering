@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion'
 import { Award, Heart, Star } from 'lucide-react'
-import { useSectionPage } from '../../../hooks/useSectionPage'
-import { useLanguage, t } from '../../../hooks/useLanguage'
+import { useSectionPage } from '@/hooks/useSectionPage.ts'
+import { useLanguage, t } from '@/hooks/useLanguage.ts'
 import SectionContainer from '../../SectionContainer'
 import SectionHeader from '../../SectionHeader'
-import Footer from '../../Footer'
 
 interface Wert {
   id: string
@@ -54,7 +53,7 @@ export default function UeberUns() {
                   initial={{ opacity: 0, x: -40 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.7, delay: 0.2 }}
-                  className="relative rounded-2xl overflow-hidden aspect-[4/3]"
+                  className="relative rounded-2xl overflow-hidden aspect-4/3"
                 >
                   <img
                     src={data.bildUrl}
@@ -71,7 +70,7 @@ export default function UeberUns() {
                   initial={{ opacity: 0, x: -40 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.7, delay: 0.2 }}
-                  className="relative rounded-2xl aspect-[4/3] bg-[#0a0a0a] flex items-center justify-center"
+                  className="relative rounded-2xl aspect-4/3 bg-[#0a0a0a] flex items-center justify-center"
                   style={{ border: '1px solid rgba(201,162,39,0.2)' }}
                 >
                   <span className="text-[120px] font-black opacity-10" style={{ color: '#c9a227' }}>
@@ -125,7 +124,6 @@ export default function UeberUns() {
           </div>
         )}
       </SectionContainer>
-      <Footer />
     </>
   )
 }

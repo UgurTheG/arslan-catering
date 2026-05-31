@@ -1,13 +1,13 @@
 import { useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Users } from 'lucide-react'
-import { useSectionPage } from '../../../hooks/useSectionPage'
-import { useLanguage, t } from '../../../hooks/useLanguage'
-import { useSheetState } from '../../../hooks/useSheetState'
+import { useSectionPage } from '@/hooks/useSectionPage.ts'
+import { useLanguage, t } from '@/hooks/useLanguage.ts'
+import { useSheetState } from '@/hooks/useSheetState.ts'
 import SectionContainer from '../../SectionContainer'
 import SectionHeader from '../../SectionHeader'
 import Sheet from '../../Sheet'
-import Footer from '../../Footer'
+
 import LazyLightboxWrapper from '../../LazyLightboxWrapper'
 
 interface Saal {
@@ -74,7 +74,7 @@ export default function Saeale() {
                   onClick={() => openSaal(saal)}
                   className="text-left rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer border border-gray-100 dark:border-gray-700 hover:border-gold/30"
                 >
-                  <div className="relative aspect-[4/3] bg-[#0a0a0a] overflow-hidden">
+                  <div className="relative aspect-4/3 bg-[#0a0a0a] overflow-hidden">
                     {saal.bilder?.[0] ? (
                       <img
                         src={saal.bilder[0]}
@@ -153,7 +153,7 @@ export default function Saeale() {
                   <button
                     key={i}
                     onClick={() => openLightbox(i)}
-                    className="relative rounded-lg overflow-hidden aspect-[4/3] group cursor-pointer"
+                    className="relative rounded-lg overflow-hidden aspect-4/3 group cursor-pointer"
                     aria-label={`Bild ${i + 1} vergrößern`}
                   >
                     <img
@@ -182,8 +182,6 @@ export default function Saeale() {
         index={lightboxIndex}
         slides={saalSlides}
       />
-
-      <Footer />
     </>
   )
 }

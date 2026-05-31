@@ -1,9 +1,8 @@
 import { useState, useCallback } from 'react'
-import { useSectionPage } from '../../../hooks/useSectionPage'
-import { useLanguage, t } from '../../../hooks/useLanguage'
+import { useSectionPage } from '@/hooks/useSectionPage.ts'
+import { useLanguage, t } from '@/hooks/useLanguage.ts'
 import SectionContainer from '../../SectionContainer'
 import SectionHeader from '../../SectionHeader'
-import Footer from '../../Footer'
 import LazyLightboxWrapper from '../../LazyLightboxWrapper'
 
 interface GalerieBild {
@@ -86,8 +85,6 @@ export default function Galerie() {
         index={lightboxIndex}
         slides={slides}
       />
-
-      <Footer />
     </>
   )
 }

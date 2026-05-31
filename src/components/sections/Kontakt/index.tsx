@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, MessageCircle, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
-import { useSectionPage } from '../../../hooks/useSectionPage'
-import { useLanguage, t } from '../../../hooks/useLanguage'
+import { useSectionPage } from '@/hooks/useSectionPage.ts'
+import { useLanguage, t } from '@/hooks/useLanguage.ts'
 import SectionContainer from '../../SectionContainer'
 import SectionHeader from '../../SectionHeader'
-import Footer from '../../Footer'
 
 interface KontaktData {
   titel?: string
@@ -235,7 +234,6 @@ export default function Kontakt() {
           </div>
         </div>
       </SectionContainer>
-      <Footer />
     </>
   )
 }

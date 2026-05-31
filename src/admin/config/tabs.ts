@@ -15,6 +15,12 @@ export const TABS: TabConfig[] = [
       { key: 'heroUntertitel', label: 'Hero-Untertitel (DE)', type: 'textarea' },
       { key: 'heroUntertitelTr', label: 'Hero-Untertitel (TR)', type: 'textarea' },
       { key: 'heroBildUrl', label: 'Hero-Hintergrundbild', type: 'image', imageDir: 'hero' },
+      {
+        key: 'heroVideoUrl',
+        label: 'Hero-Hintergrundvideo',
+        type: 'url',
+        placeholder: '/videos/hero.mp4',
+      },
     ],
   },
 

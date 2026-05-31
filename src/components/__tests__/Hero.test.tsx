@@ -20,18 +20,18 @@ describe('Hero - Accessibility', () => {
 
   it('navigation pill buttons have minimum 44px touch target', () => {
     const { container } = renderHero()
-    // Check that nav buttons have min-h-[44px] class
+    // Check that nav buttons have min-h-11 class (Tailwind v4 shorthand for min-h-[44px])
     const navButtons = container.querySelectorAll('button.bg-white\\/12')
     navButtons.forEach(btn => {
-      expect(btn.className).toContain('min-h-[44px]')
+      expect(btn.className).toContain('min-h-11')
     })
   })
 
   it('scroll indicator has adequate touch target', () => {
     renderHero()
     const scrollBtn = screen.getByLabelText('Nach unten scrollen')
-    expect(scrollBtn.className).toContain('min-h-[44px]')
-    expect(scrollBtn.className).toContain('min-w-[44px]')
+    expect(scrollBtn.className).toContain('min-h-11')
+    expect(scrollBtn.className).toContain('min-w-11')
   })
 
   it('renders the SPD heading', () => {

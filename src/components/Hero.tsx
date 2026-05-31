@@ -12,6 +12,7 @@ interface StartseiteData {
   heroUntertitel?: string
   heroUntertitelTr?: string
   heroBildUrl?: string
+  heroVideoUrl?: string
 }
 
 const NAV_ITEMS = [
@@ -38,9 +39,10 @@ export default function Hero() {
   const untertitel =
     t(data?.heroUntertitel, data?.heroUntertitelTr, lang) || 'Wir gestalten unvergessliche Momente.'
   const heroBild = data?.heroBildUrl
+  const heroVideo = data?.heroVideoUrl
 
   return (
-    <section ref={ref} id="hero" className="relative h-screen min-h-[600px] overflow-hidden">
+    <section ref={ref} id="hero" className="relative h-screen min-h-150 overflow-hidden">
       {/* Top-right controls */}
       <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex items-center gap-2">
         <button
@@ -61,7 +63,33 @@ export default function Hero() {
 
       {/* Background */}
       <motion.div style={{ scale: bgScale }} className="absolute inset-0">
-        {heroBild ? (
+        {heroVideo ? (
+          <>
+            {/* Blurred background fill — covers the side/top bars on non-matching aspect ratios */}
+            <video
+              src={heroVideo}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl"
+              aria-hidden="true"
+            />
+            <div className="absolute inset-0 bg-black/50" />
+            {/* Sharp foreground video — always fully visible */}
+            <video
+              src={heroVideo}
+              poster={heroBild}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-contain"
+              aria-hidden="true"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+          </>
+        ) : heroBild ? (
           <>
             <img
               src={heroBild}
@@ -96,11 +124,11 @@ export default function Hero() {
             </svg>
             {/* Decorative rings */}
             <div
-              className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-10"
+              className="absolute -top-40 -right-40 w-150 h-150 rounded-full opacity-10"
               style={{ border: '1px solid #c9a227' }}
             />
             <div
-              className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
+              className="absolute -bottom-32 -left-32 w-125 h-125 rounded-full opacity-[0.06]"
               style={{ border: '1px solid #c9a227' }}
             />
             {/* Watermark text */}
@@ -131,15 +159,21 @@ export default function Hero() {
         style={{ y, opacity }}
         className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4"
       >
-        {/* Badge */}
+        {/* Brand name */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-6 px-4 py-1.5 rounded-full border text-xs font-semibold tracking-widest uppercase"
-          style={{ borderColor: 'rgba(201,162,39,0.5)', color: '#c9a227' }}
+          className="mb-4 flex items-center gap-3"
         >
-          Arslan Catering &amp; Events
+          <div className="h-px w-10 bg-gold/50" aria-hidden="true" />
+          <span
+            className="text-sm font-bold tracking-[0.25em] uppercase"
+            style={{ color: '#c9a227' }}
+          >
+            Arslan Catering &amp; Events
+          </span>
+          <div className="h-px w-10 bg-gold/50" aria-hidden="true" />
         </motion.div>
 
         {/* Title */}
@@ -187,7 +221,7 @@ export default function Hero() {
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => navigateTo(item.id)}
-              className="backdrop-blur-sm bg-white/10 border border-white/20 text-white font-medium px-5 py-2.5 min-h-[44px] rounded-full text-sm transition-all hover:bg-white/20 hover:border-white/40 cursor-pointer"
+              className="backdrop-blur-sm bg-white/10 border border-white/20 text-white font-medium px-5 py-2.5 min-h-11 rounded-full text-sm transition-all hover:bg-white/20 hover:border-white/40 cursor-pointer"
             >
               {item.label[lang]}
             </motion.button>
@@ -215,7 +249,7 @@ export default function Hero() {
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => navigateTo('kontakt')}
-          className="inline-flex items-center gap-2 text-black font-semibold px-8 py-3 min-h-[48px] rounded-full text-sm transition-all cursor-pointer shadow-lg shadow-gold/20 hover:shadow-gold/40"
+          className="inline-flex items-center gap-2 text-black font-semibold px-8 py-3 min-h-12 rounded-full text-sm transition-all cursor-pointer shadow-lg shadow-gold/20 hover:shadow-gold/40"
           style={{ backgroundColor: '#c9a227' }}
         >
           <Phone size={15} strokeWidth={2.5} />
@@ -231,7 +265,7 @@ export default function Hero() {
         onClick={() => navigateTo('ueber-uns')}
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-white transition-colors z-20 cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-white transition-colors z-20 cursor-pointer min-w-11 min-h-11 flex items-center justify-center"
         aria-label="Nach unten scrollen"
       >
         <ChevronDown size={34} strokeWidth={1.5} />

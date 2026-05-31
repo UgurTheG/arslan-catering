@@ -26,9 +26,10 @@ function readText(file) {
   }
 }
 
-// 1. Collect all asset files on disk (relative public URL form: /images/... /documents/...)
+// 1. Collect all asset files on disk (relative public URL form: /images/... /documents/... /videos/...)
 const imageDir = join(ROOT, 'public/images')
 const docsDir = join(ROOT, 'public/documents')
+const videosDir = join(ROOT, 'public/videos')
 
 const assetFiles = new Set()
 if (existsSync(imageDir)) {
@@ -37,6 +38,11 @@ if (existsSync(imageDir)) {
 if (existsSync(docsDir)) {
   for (const f of walk(docsDir)) assetFiles.add('/' + relative(join(ROOT, 'public'), f))
 }
+if (existsSync(videosDir)) {
+  for (const f of walk(videosDir)) {
+    if (!f.endsWith('.gitkeep')) assetFiles.add('/' + relative(join(ROOT, 'public'), f))
+  }
+}
 
 // 2. Collect all referenced paths from JSON data files
 const referencedPaths = new Set()
@@ -44,8 +50,8 @@ const dataDir = join(ROOT, 'public/data')
 for (const f of walk(dataDir)) {
   if (!f.endsWith('.json')) continue
   const text = readText(f)
-  // Match any "/images/..." or "/documents/..." string value in JSON
-  for (const m of text.matchAll(/"(\/(?:images|documents)\/[^"]+)"/g)) {
+  // Match any "/images/...", "/documents/...", or "/videos/..." string value in JSON
+  for (const m of text.matchAll(/"(\/(?:images|documents|videos)\/[^"]+)"/g)) {
     referencedPaths.add(m[1])
   }
 }
@@ -57,7 +63,7 @@ for (const f of walk(srcDir)) {
   if (!srcExts.some(e => f.endsWith(e))) continue
   const text = readText(f)
   // Match paths anywhere in source (covers srcSet, template literals, plain strings)
-  for (const m of text.matchAll(/\/(images|documents)\/[^\s"'`<>{}()]+/g)) {
+  for (const m of text.matchAll(/\/(images|documents|videos)\/[^\s"'`<>{}()]+/g)) {
     referencedPaths.add(m[0])
   }
 }
@@ -82,6 +88,7 @@ if (unused.length === 0) {
 } else {
   const images = unused.filter(f => f.startsWith('/images/'))
   const docs = unused.filter(f => f.startsWith('/documents/'))
+  const videos = unused.filter(f => f.startsWith('/videos/'))
   if (images.length) {
     console.log('--- Unused images ---')
     images.forEach(f => console.log(' ', f))
@@ -89,5 +96,9 @@ if (unused.length === 0) {
   if (docs.length) {
     console.log('\n--- Unused documents ---')
     docs.forEach(f => console.log(' ', f))
+  }
+  if (videos.length) {
+    console.log('\n--- Unused videos ---')
+    videos.forEach(f => console.log(' ', f))
   }
 }

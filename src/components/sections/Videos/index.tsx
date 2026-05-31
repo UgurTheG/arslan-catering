@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion'
 import { Play } from 'lucide-react'
-import { useSectionPage } from '../../../hooks/useSectionPage'
-import { useLanguage, t } from '../../../hooks/useLanguage'
+import { useSectionPage } from '@/hooks/useSectionPage.ts'
+import { useLanguage, t } from '@/hooks/useLanguage.ts'
 import SectionContainer from '../../SectionContainer'
 import SectionHeader from '../../SectionHeader'
-import Footer from '../../Footer'
 
 interface Video {
   id: string
@@ -133,7 +132,6 @@ export default function Videos() {
           )}
         </div>
       </SectionContainer>
-      <Footer />
     </>
   )
 }
