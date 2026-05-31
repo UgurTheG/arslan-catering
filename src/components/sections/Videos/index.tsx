@@ -45,7 +45,7 @@ export default function Videos() {
 
   return (
     <>
-      <SectionContainer id="videos" className="bg-white dark:bg-gray-950 pt-20">
+      <SectionContainer id="videos" className="bg-white dark:bg-gray-950 pt-32">
         <SectionHeader
           sectionRef={ref}
           isInView={isInView}

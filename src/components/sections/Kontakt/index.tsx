@@ -65,7 +65,7 @@ export default function Kontakt() {
 
   return (
     <>
-      <SectionContainer id="kontakt" className="bg-gray-50 dark:bg-gray-900 pt-20">
+      <SectionContainer id="kontakt" className="bg-gray-50 dark:bg-gray-900 pt-32">
         <SectionHeader
           sectionRef={ref}
           isInView={isInView}

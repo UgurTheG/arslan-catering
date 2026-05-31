@@ -34,7 +34,7 @@ export default function Galerie() {
 
   return (
     <>
-      <SectionContainer id="galerie" className="bg-white dark:bg-gray-950 pt-20">
+      <SectionContainer id="galerie" className="bg-white dark:bg-gray-950 pt-32">
         <SectionHeader
           sectionRef={ref}
           isInView={isInView}

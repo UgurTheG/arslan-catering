@@ -35,7 +35,7 @@ export default function UeberUns() {
 
   return (
     <>
-      <SectionContainer id="ueber-uns" className="bg-white dark:bg-gray-950 pt-20">
+      <SectionContainer id="ueber-uns" className="bg-white dark:bg-gray-950 pt-32">
         <SectionHeader
           sectionRef={ref}
           isInView={isInView}

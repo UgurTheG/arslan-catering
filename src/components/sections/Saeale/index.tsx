@@ -45,7 +45,7 @@ export default function Saeale() {
 
   return (
     <>
-      <SectionContainer id="saeale" className="bg-gray-50 dark:bg-gray-900 pt-20">
+      <SectionContainer id="saeale" className="bg-gray-50 dark:bg-gray-900 pt-32">
         <SectionHeader
           sectionRef={ref}
           isInView={isInView}
