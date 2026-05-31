@@ -3,7 +3,7 @@
  * expanded DokumentRow, and ImageListField deep interactions.
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, fireEvent, act } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
 vi.mock('../../admin/lib/github', () => {
   class AuthError extends Error {
