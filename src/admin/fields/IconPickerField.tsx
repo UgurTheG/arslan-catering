@@ -66,7 +66,7 @@ export default function IconPickerField({ id, value, onChange }: Props) {
         className={inputCls + ' text-left flex items-center gap-2.5 cursor-pointer'}
         onClick={() => setOpen(!open)}
       >
-        {/* SVG is sourced from the lucide-static CDN — a controlled internal source */}
+        {/* SVG is sourced from the lucide-static CDN - a controlled internal source */}
         {svgHtml && (
           <span
             className="w-4 h-4 shrink-0"
@@ -142,7 +142,7 @@ function IconCell({
       title={name}
       onClick={onSelect}
     >
-      {/* SVG is sourced from the lucide-static CDN — a controlled internal source */}
+      {/* SVG is sourced from the lucide-static CDN - a controlled internal source */}
       {svg && (
         <span
           className="w-4 h-4 text-gray-700 dark:text-gray-300"

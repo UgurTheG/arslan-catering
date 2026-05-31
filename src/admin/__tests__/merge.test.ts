@@ -7,7 +7,7 @@ import { threeWayMerge } from '../../admin/lib/merge'
 
 // ─── Primitives & plain objects ───────────────────────────────────────────────
 
-describe('threeWayMerge — primitives', () => {
+describe('threeWayMerge - primitives', () => {
   it('returns original when both sides are unchanged', () => {
     const { merged, conflicts } = threeWayMerge('hello', 'hello', 'hello')
     expect(merged).toBe('hello')
@@ -41,7 +41,7 @@ describe('threeWayMerge — primitives', () => {
   })
 })
 
-describe('threeWayMerge — plain objects', () => {
+describe('threeWayMerge - plain objects', () => {
   it('merges disjoint field edits without conflict', () => {
     const original = { a: 1, b: 2 }
     const ours = { a: 99, b: 2 } // we changed a
@@ -64,7 +64,7 @@ describe('threeWayMerge — plain objects', () => {
 
 // ─── Conservative array fallback (no id fields) ───────────────────────────────
 
-describe('threeWayMerge — arrays without ids (conservative)', () => {
+describe('threeWayMerge - arrays without ids (conservative)', () => {
   it('keeps our change when only ours changed', () => {
     const original = ['a', 'b']
     const ours = ['a', 'b', 'c']
@@ -95,12 +95,12 @@ describe('threeWayMerge — arrays without ids (conservative)', () => {
 
 // ─── Smart array merge by id ──────────────────────────────────────────────────
 
-describe('threeWayMerge — arrays with id fields', () => {
+describe('threeWayMerge - arrays with id fields', () => {
   const alice = { id: 1, name: 'Alice', role: 'admin' }
   const bob = { id: 2, name: 'Bob', role: 'editor' }
   const carol = { id: 3, name: 'Carol', role: 'viewer' }
 
-  it('both users add different items — no conflict, both kept', () => {
+  it('both users add different items - no conflict, both kept', () => {
     const original = [alice]
     const ours = [alice, bob] // we added Bob
     const theirs = [alice, carol] // they added Carol
@@ -112,7 +112,7 @@ describe('threeWayMerge — arrays with id fields', () => {
     expect(result.find(i => i.id === 3)).toBeDefined() // Carol
   })
 
-  it('both users edit different fields of the same item — no conflict', () => {
+  it('both users edit different fields of the same item - no conflict', () => {
     const original = [alice]
     const ours = [{ ...alice, name: 'Alicia' }] // we renamed
     const theirs = [{ ...alice, role: 'superadmin' }] // they changed role
@@ -123,7 +123,7 @@ describe('threeWayMerge — arrays with id fields', () => {
     expect(result[0].role).toBe('superadmin')
   })
 
-  it('both users edit the same field of the same item — conflict', () => {
+  it('both users edit the same field of the same item - conflict', () => {
     const original = [alice]
     const ours = [{ ...alice, name: 'Alicia' }]
     const theirs = [{ ...alice, name: 'Alexandra' }]
@@ -133,7 +133,7 @@ describe('threeWayMerge — arrays with id fields', () => {
     expect(conflicts[0].theirs).toBe('Alexandra')
   })
 
-  it('we delete an item, they keep it — our delete wins', () => {
+  it('we delete an item, they keep it - our delete wins', () => {
     const original = [alice, bob]
     const ours = [alice] // we deleted Bob
     const theirs = [alice, bob] // they kept Bob unchanged
@@ -143,7 +143,7 @@ describe('threeWayMerge — arrays with id fields', () => {
     expect(result.find(i => i.id === 2)).toBeUndefined() // Bob removed
   })
 
-  it('they add a new item, we did not touch array — their addition kept', () => {
+  it('they add a new item, we did not touch array - their addition kept', () => {
     const original = [alice]
     const ours = [alice] // unchanged
     const theirs = [alice, bob] // they added Bob
@@ -153,7 +153,7 @@ describe('threeWayMerge — arrays with id fields', () => {
     expect(result.find(i => i.id === 2)).toBeDefined() // Bob kept
   })
 
-  it('they added a brand-new item (not in original), we deleted nothing — kept', () => {
+  it('they added a brand-new item (not in original), we deleted nothing - kept', () => {
     const original = [alice]
     const ours = [alice]
     const theirs = [alice, carol] // carol is new
@@ -177,7 +177,7 @@ describe('threeWayMerge — arrays with id fields', () => {
     expect(conflicts).toHaveLength(0)
   })
 
-  it('empty original with both sides adding different ids — both kept', () => {
+  it('empty original with both sides adding different ids - both kept', () => {
     const original: typeof ours = []
     const ours = [alice]
     const theirs = [bob]

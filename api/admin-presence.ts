@@ -1,9 +1,9 @@
 /**
- * GET    /api/admin-presence  — returns all currently active users
- * POST   /api/admin-presence  — heartbeat; updates the calling user's presence
- * DELETE /api/admin-presence  — user is closing the session (best-effort)
+ * GET    /api/admin-presence  - returns all currently active users
+ * POST   /api/admin-presence  - heartbeat; updates the calling user's presence
+ * DELETE /api/admin-presence  - user is closing the session (best-effort)
  *
- * Identity is bound to the server-side USER_LOGIN_COOKIE set during OAuth —
+ * Identity is bound to the server-side USER_LOGIN_COOKIE set during OAuth -
  * client-supplied `login` values in the request body are ignored for key
  * purposes, preventing presence spoofing / session takeover.
  *
@@ -68,14 +68,14 @@ export interface PresenceUser {
 
 // ─── Storage abstraction ──────────────────────────────────────────────────────
 
-/** 45 s TTL — poll interval is 30 s, so 1.5× gives buffer for slow networks */
+/** 45 s TTL - poll interval is 30 s, so 1.5× gives buffer for slow networks */
 const TTL_MS = 45_000
 /** Redis TTL in seconds (slightly longer than JS TTL so KV never evicts before us) */
 const TTL_S = 50
 /**
  * Index set TTL: 3× individual key TTL.  The index is refreshed on every
  * upsert so it stays alive while any user is active.  When all users leave
- * (no more upserts), it expires within 150 s — far less than the old 10×
+ * (no more upserts), it expires within 150 s - far less than the old 10×
  * (500 s) that caused prolonged stale-entry accumulation.
  */
 const KV_INDEX_TTL_S = TTL_S * 3
@@ -83,7 +83,7 @@ const KV_INDEX_TTL_S = TTL_S * 3
 // KV key prefix and index set for tracking active logins
 const KV_PREFIX = 'spd:presence:'
 const KV_INDEX = 'spd:presence:__index__'
-/** Monotonic version counter — incremented on every write so receivers can
+/** Monotonic version counter - incremented on every write so receivers can
  *  detect changes with a single cheap GET instead of a full smembers+mget. */
 const KV_VERSION_KEY = 'spd:presence:version'
 
@@ -128,7 +128,7 @@ async function storageUpsert(user: PresenceUser): Promise<number> {
       await client.expire(KV_VERSION_KEY, KV_INDEX_TTL_S)
       return version
     } catch {
-      // KV unavailable — fall through to in-memory
+      // KV unavailable - fall through to in-memory
     }
   }
   inMemory.set(user.login, user)
@@ -170,7 +170,7 @@ async function storageGetAll(): Promise<PresenceUser[]> {
       const logins = (await client.smembers(KV_INDEX)) as string[]
       if (!logins.length) return []
       const users = await Promise.all(logins.map(l => client.get<PresenceUser>(`${KV_PREFIX}${l}`)))
-      // Filter nulls — entries whose TTL expired between the SMEMBERS and GET
+      // Filter nulls - entries whose TTL expired between the SMEMBERS and GET
       const live = users.filter((u): u is PresenceUser => u !== null)
       // Clean up stale index entries in the background
       const staleLogins = logins.filter((_, i) => users[i] === null)
@@ -179,7 +179,7 @@ async function storageGetAll(): Promise<PresenceUser[]> {
       }
       return live
     } catch {
-      // KV unavailable — fall through to in-memory
+      // KV unavailable - fall through to in-memory
     }
   }
   evictExpired()
@@ -197,7 +197,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // ── Rate limiting ──────────────────────────────────────────────────────────
-  // 180 requests / minute per IP — allows 500 ms version-check polling for up
+  // 180 requests / minute per IP - allows 500 ms version-check polling for up
   // to ~3 concurrent active sessions (3 users × 2 req/s = 6 req/s) while
   // still blocking runaway clients.
   const ip = getClientIP(req.headers as Record<string, string | string[] | undefined>)
@@ -205,7 +205,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(429).json({ error: 'rate_limited' })
   }
 
-  // Require auth cookie — don't expose presence to unauthenticated callers
+  // Require auth cookie - don't expose presence to unauthenticated callers
   const cookies = parseCookies(req.headers.cookie as string | undefined)
   if (!cookies[ACCESS_TOKEN_COOKIE]) {
     return res.status(401).json({ error: 'unauthenticated' })
@@ -213,12 +213,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // ── Identity binding ────────────────────────────────────────────────────────
   // The authoritative login comes from the HttpOnly USER_LOGIN_COOKIE set
-  // during OAuth callback — never from the client-supplied request body.
+  // during OAuth callback - never from the client-supplied request body.
   // This prevents any authenticated user from impersonating someone else or
   // evicting a colleague's presence entry (DELETE takeover).
   const verifiedLogin = cookies[USER_LOGIN_COOKIE]
   if (!verifiedLogin) {
-    // User authenticated before the login cookie was introduced — force re-login.
+    // User authenticated before the login cookie was introduced - force re-login.
     return res.status(401).json({ error: 'missing_identity_cookie' })
   }
 
@@ -255,7 +255,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         const url = new URL(rawAvatar)
         if (url.protocol === 'https:') safeAvatarUrl = rawAvatar
       } catch {
-        // Malformed URL — silently drop it
+        // Malformed URL - silently drop it
       }
     }
 
@@ -270,7 +270,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .slice(0, ALLOWED_TAB_KEYS.size)
 
     const user: PresenceUser = {
-      // Identity is bound to the verified cookie — ignore any body.login
+      // Identity is bound to the verified cookie - ignore any body.login
       login: verifiedLogin,
       avatar_url: safeAvatarUrl,
       activeTab: safeActiveTab,
@@ -289,7 +289,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // ── DELETE ─────────────────────────────────────────────────────────────────
   if (req.method === 'DELETE') {
-    // Users can only remove their own presence entry — prevents session takeover
+    // Users can only remove their own presence entry - prevents session takeover
     // where an authenticated user evicts a colleague from the presence map.
     await storageRemove(verifiedLogin)
     return res.status(200).json({ ok: true })

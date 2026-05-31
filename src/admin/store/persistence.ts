@@ -43,7 +43,7 @@ export function simpleHash(str: string): string {
 /** Maximum age of a saved draft before it is discarded on restore (7 days). */
 const DRAFT_TTL_MS = 7 * 24 * 60 * 60 * 1000
 
-/** Debounced — writes changed tabs to localStorage after 1 s of inactivity. */
+/** Debounced - writes changed tabs to localStorage after 1 s of inactivity. */
 export function persistDirtyState(
   state: Record<string, unknown>,
   originalState: Record<string, unknown>,
@@ -70,7 +70,7 @@ export function persistDirtyState(
         localStorage.removeItem(DRAFT_KEY)
       }
     } catch {
-      /* quota exceeded — ignore */
+      /* quota exceeded - ignore */
     }
   }, 1000)
 }
@@ -148,7 +148,7 @@ export function persistPendingUploads(uploads: PendingUpload[]) {
     if (uploads.length > 0) localStorage.setItem(PENDING_KEY, JSON.stringify(uploads))
     else localStorage.removeItem(PENDING_KEY)
   } catch {
-    /* quota exceeded — ignore */
+    /* quota exceeded - ignore */
   }
 }
 

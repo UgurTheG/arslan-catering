@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 /**
- * Separate Vitest config — avoids pulling in the Vite dev-server plugins
+ * Separate Vitest config - avoids pulling in the Vite dev-server plugins
  * (ICS proxy, Instagram API, OAuth callback) that import Node.js server modules.
  */
 export default defineConfig({

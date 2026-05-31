@@ -116,9 +116,9 @@ KV_REST_API_URL=           # Vercel KV REST URL für gemeinsamen Admin-Presence-
 KV_REST_API_TOKEN=         # Vercel KV REST Token (erforderlich wenn KV_REST_API_URL gesetzt)
 ```
 
-> **Hinweis:** Ist `STATE_SIGNING_SECRET` nicht gesetzt, wird `GITHUB_CLIENT_SECRET` als Fallback verwendet — mit Warnung im Serverlog. Empfohlen: eigenen Schlüssel generieren mit `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`.
+> **Hinweis:** Ist `STATE_SIGNING_SECRET` nicht gesetzt, wird `GITHUB_CLIENT_SECRET` als Fallback verwendet - mit Warnung im Serverlog. Empfohlen: eigenen Schlüssel generieren mit `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`.
 >
-> **Hinweis:** `ALLOWED_GITHUB_LOGINS` ist optional. Wenn gesetzt, werden nur die aufgelisteten GitHub-Konten zugelassen — als zusätzliche Absicherung neben den GitHub-Repository-Berechtigungen.
+> **Hinweis:** `ALLOWED_GITHUB_LOGINS` ist optional. Wenn gesetzt, werden nur die aufgelisteten GitHub-Konten zugelassen - als zusätzliche Absicherung neben den GitHub-Repository-Berechtigungen.
 >
 > **Hinweis:** `KV_REST_API_URL` und `KV_REST_API_TOKEN` sind optional. Ohne diese Variablen wird der Admin-Presence-State im Arbeitsspeicher gehalten (funktioniert lokal und bei Single-Instance-Deployments; bei mehreren Vercel-Instanzen empfiehlt sich Vercel KV für geteilten Zustand).
 
@@ -184,7 +184,7 @@ Der Admin-Editor nutzt GitHub OAuth 2.0 mit serverseitiger Token-Verwaltung:
 3. GitHub-Autorisierungsseite bestätigen
 4. GitHub leitet zu `/api/auth/callback` zurück; der Serverless-Endpunkt tauscht den Code gegen ein Access-Token, prüft optional die User-Allowlist und setzt das Token als HttpOnly-Cookie (niemals dem Browser-JavaScript zugänglich)
 5. Weiterleitung zur Admin-Seite; Sitzungsstatus wird über `/api/auth/session` geprüft
-6. Alle GitHub-API-Aufrufe laufen über den serverseitigen Proxy `/api/github` — das Token verlässt den Server nicht
+6. Alle GitHub-API-Aufrufe laufen über den serverseitigen Proxy `/api/github` - das Token verlässt den Server nicht
 
 Zugangsberechtigung: Nur GitHub-Konten mit **Push-Zugriff** auf das Repository können sich erfolgreich anmelden. Optional kann über die Umgebungsvariable `ALLOWED_GITHUB_LOGINS` eine zusätzliche Allowlist konfiguriert werden.
 
@@ -270,7 +270,7 @@ Der Admin-Editor konvertiert Uploads nach WebP und referenziert sie in den JSON-
 ### `POST /api/admin-presence`
 
 - Heartbeat-Endpunkt: aktualisiert das Präsenz-Profil des anfragenden Nutzers (aktiver Tab, Dirty-Tabs, Avatar)
-- Nutzeridentität wird aus dem serverseitigen `USER_LOGIN_COOKIE` gelesen — Client-Angaben werden ignoriert (verhindert Impersonation)
+- Nutzeridentität wird aus dem serverseitigen `USER_LOGIN_COOKIE` gelesen - Client-Angaben werden ignoriert (verhindert Impersonation)
 - Rate Limit: 180 Anfragen pro IP pro Minute
 
 ### `DELETE /api/admin-presence`
@@ -338,13 +338,13 @@ npm run preview
 ## 12. Sicherheit und Betriebshinweise
 
 - Login erfolgt über GitHub OAuth 2.0 mit serverseitiger Token-Verwaltung
-- Access- und Refresh-Token liegen ausschließlich in **HttpOnly/Secure/SameSite=Lax-Cookies** — JavaScript im Browser hat keinen Zugriff
+- Access- und Refresh-Token liegen ausschließlich in **HttpOnly/Secure/SameSite=Lax-Cookies** - JavaScript im Browser hat keinen Zugriff
 - Alle GitHub-API-Aufrufe laufen über den serverseitigen Proxy `/api/github`; das Token verlässt den Server nicht
 - Der Proxy beschränkt API-Pfade auf das eigene Repository (`/repos/UgurTheG/SPD-Albstadt/`) und `/user`
 - CSRF-Schutz im OAuth-Flow: kryptographischer State-Parameter, HMAC-SHA256-signiert, in HttpOnly-Cookie gespeichert, Constant-Time-Vergleich
 - Origin-Allowlist auf allen schreibenden Auth- und Proxy-Endpunkten
 - Rate Limiting auf Login (5/min), Callback (10/min) und Refresh (10/min) pro IP
-- GitHub-Fehlermeldungen werden auf opake Codes gemappt — keine internen Details im Browser
+- GitHub-Fehlermeldungen werden auf opake Codes gemappt - keine internen Details im Browser
 - Optional: User-Allowlist über `ALLOWED_GITHUB_LOGINS` (zusätzlich zu GitHub-Repository-Berechtigungen)
 - Das OAuth Client-Secret (`GITHUB_CLIENT_SECRET`) ist ausschließlich serverseitig verfügbar
 - `/admin` ist öffentlich erreichbar, aber ohne gültige Auth-Cookies funktional gesperrt
@@ -390,8 +390,8 @@ npm run preview
 
 ## 14. Fehlerbehebung
 
-- Admin-Login scheitert mit Fehlerseite 403: GitHub-Konto hat keinen Push-Zugriff auf das Repository — unter Settings → Collaborators prüfen. Falls `ALLOWED_GITHUB_LOGINS` gesetzt ist, Benutzername dort prüfen.
-- Admin-Login scheitert mit Fehlerseite 401: Sitzung ist abgelaufen — erneut einloggen
+- Admin-Login scheitert mit Fehlerseite 403: GitHub-Konto hat keinen Push-Zugriff auf das Repository - unter Settings → Collaborators prüfen. Falls `ALLOWED_GITHUB_LOGINS` gesetzt ist, Benutzername dort prüfen.
+- Admin-Login scheitert mit Fehlerseite 401: Sitzung ist abgelaufen - erneut einloggen
 - Admin-Login zeigt `unauthorized_user`: GitHub-Konto ist nicht in der `ALLOWED_GITHUB_LOGINS`-Allowlist
 - Änderungen erscheinen nicht: Veröffentlichung im Admin ausführen und kurz auf Redeploy warten
 - Kalender leer: `icsUrl` in `public/data/config.json` prüfen, Erreichbarkeit des ICS-Feeds testen

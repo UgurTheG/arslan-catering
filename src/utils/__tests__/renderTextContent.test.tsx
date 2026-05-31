@@ -36,7 +36,7 @@ describe('renderTextContent', () => {
 
   it('renders multiple lines correctly', () => {
     const { container } = renderContent('Foo\nBar\nBaz')
-    // The text nodes are split by <br> elements — check textContent of the wrapper
+    // The text nodes are split by <br> elements - check textContent of the wrapper
     expect(container.textContent).toContain('Foo')
     expect(container.textContent).toContain('Bar')
     expect(container.textContent).toContain('Baz')

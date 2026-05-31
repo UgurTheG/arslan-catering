@@ -40,7 +40,7 @@ const shaCache = new Map<string, string>()
 
 /**
  * Send a GitHub API request through the server-side proxy.
- * The access token is attached server-side from the HttpOnly cookie —
+ * The access token is attached server-side from the HttpOnly cookie -
  * it never appears in client-side JavaScript.
  */
 async function ghFetch(method: string, path: string, body?: unknown): Promise<Response> {
@@ -68,7 +68,7 @@ export async function validateToken() {
   const repoRes = await ghFetch('GET', repoBase())
   if (!repoRes.ok) {
     if (repoRes.status === 401 || repoRes.status === 403 || repoRes.status === 404)
-      // Always map to 403 — GitHub returns 404 for private repos the user can't access,
+      // Always map to 403 - GitHub returns 404 for private repos the user can't access,
       // but for the UI "Zugriff verweigert" (403) is the correct message, not "Seite nicht gefunden" (404).
       throw new AuthError('Kein Zugriff auf das Repository', 403)
     throw new Error(`Repository-Zugriff Fehler (${repoRes.status})`)
@@ -189,7 +189,7 @@ export async function commitTree(
   const refData = await refRes.json()
   const latestCommitSha: string = refData.object.sha
 
-  // Conflict guard — fail fast before uploading blobs/trees
+  // Conflict guard - fail fast before uploading blobs/trees
   if (expectedBaseSha && latestCommitSha !== expectedBaseSha) {
     throw new ConflictError()
   }
@@ -253,7 +253,7 @@ export async function commitTree(
   const updateRefRes = await ghFetch('PATCH', `${base}/git/refs/heads/${BRANCH}`, {
     sha: newCommitData.sha,
   })
-  // 422 means another commit landed between step 1 and now — surface as ConflictError
+  // 422 means another commit landed between step 1 and now - surface as ConflictError
   if (updateRefRes.status === 422) throw new ConflictError()
   if (!updateRefRes.ok) throw new Error('Branch-Update fehlgeschlagen')
 

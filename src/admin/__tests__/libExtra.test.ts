@@ -19,7 +19,7 @@ describe('inputCls', () => {
 import { diffTab, summarizeValue, applyRevert } from '../../admin/lib/diff'
 import type { TabConfig } from '../../admin/types'
 
-// ─── diff.ts — object tab with isSingleObject section ─────────────────────────
+// ─── diff.ts - object tab with isSingleObject section ─────────────────────────
 
 const singleObjTab: TabConfig = {
   key: 'single',
@@ -37,7 +37,7 @@ const singleObjTab: TabConfig = {
   ],
 }
 
-describe('diffTab — object tab with isSingleObject section', () => {
+describe('diffTab - object tab with isSingleObject section', () => {
   it('detects a modified field inside isSingleObject section', () => {
     const original = { header: { title: 'Old' } }
     const current = { header: { title: 'New' } }
@@ -49,7 +49,7 @@ describe('diffTab — object tab with isSingleObject section', () => {
   })
 })
 
-// ─── diff.ts — pendingImagePaths for array tab ────────────────────────────────
+// ─── diff.ts - pendingImagePaths for array tab ────────────────────────────────
 
 const arrImgTab: TabConfig = {
   key: 'test',
@@ -63,7 +63,7 @@ const arrImgTab: TabConfig = {
   ],
 }
 
-describe('diffTab — pendingImagePaths for array tab', () => {
+describe('diffTab - pendingImagePaths for array tab', () => {
   it('adds image-replaced entry when bildUrl is in pendingImagePaths', () => {
     const data = [{ name: 'Alice', bildUrl: '/images/alice.webp' }]
     const pendingPaths = new Set(['/images/alice.webp'])
@@ -88,7 +88,7 @@ describe('diffTab — pendingImagePaths for array tab', () => {
   })
 })
 
-// ─── diff.ts — pendingImagePaths for object tab ────────────────────────────────
+// ─── diff.ts - pendingImagePaths for object tab ────────────────────────────────
 
 const objImgTab: TabConfig = {
   key: 'obj',
@@ -113,7 +113,7 @@ const objImgTab: TabConfig = {
   ],
 }
 
-describe('diffTab — pendingImagePaths for object tab (topFields + sections)', () => {
+describe('diffTab - pendingImagePaths for object tab (topFields + sections)', () => {
   it('adds pending entry for topField image', () => {
     const data = { hero: '/images/hero.webp', members: [], kontakt: {} }
     const pendingPaths = new Set(['/images/hero.webp'])
@@ -136,9 +136,9 @@ describe('diffTab — pendingImagePaths for object tab (topFields + sections)', 
   })
 })
 
-// ─── diff.ts — non-swap reorder moves ─────────────────────────────────────────
+// ─── diff.ts - non-swap reorder moves ─────────────────────────────────────────
 
-describe('diffTab — non-swap multi-item reorder', () => {
+describe('diffTab - non-swap multi-item reorder', () => {
   const tab: TabConfig = {
     key: 'test',
     label: 'Test',
@@ -161,9 +161,9 @@ describe('diffTab — non-swap multi-item reorder', () => {
   })
 })
 
-// ─── summarizeValue — textarea type ──────────────────────────────────────────
+// ─── summarizeValue - textarea type ──────────────────────────────────────────
 
-describe('summarizeValue — textarea type', () => {
+describe('summarizeValue - textarea type', () => {
   it('trims and collapses whitespace', () => {
     expect(summarizeValue('  hello   world  ', 'textarea')).toBe('hello world')
   })
@@ -185,9 +185,9 @@ describe('summarizeValue — textarea type', () => {
   })
 })
 
-// ─── applyRevert — top-level array tab moves ─────────────────────────────────
+// ─── applyRevert - top-level array tab moves ─────────────────────────────────
 
-describe('applyRevert — top-level array modified (companionPaths)', () => {
+describe('applyRevert - top-level array modified (companionPaths)', () => {
   const arrayTab: TabConfig = {
     key: 'test',
     label: 'Test',
@@ -215,7 +215,7 @@ describe('applyRevert — top-level array modified (companionPaths)', () => {
   })
 })
 
-describe('applyRevert — top-level array move (parentPath.length === 0)', () => {
+describe('applyRevert - top-level array move (parentPath.length === 0)', () => {
   const arrayTab: TabConfig = {
     key: 'test',
     label: 'Test',
@@ -244,7 +244,7 @@ describe('applyRevert — top-level array move (parentPath.length === 0)', () =>
   })
 })
 
-describe('applyRevert — top-level array adds/removes (parentPath.length === 0)', () => {
+describe('applyRevert - top-level array adds/removes (parentPath.length === 0)', () => {
   const arrayTab: TabConfig = {
     key: 'test',
     label: 'Test',
@@ -750,7 +750,7 @@ describe('getFileContent', () => {
   })
 })
 
-// ─── images.ts — fileToBase64 ─────────────────────────────────────────────────
+// ─── images.ts - fileToBase64 ─────────────────────────────────────────────────
 
 describe('fileToBase64', () => {
   it('resolves with base64 string', async () => {

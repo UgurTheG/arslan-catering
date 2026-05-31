@@ -323,7 +323,7 @@ describe('AdminActionBar', () => {
     const { getByTitle } = render(
       <AdminActionBar {...defaultBarProps} isDirty={true} hasLoadError={true} />,
     )
-    expect(getByTitle('Daten konnten nicht geladen werden — Seite neu laden')).toBeTruthy()
+    expect(getByTitle('Daten konnten nicht geladen werden - Seite neu laden')).toBeTruthy()
   })
 })
 

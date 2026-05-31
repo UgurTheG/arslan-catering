@@ -38,7 +38,7 @@ html {
   }
 }
 
-/* Justified text with German hyphenation — applied only to long-form
+/* Justified text with German hyphenation - applied only to long-form
    prose paragraphs (detail sheets, bios, event descriptions). */
 .prose-justify {
   text-align: justify;

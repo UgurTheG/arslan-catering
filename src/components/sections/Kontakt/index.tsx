@@ -6,7 +6,7 @@ import { useLanguage, t } from '@/hooks/useLanguage.ts'
 import SectionContainer from '../../SectionContainer'
 import SectionHeader from '../../SectionHeader'
 
-// WhatsApp SVG kept inline — not in lucide-react
+// WhatsApp SVG kept inline - not in lucide-react
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -133,11 +133,11 @@ export default function Kontakt() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-3 flex flex-col"
           >
-            <div className="relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl shadow-black/5 dark:shadow-black/30 border border-gray-100 dark:border-gray-700 flex flex-col flex-1">
+            <div className="relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl shadow-black/5 dark:shadow-black/30 border border-gray-100 dark:border-gray-700 flex flex-col flex-1 min-h-0">
               {/* Gold top accent bar */}
               <div className="h-1 w-full bg-linear-to-r from-gold via-gold-light to-gold-dark" />
 
-              <div className="p-6 sm:p-10 flex flex-col flex-1">
+              <div className="p-6 sm:p-10 flex flex-col flex-1 min-h-0">
                 {formState === 'sent' ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -150,7 +150,7 @@ export default function Kontakt() {
                     <p className="text-xl font-bold text-gray-900 dark:text-white">{labels.sent}</p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-5 flex-1">
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-5 flex-1 min-h-0">
                     <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                       {lang === 'de' ? 'Nachricht schreiben' : 'Mesaj yaz'}
                     </h3>
@@ -182,7 +182,7 @@ export default function Kontakt() {
                       </div>
                     </div>
 
-                    <div className="flex flex-col flex-1">
+                    <div className="flex flex-col flex-1 min-h-0">
                       <label className="block text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">
                         {labels.nachricht}
                       </label>
@@ -190,7 +190,7 @@ export default function Kontakt() {
                         required
                         value={fields.nachricht}
                         onChange={e => setFields(f => ({ ...f, nachricht: e.target.value }))}
-                        className="w-full flex-1 px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/60 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all resize-none min-h-32"
+                        className="w-full h-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/60 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all resize-none min-h-28"
                       />
                     </div>
 
@@ -222,7 +222,7 @@ export default function Kontakt() {
 
           {/* ── Contact info sidebar ──────────────────────── */}
           <div className="lg:col-span-2 flex flex-col gap-4">
-            {/* WhatsApp CTA — hero card */}
+            {/* WhatsApp CTA - hero card */}
             {whatsappHref && (
               <motion.a
                 href={whatsappHref}

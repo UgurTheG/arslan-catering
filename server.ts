@@ -77,7 +77,7 @@ function vercelToExpress(handlerPath: string) {
   }
 }
 
-// API routes — mirror Vercel serverless functions
+// API routes - mirror Vercel serverless functions
 app.all('/api/ics', vercelToExpress('./api/ics.js'))
 app.all('/api/github', vercelToExpress('./api/github.js'))
 app.all('/api/admin-presence', vercelToExpress('./api/admin-presence.js'))
@@ -103,7 +103,7 @@ app.use(
   }),
 )
 
-// SPA fallback — serve index.html for all non-file routes
+// SPA fallback - serve index.html for all non-file routes
 app.get('*', (_req, res) => {
   res.sendFile(join(distDir, 'index.html'))
 })

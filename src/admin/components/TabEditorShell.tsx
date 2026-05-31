@@ -68,7 +68,7 @@ export default function TabEditorShell({
       {hasLoadError && (
         <div className="mb-5">
           <AdminWarningBanner>
-            Daten für diesen Tab konnten nicht geladen werden. Veröffentlichen ist gesperrt —{' '}
+            Daten für diesen Tab konnten nicht geladen werden. Veröffentlichen ist gesperrt -{' '}
             <button
               type="button"
               onClick={onReloadData}

@@ -47,7 +47,7 @@ function resetStore(overrides: Record<string, unknown> = {}) {
   localStorage.clear()
   // Reset debounce timer and lastUndoPush so updateState always creates an undo snapshot
   resetPersistenceState()
-  // Do NOT pass `true` (replace) — that would wipe out the action functions.
+  // Do NOT pass `true` (replace) - that would wipe out the action functions.
   useAdminStore.setState({
     activeTab: 'news',
     state: {},
@@ -74,7 +74,7 @@ function resetStore(overrides: Record<string, unknown> = {}) {
 
 // ── EditorSlice ───────────────────────────────────────────────────────────────
 
-describe('editorSlice — updateState', () => {
+describe('editorSlice - updateState', () => {
   beforeEach(() => resetStore())
 
   it('stores new data under the tab key', () => {
@@ -102,7 +102,7 @@ describe('editorSlice — updateState', () => {
   })
 })
 
-describe('editorSlice — undo / redo', () => {
+describe('editorSlice - undo / redo', () => {
   beforeEach(() => resetStore())
 
   it('undo reverts to the previous snapshot', () => {
@@ -162,7 +162,7 @@ describe('editorSlice — undo / redo', () => {
   })
 })
 
-describe('editorSlice — dirtyTabs', () => {
+describe('editorSlice - dirtyTabs', () => {
   beforeEach(() => resetStore())
 
   it('returns an empty set when state equals original', () => {
@@ -215,7 +215,7 @@ describe('editorSlice — dirtyTabs', () => {
   })
 })
 
-describe('editorSlice — revertTab', () => {
+describe('editorSlice - revertTab', () => {
   beforeEach(() => resetStore())
 
   it('restores the original state for the tab', () => {
@@ -250,7 +250,7 @@ describe('editorSlice — revertTab', () => {
   })
 })
 
-describe('editorSlice — revertChange', () => {
+describe('editorSlice - revertChange', () => {
   beforeEach(() => resetStore())
 
   it('reverts a single field and pushes state to undo', () => {
@@ -291,7 +291,7 @@ describe('editorSlice — revertChange', () => {
   })
 })
 
-describe('editorSlice — resetOriginal', () => {
+describe('editorSlice - resetOriginal', () => {
   beforeEach(() => resetStore())
 
   it('marks the current state as the new original', () => {
@@ -316,7 +316,7 @@ describe('editorSlice — resetOriginal', () => {
   })
 })
 
-describe('editorSlice — findOrphanImages', () => {
+describe('editorSlice - findOrphanImages', () => {
   beforeEach(() => resetStore())
 
   it('returns paths that were in original but are no longer in current state', () => {
@@ -352,7 +352,7 @@ describe('editorSlice — findOrphanImages', () => {
 
 // ── PublishSlice ──────────────────────────────────────────────────────────────
 
-describe('publishSlice — publishAll dataLoadErrors guard', () => {
+describe('publishSlice - publishAll dataLoadErrors guard', () => {
   beforeEach(() => {
     resetStore()
     vi.mocked(commitTree).mockClear()
@@ -479,7 +479,7 @@ describe('publishSlice — publishAll dataLoadErrors guard', () => {
   })
 })
 
-describe('publishSlice — publishTab dataLoadErrors guard', () => {
+describe('publishSlice - publishTab dataLoadErrors guard', () => {
   beforeEach(() => {
     resetStore()
     vi.mocked(commitTree).mockClear()
@@ -549,7 +549,7 @@ describe('publishSlice — publishTab dataLoadErrors guard', () => {
 
 // ── UISlice ───────────────────────────────────────────────────────────────────
 
-describe('uiSlice — setStatus', () => {
+describe('uiSlice - setStatus', () => {
   beforeEach(() => resetStore())
 
   it('sets the message and type', () => {
@@ -568,7 +568,7 @@ describe('uiSlice — setStatus', () => {
   })
 })
 
-describe('uiSlice — toggleDark', () => {
+describe('uiSlice - toggleDark', () => {
   beforeEach(() => {
     resetStore({ darkMode: false })
     localStorage.clear()

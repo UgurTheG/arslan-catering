@@ -97,7 +97,7 @@ export default function Sheet({ open, onClose, children, size = 'md' }: SheetPro
       }
 
       if (dismissing) {
-        e.preventDefault() // prevent native scroll — only works because listener is non-passive
+        e.preventDefault() // prevent native scroll - only works because listener is non-passive
         sheetY.set(Math.max(0, currentY - startY))
       }
     }
@@ -168,7 +168,7 @@ export default function Sheet({ open, onClose, children, size = 'md' }: SheetPro
                         overflow-y-auto overscroll-contain no-scrollbar
                         shadow-[0_0_50px_rgba(0,0,0,0.25)]`}
           >
-            {/* Mobile drag handle — large touch target to initiate swipe-down-to-dismiss */}
+            {/* Mobile drag handle - large touch target to initiate swipe-down-to-dismiss */}
             <div
               className="sm:hidden flex justify-center pt-5 pb-4 touch-none select-none cursor-grab active:cursor-grabbing"
               onPointerDown={e => {
@@ -179,7 +179,7 @@ export default function Sheet({ open, onClose, children, size = 'md' }: SheetPro
               <div className="w-12 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600" />
             </div>
 
-            {/* Floating controls — zero-height, overlays content */}
+            {/* Floating controls - zero-height, overlays content */}
             <div className="sticky top-0 z-30 h-0 pointer-events-none">
               <div className="flex items-center justify-between px-4 pt-3">
                 <div className="hidden sm:block" />

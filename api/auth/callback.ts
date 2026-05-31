@@ -80,7 +80,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     if (!data.access_token) {
-      // Do NOT forward GitHub's error_description verbatim — it leaks internals
+      // Do NOT forward GitHub's error_description verbatim - it leaks internals
       // into browser history and the URL bar. Map to a fixed opaque code instead.
       const rawError = data.error ?? ''
       const safeCode =
@@ -112,7 +112,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         login = (userJson.login ?? '').toLowerCase()
       }
     } catch {
-      // Network error fetching /user — fail closed
+      // Network error fetching /user - fail closed
     }
 
     // ── User allowlist check ─────────────────────────────────────────────────────

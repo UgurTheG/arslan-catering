@@ -43,7 +43,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         body: JSON.stringify({ access_token: accessToken }),
       })
     } catch {
-      // Revocation failed — proceed to clear cookies anyway.
+      // Revocation failed - proceed to clear cookies anyway.
       // The token will expire on its own (GitHub App tokens are short-lived).
     }
   }

@@ -104,7 +104,7 @@ export default function PreviewModal({ tabKey, onClose }: Props) {
               <Monitor size={14} className="text-gold" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">Vorschau — {label}</h3>
+              <h3 className="text-sm font-bold text-white">Vorschau - {label}</h3>
               <p className="text-[10px] text-gray-400">Live-Vorschau mit aktuellen Änderungen</p>
             </div>
           </div>

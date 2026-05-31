@@ -34,7 +34,7 @@ export const createUISlice: StateCreator<AdminState, [], [], UISlice> = set => (
       const next = !prev.darkMode
       localStorage.setItem(DARK_KEY, String(next))
       // DOM sync (document.documentElement.classList) is handled by the
-      // useEffect in AdminApp — keeping side-effects out of store actions.
+      // useEffect in AdminApp - keeping side-effects out of store actions.
       return { darkMode: next }
     })
   },

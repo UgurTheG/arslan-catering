@@ -18,13 +18,13 @@ function getSecret(): string {
   // Fallback: warn loudly in logs so the operator knows to set the dedicated secret
   if (process.env.GITHUB_CLIENT_SECRET) {
     console.warn(
-      '[auth] STATE_SIGNING_SECRET is not set — falling back to GITHUB_CLIENT_SECRET for ' +
+      '[auth] STATE_SIGNING_SECRET is not set - falling back to GITHUB_CLIENT_SECRET for ' +
         'HMAC signing. Set STATE_SIGNING_SECRET as a separate env var to decouple signing ' +
         'from the OAuth client secret.',
     )
     return process.env.GITHUB_CLIENT_SECRET
   }
-  throw new Error('Missing STATE_SIGNING_SECRET or GITHUB_CLIENT_SECRET — cannot sign OAuth state')
+  throw new Error('Missing STATE_SIGNING_SECRET or GITHUB_CLIENT_SECRET - cannot sign OAuth state')
 }
 
 export function signState(state: string): string {
@@ -124,7 +124,7 @@ export function makeAuthCookies(data: {
   expires_in?: number
   refresh_token?: string
   refresh_token_expires_in?: number
-  /** GitHub username — stored server-side so identity can be verified without
+  /** GitHub username - stored server-side so identity can be verified without
    *  trusting client-supplied values (e.g. in the presence endpoint). */
   login?: string
 }): string[] {

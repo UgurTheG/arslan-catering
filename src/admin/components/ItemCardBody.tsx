@@ -16,7 +16,7 @@ export interface ItemCardBodyProps {
   onItemChange: (newItem: Record<string, unknown>) => void
   onRemove: () => void
   onMove: (from: number, to: number) => void
-  /** Rendered left of the index badge — typically a GripVertical icon or drag-handle button. */
+  /** Rendered left of the index badge - typically a GripVertical icon or drag-handle button. */
   gripSlot: React.ReactNode
   /**
    * When true the up/down chevron buttons are hidden (e.g. while a search filter

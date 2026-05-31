@@ -20,7 +20,7 @@ describe('Avatar', () => {
     })
   })
 
-  describe('without imageUrl — initials fallback', () => {
+  describe('without imageUrl - initials fallback', () => {
     it('does not render an img element', () => {
       render(<Avatar name="Alice Müller" />)
       expect(screen.queryByRole('img')).toBeNull()

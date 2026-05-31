@@ -3,7 +3,7 @@
  *
  * On Vercel, warm function instances reuse the same process, so this
  * provides meaningful protection during sustained abuse.  Cold starts
- * reset the counters — for bulletproof rate limiting, use Vercel KV or
+ * reset the counters - for bulletproof rate limiting, use Vercel KV or
  * Upstash Redis instead.
  */
 

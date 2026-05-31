@@ -40,7 +40,7 @@ export default function handler(_req: VercelRequest, res: VercelResponse) {
   ])
 
   const params = new URLSearchParams({
-    // VITE_GITHUB_CLIENT_ID is intentionally public — it's embedded in the frontend
+    // VITE_GITHUB_CLIENT_ID is intentionally public - it's embedded in the frontend
     // bundle by LoginScreen.tsx and is not a secret (GitHub OAuth client IDs are public).
     client_id: clientId,
     redirect_uri: redirectUri,

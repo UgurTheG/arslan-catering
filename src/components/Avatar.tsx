@@ -24,7 +24,7 @@ interface AvatarProps {
 }
 
 /**
- * Circular avatar — shows the image when available, initials on a red
+ * Circular avatar - shows the image when available, initials on a red
  * background otherwise.
  */
 export default function Avatar({ name, imageUrl, size = 'md', className }: AvatarProps) {

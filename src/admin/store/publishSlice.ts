@@ -101,7 +101,7 @@ export const createPublishSlice: StateCreator<AdminState, [], [], PublishSlice> 
                 latest,
               )
               if (conflicts.length === 0) {
-                // Clean merge — update state baseline and retry
+                // Clean merge - update state baseline and retry
                 get().updateState(tabKey, merged)
                 const { getBranchSha } = await import('../lib/github')
                 const freshSha = await getBranchSha()
@@ -112,7 +112,7 @@ export const createPublishSlice: StateCreator<AdminState, [], [], PublishSlice> 
                 await get().publishTab(tabKey, orphansToDelete)
                 return
               } else {
-                // Conflicts — surface merge modal with partially-merged draft
+                // Conflicts - surface merge modal with partially-merged draft
                 get().updateState(tabKey, merged)
                 set(prev => ({
                   originalState: { ...prev.originalState, [tabKey]: latest },
@@ -120,7 +120,7 @@ export const createPublishSlice: StateCreator<AdminState, [], [], PublishSlice> 
                   mergeConflictTabKey: tabKey,
                 }))
                 get().setStatus(
-                  `${conflicts.length} Konflikt(e) erkannt — bitte die markierten Felder manuell auflösen.`,
+                  `${conflicts.length} Konflikt(e) erkannt - bitte die markierten Felder manuell auflösen.`,
                   'error',
                 )
                 return
@@ -138,7 +138,7 @@ export const createPublishSlice: StateCreator<AdminState, [], [], PublishSlice> 
       }
       if (e instanceof AuthError) {
         get().logout()
-        get().setStatus('Sitzung abgelaufen — bitte neu anmelden.', 'error')
+        get().setStatus('Sitzung abgelaufen - bitte neu anmelden.', 'error')
         return
       }
       get().setStatus('Fehler: ' + (e as Error).message, 'error')
@@ -167,7 +167,7 @@ export const createPublishSlice: StateCreator<AdminState, [], [], PublishSlice> 
       }
     }
 
-    // Collect dirty JSON files — skip any tab whose data failed to load
+    // Collect dirty JSON files - skip any tab whose data failed to load
     // to prevent overwriting live data with an empty fallback.
     const dirty = get().dirtyTabs()
     const dirtyKeys: string[] = []
@@ -206,12 +206,12 @@ export const createPublishSlice: StateCreator<AdminState, [], [], PublishSlice> 
     } catch (e) {
       if (e instanceof ConflictError) {
         // For publishAll, fall back to per-tab publishing so each tab gets its own auto-merge.
-        // Must be sequential — publishTab checks `if (publishing) return` at entry, so running
+        // Must be sequential - publishTab checks `if (publishing) return` at entry, so running
         // them in parallel would cause every call after the first to bail immediately (the first
         // call sets publishing=true synchronously before its first await).
         set({ publishing: false })
         get().setStatus(
-          'Konflikt erkannt — versuche automatische Zusammenführung pro Datei…',
+          'Konflikt erkannt - versuche automatische Zusammenführung pro Datei…',
           'info',
         )
         for (const tabKey of dirtyKeys) {
@@ -221,7 +221,7 @@ export const createPublishSlice: StateCreator<AdminState, [], [], PublishSlice> 
       }
       if (e instanceof AuthError) {
         get().logout()
-        get().setStatus('Sitzung abgelaufen — bitte neu anmelden.', 'error')
+        get().setStatus('Sitzung abgelaufen - bitte neu anmelden.', 'error')
         return
       }
       get().setStatus('Fehler: ' + (e as Error).message, 'error')

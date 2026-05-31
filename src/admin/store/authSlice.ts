@@ -80,7 +80,7 @@ export const createAuthSlice: StateCreator<AdminState, [], [], AuthSlice> = (set
       try {
         await get().loadData()
       } catch {
-        /* ignore — UI will show load error banner */
+        /* ignore - UI will show load error banner */
       }
       return
     }
@@ -90,7 +90,7 @@ export const createAuthSlice: StateCreator<AdminState, [], [], AuthSlice> = (set
     try {
       session = await fetchSession()
     } catch {
-      return // Network error — don't invalidate
+      return // Network error - don't invalidate
     }
     if (!session.authenticated) return
 
@@ -123,7 +123,7 @@ export const createAuthSlice: StateCreator<AdminState, [], [], AuthSlice> = (set
       await get().loadData()
       get().startPresencePolling()
     } catch {
-      /* ignore — UI will remain in loading state */
+      /* ignore - UI will remain in loading state */
     }
   },
 
@@ -158,9 +158,9 @@ export const createAuthSlice: StateCreator<AdminState, [], [], AuthSlice> = (set
 
   ensureAuthenticated: async () => {
     const { tokenExpiresAt } = get()
-    // No expiry info — assume still valid
+    // No expiry info - assume still valid
     if (!tokenExpiresAt) return
-    // Valid for more than 5 minutes — nothing to do
+    // Valid for more than 5 minutes - nothing to do
     if (Date.now() < tokenExpiresAt - 5 * 60 * 1000) return
     // Need to refresh via server (refresh token is in HttpOnly cookie)
     const res = await fetch('/api/auth/refresh', {
@@ -169,7 +169,7 @@ export const createAuthSlice: StateCreator<AdminState, [], [], AuthSlice> = (set
     })
     if (!res.ok) {
       get().logout()
-      throw new AuthError('Sitzung abgelaufen — bitte neu anmelden.', 401)
+      throw new AuthError('Sitzung abgelaufen - bitte neu anmelden.', 401)
     }
     const data = (await res.json()) as {
       ok: boolean

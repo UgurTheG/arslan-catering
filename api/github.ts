@@ -5,14 +5,14 @@ import { parseCookies, isAllowedOrigin, ACCESS_TOKEN_COOKIE } from './auth/cooki
  * POST /api/github
  *
  * Server-side proxy for GitHub API calls.  The access token never leaves the
- * server — it is read from the HttpOnly cookie and attached to the outgoing
+ * server - it is read from the HttpOnly cookie and attached to the outgoing
  * request.  The client sends `{ method, path, body? }` and receives the
  * GitHub API response (status + JSON body) transparently.
  */
 
 // Only allow the one specific private repo this app manages, plus the /user
 // endpoint used by validateToken().  Note: we do NOT allow /user/* sub-paths
-// (emails, repos, etc.) — only the exact /user identity endpoint is needed.
+// (emails, repos, etc.) - only the exact /user identity endpoint is needed.
 const ALLOWED_REPO_PREFIX = '/repos/ugurtheg/arslan-catering/'
 
 function isAllowedPath(path: string): boolean {
@@ -90,7 +90,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(ghRes.status).json(data)
     }
 
-    // Non-JSON response (rare) — forward as text
+    // Non-JSON response (rare) - forward as text
     const text = await ghRes.text()
     return res.status(ghRes.status).send(text)
   } catch {

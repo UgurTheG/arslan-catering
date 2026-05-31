@@ -1,6 +1,6 @@
 /**
  * Shared Tailwind class string for all text-style admin inputs.
- * Single source of truth — imported by FieldRenderer, ImageField, ImageListField,
+ * Single source of truth - imported by FieldRenderer, ImageField, ImageListField,
  * and any other component that renders a text input or textarea.
  */
 export const inputCls =

@@ -8,7 +8,7 @@ import '@testing-library/jest-dom'
 // and no dev server is running. Intercept those requests here so they return
 // empty data silently instead of flooding the console with ECONNREFUSED errors.
 // Tests that need specific fetch behaviour can still use vi.spyOn(globalThis, 'fetch')
-// as usual — the regular function below is spyable and fully restorable.
+// as usual - the regular function below is spyable and fully restorable.
 const _realFetch = globalThis.fetch
 globalThis.fetch = async function fetchInterceptor(
   input: RequestInfo | URL,
@@ -27,7 +27,7 @@ globalThis.fetch = async function fetchInterceptor(
   return _realFetch(input, init)
 } as typeof fetch
 
-// happy-dom doesn't implement window.matchMedia — provide a minimal stub so
+// happy-dom doesn't implement window.matchMedia - provide a minimal stub so
 // any module that reads it during import (e.g. uiSlice dark-mode detection) doesn't throw.
 Object.defineProperty(window, 'matchMedia', {
   writable: true,

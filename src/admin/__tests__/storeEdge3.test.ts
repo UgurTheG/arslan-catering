@@ -70,9 +70,9 @@ function resetStore(overrides: Record<string, unknown> = {}) {
   })
 }
 
-// ── uiSlice — darkMode init from localStorage ─────────────────────────────────
+// ── uiSlice - darkMode init from localStorage ─────────────────────────────────
 
-describe('uiSlice — darkMode init from localStorage', () => {
+describe('uiSlice - darkMode init from localStorage', () => {
   it('reads true from localStorage', () => {
     localStorage.setItem('arslan-darkmode', 'true')
     // Force store to re-read by resetting with explicit darkMode matching localStorage
@@ -85,9 +85,9 @@ describe('uiSlice — darkMode init from localStorage', () => {
   })
 })
 
-// ── authSlice — tryAutoLogin catch block (expired token, no refresh) ──────────
+// ── authSlice - tryAutoLogin catch block (expired token, no refresh) ──────────
 
-describe('authSlice — tryAutoLogin ensureAuthenticated throws', () => {
+describe('authSlice - tryAutoLogin ensureAuthenticated throws', () => {
   beforeEach(() => resetStore())
 
   it('catches ensureAuthenticated throw and returns without user', async () => {
@@ -111,9 +111,9 @@ describe('authSlice — tryAutoLogin ensureAuthenticated throws', () => {
   })
 })
 
-// ── editorSlice — loadData ────────────────────────────────────────────────────
+// ── editorSlice - loadData ────────────────────────────────────────────────────
 
-describe('editorSlice — loadData', () => {
+describe('editorSlice - loadData', () => {
   beforeEach(() => resetStore({ dataLoaded: false }))
 
   it('loads all tabs successfully', async () => {
@@ -150,9 +150,9 @@ describe('editorSlice — loadData', () => {
   })
 })
 
-// ── editorSlice — undo limit trim ─────────────────────────────────────────────
+// ── editorSlice - undo limit trim ─────────────────────────────────────────────
 
-describe('editorSlice — undo limit (50 snapshots)', () => {
+describe('editorSlice - undo limit (50 snapshots)', () => {
   beforeEach(() => {
     resetPersistenceState()
     resetStore({
@@ -172,9 +172,9 @@ describe('editorSlice — undo limit (50 snapshots)', () => {
   })
 })
 
-// ── editorSlice — path-based dirty detection (line ~91) ──────────────────────
+// ── editorSlice - path-based dirty detection (line ~91) ──────────────────────
 
-describe('editorSlice — path-based dirty detection via pending upload path', () => {
+describe('editorSlice - path-based dirty detection via pending upload path', () => {
   beforeEach(() => resetStore())
 
   it('marks a tab dirty when a pending upload path matches a tab image reference', () => {
@@ -189,7 +189,7 @@ describe('editorSlice — path-based dirty detection via pending upload path', (
     resetStore({
       state: { galerie: galerieData },
       originalState: { galerie: galerieData },
-      // upload WITHOUT tabKey — so path-based detection is needed
+      // upload WITHOUT tabKey - so path-based detection is needed
       pendingUploads: [{ ghPath: 'public/images/galerie/a.webp', base64: 'x', message: 'm' }],
     })
     const dirty = useAdminStore.getState().dirtyTabs()
@@ -197,9 +197,9 @@ describe('editorSlice — path-based dirty detection via pending upload path', (
   })
 })
 
-// ── editorSlice — addPendingUpload ────────────────────────────────────────────
+// ── editorSlice - addPendingUpload ────────────────────────────────────────────
 
-describe('editorSlice — addPendingUpload', () => {
+describe('editorSlice - addPendingUpload', () => {
   beforeEach(() => resetStore({ activeTab: 'news' }))
 
   it('adds upload and persists', () => {
@@ -224,9 +224,9 @@ describe('editorSlice — addPendingUpload', () => {
   })
 })
 
-// ── editorSlice — revertChange with pendingImagePath ──────────────────────────
+// ── editorSlice - revertChange with pendingImagePath ──────────────────────────
 
-describe('editorSlice — revertChange with pendingImagePath', () => {
+describe('editorSlice - revertChange with pendingImagePath', () => {
   beforeEach(() => resetStore())
 
   it('drops pending upload for the reverted image path', () => {
@@ -262,9 +262,9 @@ describe('editorSlice — revertChange with pendingImagePath', () => {
   })
 })
 
-// ── editorSlice — findOrphanImagesForTab ──────────────────────────────────────
+// ── editorSlice - findOrphanImagesForTab ──────────────────────────────────────
 
-describe('editorSlice — findOrphanImagesForTab', () => {
+describe('editorSlice - findOrphanImagesForTab', () => {
   beforeEach(() => resetStore())
 
   it('returns empty when tab has no file', () => {
@@ -310,9 +310,9 @@ describe('editorSlice — findOrphanImagesForTab', () => {
   })
 })
 
-// ── editorSlice — revertTab clears pending uploads for tab ────────────────────
+// ── editorSlice - revertTab clears pending uploads for tab ────────────────────
 
-describe('editorSlice — revertTab', () => {
+describe('editorSlice - revertTab', () => {
   beforeEach(() => resetStore())
 
   it('clears pending uploads tagged to the reverted tab', () => {
@@ -361,9 +361,9 @@ describe('editorSlice — revertTab', () => {
   })
 })
 
-// ── publishSlice — publishTab with orphansToDelete ────────────────────────────
+// ── publishSlice - publishTab with orphansToDelete ────────────────────────────
 
-describe('publishSlice — publishTab with orphansToDelete', () => {
+describe('publishSlice - publishTab with orphansToDelete', () => {
   const aboutEdited = {
     titel: 'edited',
     titelTr: '',
@@ -428,9 +428,9 @@ describe('publishSlice — publishTab with orphansToDelete', () => {
   })
 })
 
-// ── publishSlice — publishAll with orphansToDelete ────────────────────────────
+// ── publishSlice - publishAll with orphansToDelete ────────────────────────────
 
-describe('publishSlice — publishAll with orphansToDelete', () => {
+describe('publishSlice - publishAll with orphansToDelete', () => {
   const aboutEdited = {
     titel: 'edited',
     titelTr: '',
@@ -507,9 +507,9 @@ describe('publishSlice — publishAll with orphansToDelete', () => {
   })
 })
 
-// ── editorSlice — findOrphanImages covers allCurrent.add (line ~318) ──────────
+// ── editorSlice - findOrphanImages covers allCurrent.add (line ~318) ──────────
 
-describe('editorSlice — findOrphanImages allCurrent population', () => {
+describe('editorSlice - findOrphanImages allCurrent population', () => {
   beforeEach(() => resetStore())
 
   it('finds orphan when original had image not in any current tab', () => {
@@ -546,9 +546,9 @@ describe('editorSlice — findOrphanImages allCurrent population', () => {
   })
 })
 
-// ── editorSlice — setActiveTab ────────────────────────────────────────────────
+// ── editorSlice - setActiveTab ────────────────────────────────────────────────
 
-describe('editorSlice — setActiveTab', () => {
+describe('editorSlice - setActiveTab', () => {
   beforeEach(() => resetStore())
 
   it('updates activeTab', () => {

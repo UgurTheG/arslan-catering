@@ -20,7 +20,7 @@ const ROUTES: RouteSEO[] = [
     path: '/ueber-uns',
     title: 'Über uns – Arslan Catering',
     description:
-      'Lernen Sie Arslan Catering kennen — 15 Jahre Erfahrung in der Hochzeitsorganisation, Leidenschaft für Details und über 500 unvergessliche Feiern.',
+      'Lernen Sie Arslan Catering kennen - 15 Jahre Erfahrung in der Hochzeitsorganisation, Leidenschaft für Details und über 500 unvergessliche Feiern.',
     canonical: `${BASE_URL}/ueber-uns`,
     chunkName: 'UeberUns',
   },
@@ -44,7 +44,7 @@ const ROUTES: RouteSEO[] = [
     path: '/videos',
     title: 'Videos – Arslan Catering',
     description:
-      'Erleben Sie die Magie vergangener Hochzeiten in unseren Videos. Echte Momente, echte Emotionen — lassen Sie sich inspirieren.',
+      'Erleben Sie die Magie vergangener Hochzeiten in unseren Videos. Echte Momente, echte Emotionen - lassen Sie sich inspirieren.',
     canonical: `${BASE_URL}/videos`,
     chunkName: 'Videos',
   },
@@ -52,7 +52,7 @@ const ROUTES: RouteSEO[] = [
     path: '/kontakt',
     title: 'Kontakt – Arslan Catering',
     description:
-      'Kontaktieren Sie Arslan Catering für Ihre Traumhochzeit. Telefon, WhatsApp, E-Mail oder Kontaktformular — wir sind für Sie da.',
+      'Kontaktieren Sie Arslan Catering für Ihre Traumhochzeit. Telefon, WhatsApp, E-Mail oder Kontaktformular - wir sind für Sie da.',
     canonical: `${BASE_URL}/kontakt`,
     chunkName: 'Kontakt',
   },
@@ -78,7 +78,7 @@ const ALREADY_PRELOADED_PREFIXES = [
   'lucide-',
   'index-',
 ]
-// Heavy chunks only loaded on user interaction — never eagerly preload these.
+// Heavy chunks only loaded on user interaction - never eagerly preload these.
 const NEVER_PRELOAD_PREFIXES = ['LazyLightboxWrapper', 'calendar', 'AdminApp', 'admin-']
 /**
  * Scans dist/assets/ for the lazy JS chunk matching `chunkName` and returns
@@ -160,7 +160,7 @@ export function prerenderRoutes(): Plugin {
         let html = replaceMetaTag(indexHtml, route)
         // Inject modulepreload hints for route-specific lazy chunks.
         // Without this, each lazy chunk requires a separate roundtrip after
-        // main JS executes — ~150ms RTT saved per chunk on slow 4G.
+        // main JS executes - ~150ms RTT saved per chunk on slow 4G.
         if (route.chunkName) {
           const chunks = findRouteChunks(assetsDir, route.chunkName)
           if (chunks.length > 0) {

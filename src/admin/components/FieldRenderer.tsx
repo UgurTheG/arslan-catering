@@ -18,7 +18,7 @@ interface Props {
   contextItem?: Record<string, unknown>
 }
 
-// Field types that produce a single focusable element — these get a <label htmlFor>.
+// Field types that produce a single focusable element - these get a <label htmlFor>.
 // Multi-input types (stringlist, imagelist) and non-input types (toggle, image)
 // get a <span> so the label is never orphaned.
 const LABEL_TYPES = new Set([
@@ -196,7 +196,7 @@ function SelectField({
       value={value || ''}
       onChange={e => onChange(e.target.value)}
     >
-      <option value="">— Bitte wählen —</option>
+      <option value="">- Bitte wählen -</option>
       {options.map(o => (
         <option key={o} value={o}>
           {o}
@@ -215,7 +215,7 @@ function DateField({
   value: string
   onChange: (v: string) => void
 }) {
-  // isoToDE / deToISO live in src/utils/formatDate.ts — shared with the public app
+  // isoToDE / deToISO live in src/utils/formatDate.ts - shared with the public app
   const [display, setDisplay] = useState(isoToDE(value))
   const [valid, setValid] = useState(true)
   // Track the previous value as state so we can reset the display string when

@@ -41,7 +41,7 @@ const IGNORED_KEYS = new Set(['id', 'uuid'])
 /**
  * Recursively extracts all object keys from a JSON value.
  * Returns Set<string> of dot-free key names.
- * Arrays of primitives (strings, numbers) are skipped — only object keys matter.
+ * Arrays of primitives (strings, numbers) are skipped - only object keys matter.
  */
 function collectKeys(value, keys = new Set()) {
   if (Array.isArray(value)) {

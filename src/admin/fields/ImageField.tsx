@@ -69,7 +69,7 @@ export default function ImageField({ field, value, onChange, contextItem }: Prop
     })
     onChange(publicUrl)
     setPreview(`data:image/webp;base64,${base64}`)
-    setStatus('Bild vorbereitet — wird beim Veröffentlichen hochgeladen', 'success')
+    setStatus('Bild vorbereitet - wird beim Veröffentlichen hochgeladen', 'success')
   }
 
   return (

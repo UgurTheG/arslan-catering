@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         output: {
           manualChunks(id) {
-            // NOTE: Do NOT manually chunk /src/admin/ here — let Rolldown create
+            // NOTE: Do NOT manually chunk /src/admin/ here - let Rolldown create
             // a natural dynamic-import chunk for it. Forcing it into a named chunk
             // causes Rolldown (Vite 8) to inline all its dependencies (React,
             // framer-motion, etc.) and then re-export them, making the main entry
@@ -46,7 +46,7 @@ export default defineConfig(({ mode }) => {
             )
               return undefined
 
-            // Lightbox — same reason as admin-only packages above: naming it
+            // Lightbox - same reason as admin-only packages above: naming it
             // 'lightbox' caused Rolldown to split React scheduler internals into
             // the lightbox chunk, creating a static import from react-vendor →
             // lightbox on every page.  Returning undefined lets Rolldown bundle
@@ -79,7 +79,7 @@ export default defineConfig(({ mode }) => {
         manifest: false, // use existing public/manifest.json
         workbox: {
           globPatterns: ['**/*.{js,css,html,svg,png,webp,woff2}'],
-          // Don't precache admin JS — it's a large lazy chunk only needed on /admin.
+          // Don't precache admin JS - it's a large lazy chunk only needed on /admin.
           // It will be cached on first access to /admin via the navigation handler.
           globIgnores: ['**/AdminApp*.js', '**/admin*.js'],
           navigateFallback: '/index.html',
@@ -107,7 +107,7 @@ export default defineConfig(({ mode }) => {
       // ── Non-render-blocking CSS ────────────────────────────────────────────
       // Vite injects the main stylesheet as a render-blocking <link rel="stylesheet">.
       // For this client-side SPA the HTML body is empty until JS runs (~2s on slow 4G),
-      // so the CSS doesn't need to block rendering — React will finish long after it loads.
+      // so the CSS doesn't need to block rendering - React will finish long after it loads.
       // Using the print-media trick makes CSS async: browser fetches it immediately but
       // doesn't hold up the critical-path, saving ~300ms on FCP/LCP (Lighthouse 4G sim).
       {

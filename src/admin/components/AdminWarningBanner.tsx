@@ -3,7 +3,7 @@ import { AlertTriangle } from 'lucide-react'
 interface Props {
   title?: string
   children: React.ReactNode
-  /** Icon size in px — defaults to 14 */
+  /** Icon size in px - defaults to 14 */
   iconSize?: number
 }
 

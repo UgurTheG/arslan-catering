@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 
 // Re-import the module fresh for each test group by resetting module state via
-// a thin wrapper — the module keeps its own `lockCount` in closure scope.
+// a thin wrapper - the module keeps its own `lockCount` in closure scope.
 // We reset it by calling every outstanding unlock before each test.
 
 describe('scrollLock', () => {

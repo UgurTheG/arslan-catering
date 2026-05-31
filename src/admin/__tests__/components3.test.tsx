@@ -97,9 +97,9 @@ beforeEach(() => {
 })
 afterEach(() => vi.restoreAllMocks())
 
-// ─── AdminApp — all modal paths, sidebar interaction, toast types ─────────────
+// ─── AdminApp - all modal paths, sidebar interaction, toast types ─────────────
 
-describe('AdminApp — modals and sidebar interactions', () => {
+describe('AdminApp - modals and sidebar interactions', () => {
   function authSetup(extra: Record<string, unknown> = {}) {
     const newsData = [{ titel: 'Test', datum: '2024-01-01' }]
     resetStore({
@@ -217,9 +217,9 @@ describe('AdminApp — modals and sidebar interactions', () => {
   })
 })
 
-// ─── TabEditor — SectionEditor with isSingleObject ──────────────────────────
+// ─── TabEditor - SectionEditor with isSingleObject ──────────────────────────
 
-describe('TabEditor — SectionEditor isSingleObject', () => {
+describe('TabEditor - SectionEditor isSingleObject', () => {
   it('renders kontakt with buerozeiten isSingleObject-like section', () => {
     const kontaktData = {
       adresse: 'Straße 1',
@@ -329,14 +329,14 @@ describe('TabEditor — SectionEditor isSingleObject', () => {
   })
 })
 
-// ─── ArrayEditor — more coverage for handleMove, handleAdd, filter ────────────
+// ─── ArrayEditor - more coverage for handleMove, handleAdd, filter ────────────
 
 const fields = [
   { key: 'name', label: 'Name', type: 'text' as const },
   { key: 'tags', label: 'Tags', type: 'stringlist' as const },
 ]
 
-describe('ArrayEditor — move and add with various field types', () => {
+describe('ArrayEditor - move and add with various field types', () => {
   it('adds item with stringlist field type (initializes to [])', () => {
     resetStore({ state: { news: [] }, originalState: { news: [] } })
     const onChange = vi.fn()
@@ -389,9 +389,9 @@ describe('ArrayEditor — move and add with various field types', () => {
   })
 })
 
-// ─── ImageField — file input trigger and crop flow ────────────────────────────
+// ─── ImageField - file input trigger and crop flow ────────────────────────────
 
-describe('ImageField — file upload trigger', () => {
+describe('ImageField - file upload trigger', () => {
   const imgField = { key: 'bildUrl', label: 'Bild', type: 'image' as const, imageDir: 'news' }
 
   it('triggers file input on Upload button click', () => {
@@ -419,7 +419,7 @@ describe('ImageField — file upload trigger', () => {
     const img = container.querySelector('img')
     if (img) {
       fireEvent.error(img)
-      // After error, preview should be cleared — no img tag
+      // After error, preview should be cleared - no img tag
     }
     expect(container.firstChild).toBeTruthy()
   })
@@ -435,9 +435,9 @@ describe('ImageField — file upload trigger', () => {
   })
 })
 
-// ─── LoginScreen — generateState and handleGitHubLogin ────────────────────────
+// ─── LoginScreen - generateState and handleGitHubLogin ────────────────────────
 
-describe('LoginScreen — GitHub login button click', () => {
+describe('LoginScreen - GitHub login button click', () => {
   it('redirects to GitHub on button click when CLIENT_ID is set', () => {
     resetStore()
     // If VITE_GITHUB_CLIENT_ID is set, the button should be present
@@ -458,9 +458,9 @@ describe('LoginScreen — GitHub login button click', () => {
   })
 })
 
-// ─── PreviewModal — close button ─────────────────────────────────────────────
+// ─── PreviewModal - close button ─────────────────────────────────────────────
 
-describe('PreviewModal — close button click', () => {
+describe('PreviewModal - close button click', () => {
   it('has a close button that calls onClose', () => {
     const onClose = vi.fn()
     resetStore({
@@ -488,7 +488,7 @@ describe('PreviewModal — close button click', () => {
 
   it('renders with startseite (no preview component)', () => {
     resetStore({ state: { startseite: { heroSlogan: '' } } })
-    // startseite has no preview mapping — returns null or fallback
+    // startseite has no preview mapping - returns null or fallback
     expect(() =>
       render(
         <Suspense fallback={<div>Loading</div>}>
@@ -499,9 +499,9 @@ describe('PreviewModal — close button click', () => {
   })
 })
 
-// ─── PublishConfirmModal — multi-tab publish (no tabKey) ──────────────────────
+// ─── PublishConfirmModal - multi-tab publish (no tabKey) ──────────────────────
 
-describe('PublishConfirmModal — all-tabs mode', () => {
+describe('PublishConfirmModal - all-tabs mode', () => {
   it('renders with changes across multiple tabs', () => {
     resetStore({
       state: { news: [{ titel: 'new' }], startseite: { heroSlogan: 'edit' } },
@@ -527,9 +527,9 @@ describe('PublishConfirmModal — all-tabs mode', () => {
   })
 })
 
-// ─── GlobalDiffModal — revert all confirm flow ───────────────────────────────
+// ─── GlobalDiffModal - revert all confirm flow ───────────────────────────────
 
-describe('GlobalDiffModal — full revert all flow', () => {
+describe('GlobalDiffModal - full revert all flow', () => {
   it('shows and confirms revert all', () => {
     resetStore({
       state: { news: [{ titel: 'Edit' }], startseite: { heroSlogan: 'Edit' } },
@@ -571,9 +571,9 @@ describe('GlobalDiffModal — full revert all flow', () => {
   })
 })
 
-// ─── DiffModal — confirm revert all and cancel flow ──────────────────────────
+// ─── DiffModal - confirm revert all and cancel flow ──────────────────────────
 
-describe('DiffModal — confirm revert all and cancel', () => {
+describe('DiffModal - confirm revert all and cancel', () => {
   it('cancels revert all confirmation', () => {
     resetStore({
       state: {
@@ -631,7 +631,7 @@ describe('DiffModal — confirm revert all and cancel', () => {
   })
 })
 
-// ─── store.ts and types.ts — re-export coverage ─────────────────────────────
+// ─── store.ts and types.ts - re-export coverage ─────────────────────────────
 
 describe('admin/store.ts re-export', () => {
   it('re-exports useAdminStore', async () => {
@@ -643,7 +643,7 @@ describe('admin/store.ts re-export', () => {
 describe('admin/types.ts', () => {
   it('types are importable', async () => {
     const mod = await import('../../admin/types')
-    // types.ts only exports interfaces — no runtime code, but the import exercises coverage
+    // types.ts only exports interfaces - no runtime code, but the import exercises coverage
     expect(mod).toBeDefined()
   })
 })

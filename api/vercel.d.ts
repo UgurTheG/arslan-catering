@@ -3,7 +3,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http'
 /**
  * Lightweight type definitions for Vercel serverless functions.
  * Replaces the heavy @vercel/node package (which pulls in vulnerable
- * transitive deps) — we only ever used it for these two interfaces.
+ * transitive deps) - we only ever used it for these two interfaces.
  */
 export interface VercelRequest extends IncomingMessage {
   query: Record<string, string | string[]>

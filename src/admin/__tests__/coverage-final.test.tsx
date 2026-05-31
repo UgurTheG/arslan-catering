@@ -1,5 +1,5 @@
 /**
- * Additional coverage tests — closes remaining gaps across admin source files.
+ * Additional coverage tests - closes remaining gaps across admin source files.
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, fireEvent, act } from '@testing-library/react'
@@ -112,11 +112,11 @@ beforeEach(() => {
 })
 afterEach(() => vi.restoreAllMocks())
 
-// ─── ImageField — crop flow ───────────────────────────────────────────────────
+// ─── ImageField - crop flow ───────────────────────────────────────────────────
 
 import ImageField from '../../admin/fields/ImageField'
 
-describe('ImageField — crop and upload', () => {
+describe('ImageField - crop and upload', () => {
   it('triggers crop overlay on file select and confirms crop', async () => {
     const onChange = vi.fn()
     const { container, getByTestId } = render(
@@ -228,11 +228,11 @@ describe('ImageField — crop and upload', () => {
   })
 })
 
-// ─── ImageListField — crop and drag ──────────────────────────────────────────
+// ─── ImageListField - crop and drag ──────────────────────────────────────────
 
 import ImageListField from '../../admin/fields/ImageListField'
 
-describe('ImageListField — crop flow', () => {
+describe('ImageListField - crop flow', () => {
   it('triggers crop on file select for an item', async () => {
     const onChange = vi.fn()
     const { container, queryByTestId } = render(
@@ -328,11 +328,11 @@ describe('ImageListField — crop flow', () => {
   })
 })
 
-// ─── TabEditor — SectionEditor with isSingleObject and array section ─────────
+// ─── TabEditor - SectionEditor with isSingleObject and array section ─────────
 
 import TabEditor from '../../admin/components/TabEditor'
 
-describe('TabEditor — ObjectEditor sections', () => {
+describe('TabEditor - ObjectEditor sections', () => {
   it('renders isSingleObject section and array section', () => {
     const kontaktTab = TABS.find(t => t.key === 'kontakt')
     if (!kontaktTab) return
@@ -386,9 +386,9 @@ describe('TabEditor — ObjectEditor sections', () => {
   })
 })
 
-// ─── uiSlice — darkMode localStorage branches ───────────────────────────────
+// ─── uiSlice - darkMode localStorage branches ───────────────────────────────
 
-describe('uiSlice — darkMode initialization', () => {
+describe('uiSlice - darkMode initialization', () => {
   it('reads true from localStorage', () => {
     localStorage.setItem('arslan-darkmode', 'true')
     // Force re-evaluation by toggling to test the localStorage read
@@ -404,11 +404,11 @@ describe('uiSlice — darkMode initialization', () => {
   })
 })
 
-// ─── FieldRenderer — DateField invalid, TimeField, StringListField ──────────
+// ─── FieldRenderer - DateField invalid, TimeField, StringListField ──────────
 
 import FieldRenderer from '../../admin/components/FieldRenderer'
 
-describe('FieldRenderer — uncovered field types', () => {
+describe('FieldRenderer - uncovered field types', () => {
   it('DateField with invalid date shows error state', () => {
     const onChange = vi.fn()
     const { container } = render(
@@ -460,11 +460,11 @@ describe('FieldRenderer — uncovered field types', () => {
   })
 })
 
-// ─── DiffDisplay — pendingImagePath and JSON stringify fallback ──────────────
+// ─── DiffDisplay - pendingImagePath and JSON stringify fallback ──────────────
 
 import { FieldChangeDiff } from '../../admin/components/DiffDisplay'
 
-describe('DiffDisplay — edge cases', () => {
+describe('DiffDisplay - edge cases', () => {
   it('renders entry with pendingImagePath', () => {
     const { container } = render(
       <FieldChangeDiff
@@ -505,11 +505,11 @@ describe('DiffDisplay — edge cases', () => {
   })
 })
 
-// ─── DiffModal — Escape keydown ──────────────────────────────────────────────
+// ─── DiffModal - Escape keydown ──────────────────────────────────────────────
 
 import DiffModal from '../../admin/components/DiffModal'
 
-describe('DiffModal — Escape key', () => {
+describe('DiffModal - Escape key', () => {
   it('closes on Escape', () => {
     resetStore({
       state: {
@@ -526,11 +526,11 @@ describe('DiffModal — Escape key', () => {
   })
 })
 
-// ─── OrphanModal — Escape keydown ────────────────────────────────────────────
+// ─── OrphanModal - Escape keydown ────────────────────────────────────────────
 
 import OrphanModal from '../../admin/components/OrphanModal'
 
-describe('OrphanModal — Escape key', () => {
+describe('OrphanModal - Escape key', () => {
   it('closes on Escape', () => {
     const onCancel = vi.fn()
     render(
@@ -546,11 +546,11 @@ describe('OrphanModal — Escape key', () => {
   })
 })
 
-// ─── GlobalDiffModal — per-entry revert ──────────────────────────────────────
+// ─── GlobalDiffModal - per-entry revert ──────────────────────────────────────
 
 import GlobalDiffModal from '../../admin/components/GlobalDiffModal'
 
-describe('GlobalDiffModal — single entry revert', () => {
+describe('GlobalDiffModal - single entry revert', () => {
   it('reverts a single field change via Zurücksetzen button', () => {
     resetStore({
       state: { news: [{ titel: 'Changed', datum: '2024-01-01' }] },
@@ -566,11 +566,11 @@ describe('GlobalDiffModal — single entry revert', () => {
   })
 })
 
-// ─── PublishConfirmModal — structural entry revert ───────────────────────────
+// ─── PublishConfirmModal - structural entry revert ───────────────────────────
 
 import PublishConfirmModal from '../../admin/components/PublishConfirmModal'
 
-describe('PublishConfirmModal — revert structural entry', () => {
+describe('PublishConfirmModal - revert structural entry', () => {
   it('reverts an added entry', () => {
     resetStore({
       state: { news: [{ titel: 'Existing' }, { titel: 'New' }] },
@@ -587,11 +587,11 @@ describe('PublishConfirmModal — revert structural entry', () => {
   })
 })
 
-// ─── AdminSidebar — touch swipe and publishing state ─────────────────────────
+// ─── AdminSidebar - touch swipe and publishing state ─────────────────────────
 
 import AdminSidebar from '../../admin/components/AdminSidebar'
 
-describe('AdminSidebar — additional branches', () => {
+describe('AdminSidebar - additional branches', () => {
   it('touch swipe left closes sidebar', () => {
     const onClose = vi.fn()
     const { container } = render(
@@ -664,13 +664,13 @@ describe('AdminSidebar — additional branches', () => {
   })
 })
 
-// ─── SortableItemCard — isDragging styles ────────────────────────────────────
+// ─── SortableItemCard - isDragging styles ────────────────────────────────────
 
 import SortableItemCard from '../../admin/components/SortableItemCard'
 import { DndContext } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 
-describe('SortableItemCard — render', () => {
+describe('SortableItemCard - render', () => {
   it('renders inside DndContext', () => {
     const { container } = render(
       <DndContext>
@@ -692,9 +692,9 @@ describe('SortableItemCard — render', () => {
   })
 })
 
-// ─── useUndoRedoShortcuts — keyboard events ──────────────────────────────────
+// ─── useUndoRedoShortcuts - keyboard events ──────────────────────────────────
 
-describe('useUndoRedoShortcuts — keyboard shortcuts', () => {
+describe('useUndoRedoShortcuts - keyboard shortcuts', () => {
   it('Ctrl+Z triggers undo on non-input element', () => {
     resetStore({
       state: { news: [{ titel: 'A' }] },
@@ -708,9 +708,9 @@ describe('useUndoRedoShortcuts — keyboard shortcuts', () => {
   })
 })
 
-// ─── diff.ts — captionsKey branch and applyRevert fallback ──────────────────
+// ─── diff.ts - captionsKey branch and applyRevert fallback ──────────────────
 
-describe('diff.ts — additional branches', () => {
+describe('diff.ts - additional branches', () => {
   it('diffTab detects caption changes alongside imagelist', async () => {
     const { diffTab } = await import('../../admin/lib/diff')
     // Use an inline custom array tab with imagelist + captionsKey
@@ -758,11 +758,11 @@ describe('diff.ts — additional branches', () => {
   })
 })
 
-// ─── editorSlice — loadData catch fallback ──────────────────────────────────
+// ─── editorSlice - loadData catch fallback ──────────────────────────────────
 
-describe('editorSlice — loadData edge cases', () => {
+describe('editorSlice - loadData edge cases', () => {
   it('editorSlice line 342: findOrphanImagesForTab with images in other tabs', () => {
-    // Image exists in news but also referenced in party — not an orphan
+    // Image exists in news but also referenced in party - not an orphan
     resetStore({
       state: {
         news: [{ titel: 'A', bildUrl: '/images/news/shared.webp' }],
@@ -788,9 +788,9 @@ describe('editorSlice — loadData edge cases', () => {
   })
 })
 
-// ─── publishSlice — publishAll skips tabs with load errors ──────────────────
+// ─── publishSlice - publishAll skips tabs with load errors ──────────────────
 
-describe('publishSlice — publishAll edge cases', () => {
+describe('publishSlice - publishAll edge cases', () => {
   it('publishAll skips tabs with dataLoadErrors', async () => {
     resetStore({
       state: { news: [{ titel: 'Changed' }] },
@@ -801,16 +801,16 @@ describe('publishSlice — publishAll edge cases', () => {
     try {
       await useAdminStore.getState().publishAll()
     } catch {
-      // Expected — commitTree might fail but the skip logic is exercised
+      // Expected - commitTree might fail but the skip logic is exercised
     }
   })
 })
 
-// ─── PreviewModal — fallback render for unknown keys ────────────────────────
+// ─── PreviewModal - fallback render for unknown keys ────────────────────────
 
 import PreviewModal from '../../admin/components/PreviewModal'
 
-describe('PreviewModal — edge rendering', () => {
+describe('PreviewModal - edge rendering', () => {
   it('renders about tab preview', async () => {
     resetStore({
       state: {

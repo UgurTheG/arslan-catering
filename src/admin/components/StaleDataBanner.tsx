@@ -1,6 +1,6 @@
 /**
  * Sticky banner shown when the remote branch SHA has moved ahead of
- * the user's local baseCommitSha — i.e. someone else has published.
+ * the user's local baseCommitSha - i.e. someone else has published.
  *
  * Offers a "Neu laden" button to reload fresh data.  The user's unsaved
  * edits are preserved in localStorage drafts so they survive the reload.
@@ -9,7 +9,7 @@ import { RefreshCw } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 interface Props {
-  /** Login name(s) of the users who published — derived from presenceUsers by caller */
+  /** Login name(s) of the users who published - derived from presenceUsers by caller */
   publishedBy?: string[]
   onReload: () => void
 }

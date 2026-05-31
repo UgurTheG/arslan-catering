@@ -78,14 +78,14 @@ export const createEditorSlice: StateCreator<AdminState, [], [], EditorSlice> = 
         dirty.add(tab.key)
       }
     }
-    // Mark a tab dirty if it owns a pending upload — the tabKey is the ground truth,
+    // Mark a tab dirty if it owns a pending upload - the tabKey is the ground truth,
     // so this catches document uploads where the new URL may not yet be in the state
     // (race between addPendingUpload and the state update from onChange).
     for (const upload of pendingUploads) {
       if (upload.tabKey) dirty.add(upload.tabKey)
     }
     // Also mark a tab dirty if there's a pending image upload targeting a path
-    // referenced by the tab — otherwise replacing an image with the same URL
+    // referenced by the tab - otherwise replacing an image with the same URL
     // (e.g. same-named Abgeordneter) would leave the tab undetected as changed.
     if (pendingUploads.length > 0) {
       for (const tab of TABS) {
@@ -105,7 +105,7 @@ export const createEditorSlice: StateCreator<AdminState, [], [], EditorSlice> = 
   loadData: async () => {
     const newState: Record<string, unknown> = {}
     const failedTabs: string[] = []
-    // Admin must always see the latest data — bypass browser/CDN caches
+    // Admin must always see the latest data - bypass browser/CDN caches
     const bust = `t=${Date.now()}`
 
     // Fetch the branch SHA and all tab data in parallel
@@ -164,7 +164,7 @@ export const createEditorSlice: StateCreator<AdminState, [], [], EditorSlice> = 
   updateState: (tabKey, data) => {
     const now = Date.now()
     const prev = get()
-    // Debounced undo snapshot — don't push on every keystroke
+    // Debounced undo snapshot - don't push on every keystroke
     const lastPush = lastUndoPush[tabKey] || 0
     let newUndoStacks = prev.undoStacks
     if (now - lastPush > UNDO_DEBOUNCE) {

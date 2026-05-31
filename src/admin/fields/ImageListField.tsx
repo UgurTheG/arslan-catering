@@ -53,7 +53,7 @@ export default function ImageListField({ field, value, onChange, contextItem }: 
     null,
   )
 
-  // Build extras object for caption changes — keeps URLs and captions in sync
+  // Build extras object for caption changes - keeps URLs and captions in sync
   // within a single immutable update instead of two separate calls.
   const withCaps = (caps: string[]): Record<string, unknown> | undefined =>
     captionsKey ? { [captionsKey]: caps } : undefined
@@ -92,7 +92,7 @@ export default function ImageListField({ field, value, onChange, contextItem }: 
     const newList = [...list]
     newList[index] = publicUrl
     onChange(newList)
-    setStatus('Bild vorbereitet — wird beim Veröffentlichen hochgeladen', 'success')
+    setStatus('Bild vorbereitet - wird beim Veröffentlichen hochgeladen', 'success')
   }
 
   return (

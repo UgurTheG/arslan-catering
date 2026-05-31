@@ -6,14 +6,14 @@ import { createUISlice, type UISlice } from './uiSlice'
 import { createPresenceSlice, type PresenceSlice } from './presenceSlice'
 
 /**
- * The full admin store type — intersection of all five slices.
+ * The full admin store type - intersection of all five slices.
  *
  * Slices:
- *   AuthSlice     — token management, login/logout, token refresh
- *   EditorSlice   — tab data, undo/redo, dirty tracking, drafts
- *   PublishSlice  — commit to GitHub (single tab or all dirty tabs)
- *   UISlice       — dark mode, toast status messages
- *   PresenceSlice — real-time multi-user awareness & stale-data detection
+ *   AuthSlice     - token management, login/logout, token refresh
+ *   EditorSlice   - tab data, undo/redo, dirty tracking, drafts
+ *   PublishSlice  - commit to GitHub (single tab or all dirty tabs)
+ *   UISlice       - dark mode, toast status messages
+ *   PresenceSlice - real-time multi-user awareness & stale-data detection
  */
 export type AdminState = AuthSlice & EditorSlice & PublishSlice & UISlice & PresenceSlice
 

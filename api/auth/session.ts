@@ -11,7 +11,7 @@ import {
  * GET /api/auth/session
  *
  * Returns whether the user is authenticated and the token expiry timestamp.
- * The access token itself is NEVER returned — it stays in the HttpOnly cookie
+ * The access token itself is NEVER returned - it stays in the HttpOnly cookie
  * and is only used server-side (by the /api/github proxy).
  *
  * Token introspection: verifies the token against GitHub's API so that revoked
@@ -46,12 +46,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     })
 
     if (!ghRes.ok) {
-      // Token revoked or expired on GitHub's side — clear auth cookies
+      // Token revoked or expired on GitHub's side - clear auth cookies
       res.setHeader('Set-Cookie', clearAuthCookies())
       return res.status(200).json({ authenticated: false, expires_at: 0 })
     }
   } catch {
-    // Network error — fail open so a temporary GitHub outage doesn't log everyone out
+    // Network error - fail open so a temporary GitHub outage doesn't log everyone out
     // but still return the local session state
   }
 

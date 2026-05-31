@@ -109,12 +109,12 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 
-// ─── diff.ts — setAtPath null creation (lines 616-619) ────────────────────────
+// ─── diff.ts - setAtPath null creation (lines 616-619) ────────────────────────
 
 import { applyRevert } from '../../admin/lib/diff'
 import type { TabConfig } from '../../admin/types'
 
-describe('applyRevert — setAtPath creates missing intermediate nodes', () => {
+describe('applyRevert - setAtPath creates missing intermediate nodes', () => {
   const objectTab: TabConfig = {
     key: 'obj',
     label: 'Obj',
@@ -142,7 +142,7 @@ describe('applyRevert — setAtPath creates missing intermediate nodes', () => {
       before: 'Old',
       after: 'New',
     }
-    // Current state has no 'header' at all — setAtPath needs to create it
+    // Current state has no 'header' at all - setAtPath needs to create it
     const original = { title: 'T', header: { subtitle: 'Old' } }
     const current = { title: 'T' } // header missing
     // Should not throw
@@ -174,7 +174,7 @@ describe('applyRevert — setAtPath creates missing intermediate nodes', () => {
   })
 })
 
-// ─── images.ts — fileToWebpBase64 ────────────────────────────────────────────
+// ─── images.ts - fileToWebpBase64 ────────────────────────────────────────────
 
 describe('fileToWebpBase64', () => {
   it('resolves with WebP base64 string', async () => {
@@ -244,9 +244,9 @@ describe('fileToWebpBase64', () => {
   })
 })
 
-// ─── authSlice — ensureAuthenticated without refresh_token_expires_in ────────────
+// ─── authSlice - ensureAuthenticated without refresh_token_expires_in ────────────
 
-describe('authSlice — ensureAuthenticated token refresh without expires_in', () => {
+describe('authSlice - ensureAuthenticated token refresh without expires_in', () => {
   beforeEach(() => resetStore())
 
   it('handles missing expires_in in refresh response', async () => {
@@ -280,9 +280,9 @@ describe('authSlice — ensureAuthenticated token refresh without expires_in', (
   })
 })
 
-// ─── publishSlice — publishTab with non-existing tab ─────────────────────────
+// ─── publishSlice - publishTab with non-existing tab ─────────────────────────
 
-describe('publishSlice — publishTab skips unknown tab', () => {
+describe('publishSlice - publishTab skips unknown tab', () => {
   beforeEach(() => resetStore())
 
   it('returns early when tab key is not in TABS', async () => {
@@ -296,7 +296,7 @@ describe('publishSlice — publishTab skips unknown tab', () => {
 
 import DiffModal from '../../admin/components/DiffModal'
 
-describe('DiffModal — with changes and revert actions', () => {
+describe('DiffModal - with changes and revert actions', () => {
   const g = (bilder: unknown[]) => ({
     titel: 'G',
     titelTr: '',
@@ -434,11 +434,11 @@ describe('DiffModal — with changes and revert actions', () => {
   })
 })
 
-// ─── OrphanModal — checkbox and confirm ──────────────────────────────────────
+// ─── OrphanModal - checkbox and confirm ──────────────────────────────────────
 
 import OrphanModal from '../../admin/components/OrphanModal'
 
-describe('OrphanModal — checkbox interaction and confirm', () => {
+describe('OrphanModal - checkbox interaction and confirm', () => {
   it('calls onConfirm with selected paths', () => {
     const onConfirm = vi.fn()
     const { container, getByText: _getByText2 } = render(
@@ -495,11 +495,11 @@ describe('OrphanModal — checkbox interaction and confirm', () => {
   })
 })
 
-// ─── LoginScreen — query param auth, loginAuthStatus redirect ─────────────────
+// ─── LoginScreen - query param auth, loginAuthStatus redirect ─────────────────
 
 import LoginScreen from '../../admin/components/LoginScreen'
 
-describe('LoginScreen — query param auth and error flows', () => {
+describe('LoginScreen - query param auth and error flows', () => {
   it('renders with auth=error query param and shows error message', async () => {
     // Simulate the server redirecting with ?auth=error&msg=invalid_state
     window.history.pushState({}, '', '/admin?auth=error&msg=invalid_state')
@@ -574,12 +574,12 @@ describe('LoginScreen — query param auth and error flows', () => {
   })
 })
 
-// ─── TabEditor — null data loading state, isSingleObject section ──────────────
+// ─── TabEditor - null data loading state, isSingleObject section ──────────────
 
 import TabEditor from '../../admin/components/TabEditor'
 import { TABS } from '../../admin/config/tabs'
 
-describe('TabEditor — additional paths', () => {
+describe('TabEditor - additional paths', () => {
   it('renders loading state when data is null', () => {
     resetStore({ state: { about: null }, originalState: { about: null } })
     const tab = TABS.find(t => t.key === 'about')!
@@ -635,7 +635,7 @@ describe('TabEditor — additional paths', () => {
   })
 })
 
-// ─── ArrayEditor — filter and filter-based disable drag ───────────────────────
+// ─── ArrayEditor - filter and filter-based disable drag ───────────────────────
 
 import ArrayEditor from '../../admin/components/ArrayEditor'
 
@@ -644,7 +644,7 @@ const testFields = [
   { key: 'value', label: 'Wert', type: 'text' as const },
 ]
 
-describe('ArrayEditor — filter and search', () => {
+describe('ArrayEditor - filter and search', () => {
   it('filters visible items by search query', () => {
     const data = Array.from({ length: 8 }, (_, i) => ({
       id: String(i),
@@ -701,11 +701,11 @@ describe('ArrayEditor — filter and search', () => {
   })
 })
 
-// ─── ItemCardBody — move up/down buttons ─────────────────────────────────────
+// ─── ItemCardBody - move up/down buttons ─────────────────────────────────────
 
 import ItemCardBody from '../../admin/components/ItemCardBody'
 
-describe('ItemCardBody — move buttons', () => {
+describe('ItemCardBody - move buttons', () => {
   it('calls onMove up when up arrow clicked', () => {
     const onMove = vi.fn()
     const { container } = render(
@@ -771,13 +771,13 @@ describe('ItemCardBody — move buttons', () => {
   })
 })
 
-// ─── ImageField — URL toggle, crop completion ─────────────────────────────────
+// ─── ImageField - URL toggle, crop completion ─────────────────────────────────
 
 import ImageField from '../../admin/fields/ImageField'
 
 const imgField = { key: 'bildUrl', label: 'Bild', type: 'image' as const, imageDir: 'news' }
 
-describe('ImageField — URL toggle and external URL', () => {
+describe('ImageField - URL toggle and external URL', () => {
   it('shows URL input when no value initially', () => {
     const { container } = render(<ImageField field={imgField} value="" onChange={vi.fn()} />)
     // URL input should be visible when no value
@@ -833,11 +833,11 @@ describe('ImageField — URL toggle and external URL', () => {
   })
 })
 
-// ─── ImageListField — more coverage ───────────────────────────────────────────
+// ─── ImageListField - more coverage ───────────────────────────────────────────
 
 import ImageListField from '../../admin/fields/ImageListField'
 
-describe('ImageListField — URL entry and item removal', () => {
+describe('ImageListField - URL entry and item removal', () => {
   const imgsField = {
     key: 'bildUrls',
     label: 'Bilder',
@@ -890,7 +890,7 @@ describe('ImageListField — URL entry and item removal', () => {
   })
 })
 
-// ─── CropOverlay — minimal rendering test ────────────────────────────────────
+// ─── CropOverlay - minimal rendering test ────────────────────────────────────
 
 import CropOverlay from '../../admin/components/CropOverlay'
 
@@ -915,11 +915,11 @@ describe('CropOverlay', () => {
   })
 })
 
-// ─── PreviewModal — escape key and close button ──────────────────────────────
+// ─── PreviewModal - escape key and close button ──────────────────────────────
 
 import PreviewModal from '../../admin/components/PreviewModal'
 
-describe('PreviewModal — additional coverage', () => {
+describe('PreviewModal - additional coverage', () => {
   it('renders for each known tab key', () => {
     const knownTabs = [
       'startseite',
@@ -971,11 +971,11 @@ describe('PreviewModal — additional coverage', () => {
   })
 })
 
-// ─── GlobalDiffModal — additional paths ───────────────────────────────────────
+// ─── GlobalDiffModal - additional paths ───────────────────────────────────────
 
 import GlobalDiffModal from '../../admin/components/GlobalDiffModal'
 
-describe('GlobalDiffModal — revert and confirm actions', () => {
+describe('GlobalDiffModal - revert and confirm actions', () => {
   it('shows revert tab button when tab has changes', () => {
     resetStore({
       state: { news: [{ titel: 'New' }] },

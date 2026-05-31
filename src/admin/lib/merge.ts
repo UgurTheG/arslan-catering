@@ -2,9 +2,9 @@
  * Three-way JSON merge for admin tab data.
  *
  * Given:
- *   original — the state when the user loaded data (common base)
- *   ours     — the user's local edits
- *   theirs   — the newest version published by someone else
+ *   original - the state when the user loaded data (common base)
+ *   ours     - the user's local edits
+ *   theirs   - the newest version published by someone else
  *
  * Strategy:
  *   - Plain objects  → recursive field-level merge
@@ -57,7 +57,7 @@ function mergeValue(
   if (!theirsDiff) return ours // only we changed
   if (deepEq(ours, theirs)) return ours // both changed to same value (no conflict)
 
-  // Both changed differently —
+  // Both changed differently -
 
   // Try deep object merge
   if (isPlainObject(original) && isPlainObject(ours) && isPlainObject(theirs)) {
@@ -144,7 +144,7 @@ function mergeArraysById(
   const result: IdObject[] = []
   const handled = new Set<string | number>()
 
-  // Walk theirs' order first (they published — respect their ordering)
+  // Walk theirs' order first (they published - respect their ordering)
   for (const theirItem of theirs) {
     const id = theirItem.id
     handled.add(id)
@@ -156,9 +156,9 @@ function mergeArraysById(
       // If we explicitly removed it (it was in original), keep deletion.
       // If it was never in original (they added it), keep theirs'.
       if (!orig) result.push(theirItem) // new item added by them
-      // else: we deleted it — omit (our delete wins)
+      // else: we deleted it - omit (our delete wins)
     } else {
-      // Both sides have it — recursively merge the object
+      // Both sides have it - recursively merge the object
       const base = orig ?? ({} as IdObject)
       const merged = mergeValue(base, ourItem, theirItem, [...path, String(id)], conflicts)
       result.push(merged as IdObject)

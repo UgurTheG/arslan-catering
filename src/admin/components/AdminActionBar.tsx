@@ -36,7 +36,7 @@ export default function AdminActionBar({
 }: AdminActionBarProps) {
   return (
     <div className="flex items-center justify-end gap-1.5 sm:gap-2 mb-6 flex-wrap">
-      {/* Undo / Redo — left-aligned */}
+      {/* Undo / Redo - left-aligned */}
       <div className="flex items-center gap-0.5 mr-auto">
         <button
           type="button"
@@ -68,7 +68,7 @@ export default function AdminActionBar({
         </button>
       </div>
 
-      {/* Vorschau — only shown when a previewPath is configured */}
+      {/* Vorschau - only shown when a previewPath is configured */}
       {previewPath && (
         <button
           type="button"
@@ -79,7 +79,7 @@ export default function AdminActionBar({
         </button>
       )}
 
-      {/* Änderungen — only shown when there are unsaved changes */}
+      {/* Änderungen - only shown when there are unsaved changes */}
       {isDirty && (
         <button
           type="button"
@@ -104,7 +104,7 @@ export default function AdminActionBar({
         type="button"
         onClick={onPublish}
         disabled={!isDirty || publishing || hasLoadError}
-        title={hasLoadError ? 'Daten konnten nicht geladen werden — Seite neu laden' : undefined}
+        title={hasLoadError ? 'Daten konnten nicht geladen werden - Seite neu laden' : undefined}
         className={`shrink-0 text-[10px] sm:text-xs font-bold px-3.5 sm:px-5 py-2 rounded-xl flex items-center gap-2 transition-colors whitespace-nowrap [hyphens:none] ${
           isDirty && !hasLoadError
             ? 'bg-gold hover:bg-gold-dark text-white shadow-sm shadow-gold/25 hover:shadow-lg hover:shadow-gold/35 active:scale-[0.98] disabled:cursor-wait disabled:hover:bg-gold disabled:active:scale-100'

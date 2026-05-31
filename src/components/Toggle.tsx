@@ -7,7 +7,7 @@ interface ToggleProps {
 }
 
 /**
- * Accessible toggle switch — renders as a `<button>` so it works without a
+ * Accessible toggle switch - renders as a `<button>` so it works without a
  * wrapping `<label>`. The `id` prop wires it to a `<label htmlFor>` in the
  * parent when needed (e.g. inside FieldRenderer).
  */

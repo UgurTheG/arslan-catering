@@ -17,9 +17,9 @@ interface CollapsibleSectionProps {
   count?: number
   /** Extra className forwarded to the button wrapper */
   className?: string
-  /** Style variant — defaults to "section" */
+  /** Style variant - defaults to "section" */
   variant?: 'section' | 'subsection'
-  /** Whether the section starts open — defaults to true */
+  /** Whether the section starts open - defaults to true */
   defaultOpen?: boolean
   children: React.ReactNode
 }

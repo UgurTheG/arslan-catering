@@ -65,9 +65,9 @@ function resetStore(overrides: Record<string, unknown> = {}) {
   })
 }
 
-// ── authSlice — logout ────────────────────────────────────────────────────────
+// ── authSlice - logout ────────────────────────────────────────────────────────
 
-describe('authSlice — logout', () => {
+describe('authSlice - logout', () => {
   beforeEach(() => resetStore())
 
   it('clears the authenticated flag and user from store state', () => {
@@ -104,9 +104,9 @@ describe('authSlice — logout', () => {
   })
 })
 
-// ── authSlice — ensureAuthenticated ──────────────────────────────────────────────
+// ── authSlice - ensureAuthenticated ──────────────────────────────────────────────
 
-describe('authSlice — ensureAuthenticated', () => {
+describe('authSlice - ensureAuthenticated', () => {
   beforeEach(() => resetStore())
 
   it('returns immediately when tokenExpiresAt is 0 (classic token)', async () => {
@@ -182,9 +182,9 @@ describe('authSlice — ensureAuthenticated', () => {
   })
 })
 
-// ── authSlice — login ─────────────────────────────────────────────────────────
+// ── authSlice - login ─────────────────────────────────────────────────────────
 
-describe('authSlice — login', () => {
+describe('authSlice - login', () => {
   beforeEach(() => {
     resetStore()
     vi.mocked(validateToken).mockResolvedValue({ login: 'testuser', avatar_url: '' })
@@ -243,9 +243,9 @@ describe('authSlice — login', () => {
   })
 })
 
-// ── authSlice — tryAutoLogin ───────────────────────────────────────────────────
+// ── authSlice - tryAutoLogin ───────────────────────────────────────────────────
 
-describe('authSlice — tryAutoLogin', () => {
+describe('authSlice - tryAutoLogin', () => {
   beforeEach(() => {
     resetStore()
     vi.mocked(validateToken).mockResolvedValue({ login: 'testuser', avatar_url: '' })
@@ -301,9 +301,9 @@ describe('authSlice — tryAutoLogin', () => {
   })
 })
 
-// ── publishSlice — concurrent guard ──────────────────────────────────────────
+// ── publishSlice - concurrent guard ──────────────────────────────────────────
 
-describe('publishSlice — concurrent publishing guard', () => {
+describe('publishSlice - concurrent publishing guard', () => {
   beforeEach(() => {
     resetStore()
     vi.mocked(commitTree).mockClear()
@@ -322,9 +322,9 @@ describe('publishSlice — concurrent publishing guard', () => {
   })
 })
 
-// ── publishSlice — error handling ─────────────────────────────────────────────
+// ── publishSlice - error handling ─────────────────────────────────────────────
 
-describe('publishSlice — error handling', () => {
+describe('publishSlice - error handling', () => {
   const aboutEdited = {
     titel: 'edited',
     titelTr: '',

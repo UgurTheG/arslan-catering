@@ -12,7 +12,7 @@ interface Props {
   onMove: (from: number, to: number) => void
 }
 
-/** Static (non-sortable) card — used as the DragOverlay ghost and as a fallback. */
+/** Static (non-sortable) card - used as the DragOverlay ghost and as a fallback. */
 export default function ItemCard({
   fields,
   item,

@@ -94,7 +94,7 @@ export default function ArrayEditor({ fields, data, tabKey, onStructureChange }:
 
   const handleDragEnd = (event: DragEndEvent) => {
     setActiveId(null)
-    if (filter) return // don't reorder while a filter is active — indices would be wrong
+    if (filter) return // don't reorder while a filter is active - indices would be wrong
     const { active, over } = event
     if (!over || active.id === over.id) return
     const oldIndex = ids.indexOf(active.id as string)

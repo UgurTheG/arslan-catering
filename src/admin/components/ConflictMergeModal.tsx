@@ -143,7 +143,7 @@ export default function ConflictMergeModal({ tabKey, conflicts, onClose }: Props
                         Meine Version
                       </p>
                       <p className="text-gray-700 dark:text-gray-300 break-words">
-                        {summarizeValue(c.ours, undefined, false) || '—'}
+                        {summarizeValue(c.ours, undefined, false) || '-'}
                       </p>
                     </button>
 
@@ -163,7 +163,7 @@ export default function ConflictMergeModal({ tabKey, conflicts, onClose }: Props
                           : 'Veröffentlichte Version'}
                       </p>
                       <p className="text-gray-700 dark:text-gray-300 break-words">
-                        {summarizeValue(c.theirs, undefined, false) || '—'}
+                        {summarizeValue(c.theirs, undefined, false) || '-'}
                       </p>
                     </button>
                   </div>

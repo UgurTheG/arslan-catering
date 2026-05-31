@@ -18,7 +18,7 @@ import { getTabIcon } from './lib/tabIcons'
 import AdminSkeleton from './components/AdminSkeleton'
 
 export default function AdminApp() {
-  // Actions: Zustand action references are stable — they never change between renders.
+  // Actions: Zustand action references are stable - they never change between renders.
   const tryAutoLogin = useAdminStore(s => s.tryAutoLogin)
   const logout = useAdminStore(s => s.logout)
   const setActiveTab = useAdminStore(s => s.setActiveTab)
@@ -42,7 +42,7 @@ export default function AdminApp() {
   const mergeConflictTabKey = useAdminStore(s => s.mergeConflictTabKey)
   const dismissMergeConflicts = useAdminStore(s => s.dismissMergeConflicts)
 
-  // Dirty set as a stable string — AdminApp only re-renders when the *set of dirty
+  // Dirty set as a stable string - AdminApp only re-renders when the *set of dirty
   // tab keys* changes, not on every keystroke inside a tab that is already dirty.
   const dirtyString = useAdminStore(s => [...s.dirtyTabs()].sort().join(','))
   const dirty = useMemo(() => new Set(dirtyString ? dirtyString.split(',') : []), [dirtyString])
@@ -81,7 +81,7 @@ export default function AdminApp() {
   }, [darkMode])
 
   // Warn before browser refresh / tab close when there are unsaved changes.
-  // Uses getState() so the handler is always fresh — no stale closure, no re-subscription.
+  // Uses getState() so the handler is always fresh - no stale closure, no re-subscription.
   // A single handler covers both dirty tab data and pending image uploads.
   useEffect(() => {
     const handler = (e: BeforeUnloadEvent) => {
@@ -93,7 +93,7 @@ export default function AdminApp() {
     }
     window.addEventListener('beforeunload', handler)
     return () => window.removeEventListener('beforeunload', handler)
-  }, []) // no deps — getState() always reads the latest store state
+  }, []) // no deps - getState() always reads the latest store state
 
   useEffect(() => {
     if (!statusMessage) return
@@ -110,7 +110,7 @@ export default function AdminApp() {
   const usersOnCurrentTab = presenceUsers.filter(
     u => u.activeTab === activeTab || u.dirtyTabs.includes(activeTab),
   )
-  // Users who have no dirty tabs — they likely just published and reloaded.
+  // Users who have no dirty tabs - they likely just published and reloaded.
   // Fall back to all known presence users if none match, so the StaleDataBanner
   // always shows someone rather than "Ein anderer Benutzer" when users are present.
   const recentPublishers = (() => {
@@ -221,7 +221,7 @@ export default function AdminApp() {
 
         {/* Content */}
         <main className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto">
-          {/* Stale data banner — another user published since we loaded */}
+          {/* Stale data banner - another user published since we loaded */}
           {remoteSha && (
             <StaleDataBanner
               publishedBy={recentPublishers}
@@ -240,7 +240,7 @@ export default function AdminApp() {
                 <strong>
                   {dataLoadErrors.map(k => TABS.find(t => t.key === k)?.label ?? k).join(', ')}
                 </strong>
-                . Bitte nicht veröffentlichen — das würde Live-Daten überschreiben.{' '}
+                . Bitte nicht veröffentlichen - das würde Live-Daten überschreiben.{' '}
                 <button
                   type="button"
                   onClick={loadData}
@@ -304,7 +304,7 @@ export default function AdminApp() {
                       .map(u => u.login)
                       .join(', ')}{' '}
                     hat ungespeicherte Änderungen in diesem Tab. Ihre Änderungen könnten beim
-                    Veröffentlichen in Konflikt geraten — das System versucht automatisch, die
+                    Veröffentlichen in Konflikt geraten - das System versucht automatisch, die
                     Änderungen zusammenzuführen.
                   </AdminWarningBanner>
                 </div>

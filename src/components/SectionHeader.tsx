@@ -2,13 +2,13 @@ import { type ReactNode, type RefObject } from 'react'
 import { motion } from 'framer-motion'
 
 interface SectionHeaderProps {
-  /** The ref returned by useRef — passed to the motion.div so useInView works. */
+  /** The ref returned by useRef - passed to the motion.div so useInView works. */
   sectionRef: RefObject<HTMLDivElement | null>
   /** Whether the section is in the viewport (from useInView in the parent). */
   isInView: boolean
-  /** Small uppercase label above the title — omit to hide the accent bar entirely. */
+  /** Small uppercase label above the title - omit to hide the accent bar entirely. */
   label?: string
-  /** Main heading — accepts ReactNode so inline elements (spans etc.) are supported. */
+  /** Main heading - accepts ReactNode so inline elements (spans etc.) are supported. */
   title: ReactNode
   /** Optional description paragraph below the heading. Not rendered when falsy. */
   description?: ReactNode

@@ -124,9 +124,9 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 
-// ─── uiSlice lines 24-25 — IIFE darkMode branches ─────────────────────────────
+// ─── uiSlice lines 24-25 - IIFE darkMode branches ─────────────────────────────
 
-describe('uiSlice — darkMode IIFE branches via module reset', () => {
+describe('uiSlice - darkMode IIFE branches via module reset', () => {
   it('initializes darkMode=true when localStorage has "true"', async () => {
     localStorage.setItem('arslan-darkmode', 'true')
     vi.resetModules()
@@ -144,11 +144,11 @@ describe('uiSlice — darkMode IIFE branches via module reset', () => {
   })
 })
 
-// ─── fileUtils.ts line 25 — mimeFromExt default branch ───────────────────────
+// ─── fileUtils.ts line 25 - mimeFromExt default branch ───────────────────────
 
 import { openPendingFile } from '../../admin/lib/fileUtils'
 
-describe('fileUtils — openPendingFile with unknown extension', () => {
+describe('fileUtils - openPendingFile with unknown extension', () => {
   it('uses application/octet-stream for unknown extension (default case)', () => {
     // 'xlsx' hits the default branch of mimeFromExt (lines 25/default case)
     openPendingFile('dGVzdA==', 'document.xlsx')
@@ -172,9 +172,9 @@ describe('fileUtils — openPendingFile with unknown extension', () => {
   })
 })
 
-// ─── diff.ts lines 55-56 — itemLabel field loop fallback ─────────────────────
+// ─── diff.ts lines 55-56 - itemLabel field loop fallback ─────────────────────
 
-describe('diff.ts — itemLabel field-loop fallback (lines 55-56)', () => {
+describe('diff.ts - itemLabel field-loop fallback (lines 55-56)', () => {
   it('returns value from first text-type field that has a value', async () => {
     const { diffTab } = await import('../../admin/lib/diff')
     // Create a custom tab where the item has no name/titel/jahr but has a custom text field
@@ -195,9 +195,9 @@ describe('diff.ts — itemLabel field-loop fallback (lines 55-56)', () => {
   })
 })
 
-// ─── diff.ts lines 83-86 — captionsKey companion path ───────────────────────
+// ─── diff.ts lines 83-86 - captionsKey companion path ───────────────────────
 
-describe('diff.ts — captionsKey companion path (lines 83-86)', () => {
+describe('diff.ts - captionsKey companion path (lines 83-86)', () => {
   it('adds companion path when both imagelist and captions change', async () => {
     const { diffTab } = await import('../../admin/lib/diff')
     // Use inline custom array tab with imagelist + captionsKey
@@ -226,11 +226,11 @@ describe('diff.ts — captionsKey companion path (lines 83-86)', () => {
   })
 })
 
-// ─── DiffDisplay.tsx line 7 branch — pendingImagePath with no slash ───────────
+// ─── DiffDisplay.tsx line 7 branch - pendingImagePath with no slash ───────────
 
 import { FieldChangeDiff, InlineDiff } from '../../admin/components/DiffDisplay'
 
-describe('DiffDisplay — branch coverage', () => {
+describe('DiffDisplay - branch coverage', () => {
   it('line 7: || entry.pendingImagePath branch when pop() returns empty string', () => {
     // pendingImagePath ending with '/' causes split('/').pop() = '' (falsy)
     // so || entry.pendingImagePath is used
@@ -272,11 +272,11 @@ describe('DiffDisplay — branch coverage', () => {
   })
 })
 
-// ─── DiffModal.tsx line 26 — keydown handler ─────────────────────────────────
+// ─── DiffModal.tsx line 26 - keydown handler ─────────────────────────────────
 
 import DiffModal from '../../admin/components/DiffModal'
 
-describe('DiffModal — keydown handler (line 26)', () => {
+describe('DiffModal - keydown handler (line 26)', () => {
   it('fires Escape via window.dispatchEvent', () => {
     resetStore({
       state: {
@@ -294,7 +294,7 @@ describe('DiffModal — keydown handler (line 26)', () => {
     expect(onClose).toHaveBeenCalled()
   })
 
-  it('fires non-Escape key — does not close', () => {
+  it('fires non-Escape key - does not close', () => {
     resetStore({
       state: {
         galerie: { titel: 'A', titelTr: '', beschreibung: '', beschreibungTr: '', bilder: [] },
@@ -312,11 +312,11 @@ describe('DiffModal — keydown handler (line 26)', () => {
   })
 })
 
-// ─── OrphanModal.tsx line 19 — both branches of Escape check ─────────────────
+// ─── OrphanModal.tsx line 19 - both branches of Escape check ─────────────────
 
 import OrphanModal from '../../admin/components/OrphanModal'
 
-describe('OrphanModal — Escape both branches (line 19)', () => {
+describe('OrphanModal - Escape both branches (line 19)', () => {
   it('non-Escape key does not call onCancel', () => {
     const onCancel = vi.fn()
     render(
@@ -350,11 +350,11 @@ describe('OrphanModal — Escape both branches (line 19)', () => {
   })
 })
 
-// ─── AdminSidebar.tsx line 47 — swipe left calls onClose ─────────────────────
+// ─── AdminSidebar.tsx line 47 - swipe left calls onClose ─────────────────────
 
 import AdminSidebar from '../../admin/components/AdminSidebar'
 
-describe('AdminSidebar — touchEnd swipe left (line 47)', () => {
+describe('AdminSidebar - touchEnd swipe left (line 47)', () => {
   it('swipe left (delta < -50) calls onClose', () => {
     const onClose = vi.fn()
     const { container } = render(
@@ -430,7 +430,7 @@ describe('AdminSidebar — touchEnd swipe left (line 47)', () => {
       />,
     )
     const aside = container.querySelector('aside')
-    // Don't fire touchStart — touchStartX.current is null
+    // Don't fire touchStart - touchStartX.current is null
     if (aside) {
       fireEvent.touchEnd(aside, { changedTouches: [{ clientX: 100, clientY: 0 }] })
     }
@@ -438,12 +438,12 @@ describe('AdminSidebar — touchEnd swipe left (line 47)', () => {
   })
 })
 
-// ─── ArrayEditor.tsx lines 63-66, 88, 92-99 — handleMove + dragHandlers ──────
+// ─── ArrayEditor.tsx lines 63-66, 88, 92-99 - handleMove + dragHandlers ──────
 
 import ArrayEditor from '../../admin/components/ArrayEditor'
 import { DndContext } from '@dnd-kit/core'
 
-describe('ArrayEditor — handleMove and drag handlers', () => {
+describe('ArrayEditor - handleMove and drag handlers', () => {
   function makeData(n: number) {
     return Array.from({ length: n }, (_, i) => ({
       id: `item-${i}`,
@@ -545,11 +545,11 @@ describe('ArrayEditor — handleMove and drag handlers', () => {
   })
 })
 
-// ─── GlobalDiffModal — 'removed' and 'moved' itemKind badges (lines 227-264) ──
+// ─── GlobalDiffModal - 'removed' and 'moved' itemKind badges (lines 227-264) ──
 
 import GlobalDiffModal from '../../admin/components/GlobalDiffModal'
 
-describe('GlobalDiffModal — removed and moved item kinds', () => {
+describe('GlobalDiffModal - removed and moved item kinds', () => {
   it('shows Entfernt badge for removed items (line 228)', () => {
     // 'removed' = item in original but not in current (use galerie bilder section)
     resetStore({
@@ -636,11 +636,11 @@ describe('GlobalDiffModal — removed and moved item kinds', () => {
   })
 })
 
-// ─── PublishConfirmModal — 'removed' and 'moved' badges (lines 173-178, 202-210)
+// ─── PublishConfirmModal - 'removed' and 'moved' badges (lines 173-178, 202-210)
 
 import PublishConfirmModal from '../../admin/components/PublishConfirmModal'
 
-describe('PublishConfirmModal — removed and moved item kinds', () => {
+describe('PublishConfirmModal - removed and moved item kinds', () => {
   it('shows Entfernt badge for a removed item (lines 173-178)', () => {
     resetStore({
       state: {
@@ -734,7 +734,7 @@ describe('PublishConfirmModal — removed and moved item kinds', () => {
 
 import LoginScreen from '../../admin/components/LoginScreen'
 
-describe('LoginScreen — uncovered branches', () => {
+describe('LoginScreen - uncovered branches', () => {
   beforeEach(() => {
     // Reset to logged-out state
     useAdminStore.setState({ authenticated: false, user: null })
@@ -794,11 +794,11 @@ describe('LoginScreen — uncovered branches', () => {
   })
 })
 
-// ─── PreviewModal.tsx lines 154-159 — SWR fetcher fallback ───────────────────
+// ─── PreviewModal.tsx lines 154-159 - SWR fetcher fallback ───────────────────
 
 import PreviewModal from '../../admin/components/PreviewModal'
 
-describe('PreviewModal — SWR fetcher URL not in fallback (lines 154-159)', () => {
+describe('PreviewModal - SWR fetcher URL not in fallback (lines 154-159)', () => {
   it('renders about tab preview with data in swrFallback', async () => {
     resetStore({
       state: {
@@ -851,7 +851,7 @@ describe('PreviewModal — SWR fetcher URL not in fallback (lines 154-159)', () 
 
 import TabEditor from '../../admin/components/TabEditor'
 
-describe('TabEditor — remaining coverage', () => {
+describe('TabEditor - remaining coverage', () => {
   it('line 84: renders loading state (no data)', () => {
     const aboutTab = TABS.find(t => t.key === 'about')!
     resetStore({ state: {}, originalState: {} })
@@ -922,11 +922,11 @@ describe('TabEditor — remaining coverage', () => {
   })
 })
 
-// ─── ImageField.tsx lines 90-99 — overlay button on existing image ────────────
+// ─── ImageField.tsx lines 90-99 - overlay button on existing image ────────────
 
 import ImageField from '../../admin/fields/ImageField'
 
-describe('ImageField — overlay upload button when image exists (lines 90-99)', () => {
+describe('ImageField - overlay upload button when image exists (lines 90-99)', () => {
   it('renders the overlay button when there is an existing image (preview != "")', async () => {
     const onChange = vi.fn()
     const { container, queryByTestId: _queryByTestId } = render(
@@ -947,7 +947,7 @@ describe('ImageField — overlay upload button when image exists (lines 90-99)',
     expect(container.firstChild).toBeTruthy()
   })
 
-  it('replaces existing image via overlay — triggers crop', async () => {
+  it('replaces existing image via overlay - triggers crop', async () => {
     const onChange = vi.fn()
     const { container, queryByTestId } = render(
       <ImageField
@@ -974,7 +974,7 @@ describe('ImageField — overlay upload button when image exists (lines 90-99)',
 
 import ImageListField from '../../admin/fields/ImageListField'
 
-describe('ImageListField — uncovered branches', () => {
+describe('ImageListField - uncovered branches', () => {
   it('lines 137-142: onMoveUp and onMoveDown buttons', () => {
     const onChange = vi.fn()
     const { container } = render(
@@ -1018,7 +1018,7 @@ describe('ImageListField — uncovered branches', () => {
         onChange={onChange}
       />,
     )
-    // Find Entfernen/delete buttons — only match by textContent to avoid matching
+    // Find Entfernen/delete buttons - only match by textContent to avoid matching
     // other buttons that have 'red' in their className (e.g. 'Hochladen')
     const removeBtns = Array.from(container.querySelectorAll('button')).filter(
       b => b.title === 'Entfernen' || b.textContent?.includes('Entfernen'),
@@ -1030,9 +1030,9 @@ describe('ImageListField — uncovered branches', () => {
   })
 })
 
-// ─── useUndoRedoShortcuts.ts lines 21, 27 — isTextInput early returns ─────────
+// ─── useUndoRedoShortcuts.ts lines 21, 27 - isTextInput early returns ─────────
 
-describe('useUndoRedoShortcuts — isTextInput blocks undo/redo (lines 21, 27)', () => {
+describe('useUndoRedoShortcuts - isTextInput blocks undo/redo (lines 21, 27)', () => {
   it('Ctrl+Z on a focused INPUT does not trigger undo (line 21)', () => {
     const aboutState = {
       titel: 'A',
@@ -1104,7 +1104,7 @@ describe('useUndoRedoShortcuts — isTextInput blocks undo/redo (lines 21, 27)',
   })
 })
 
-// ─── useTabPublisher.ts line 38 — orphan confirm with empty list ──────────────
+// ─── useTabPublisher.ts line 38 - orphan confirm with empty list ──────────────
 
 import { useTabPublisher } from '../../admin/hooks/useTabPublisher'
 
@@ -1125,7 +1125,7 @@ function UseTabPublisherWrapper({ tabKey }: { tabKey: string }) {
   )
 }
 
-describe('useTabPublisher — handleOrphanConfirm with empty toDelete (line 38)', () => {
+describe('useTabPublisher - handleOrphanConfirm with empty toDelete (line 38)', () => {
   it('calls publishTab with undefined when toDelete is empty (line 38 false branch)', async () => {
     resetStore({
       state: { news: [{ titel: 'A' }] },
@@ -1160,7 +1160,7 @@ describe('useTabPublisher — handleOrphanConfirm with empty toDelete (line 38)'
 
 // ─── publishSlice.ts lines 56, 104, 121 ──────────────────────────────────────
 
-describe('publishSlice — uncovered branches', () => {
+describe('publishSlice - uncovered branches', () => {
   it('line 56: publishTab includes orphan deletions in changes', async () => {
     resetStore({
       state: { news: [{ titel: 'Changed' }] },
@@ -1219,9 +1219,9 @@ describe('publishSlice — uncovered branches', () => {
   })
 })
 
-// ─── editorSlice.ts line 143 — loadData catch block ─────────────────────────
+// ─── editorSlice.ts line 143 - loadData catch block ─────────────────────────
 
-describe('editorSlice — loadData catch block (line 143)', () => {
+describe('editorSlice - loadData catch block (line 143)', () => {
   it('setState failure triggers fallback catch (line 143)', async () => {
     // The first set() call (with state/originalState) should throw to trigger catch
     const origSetState = useAdminStore.setState.bind(useAdminStore)
@@ -1255,11 +1255,11 @@ describe('editorSlice — loadData catch block (line 143)', () => {
   })
 })
 
-// ─── AdminApp.tsx lines 130-131, 137-155 — OrphanModal callbacks + sidebar ────
+// ─── AdminApp.tsx lines 130-131, 137-155 - OrphanModal callbacks + sidebar ────
 
 import AdminApp from '../../admin/AdminApp'
 
-describe('AdminApp — OrphanModal and sidebar interaction coverage', () => {
+describe('AdminApp - OrphanModal and sidebar interaction coverage', () => {
   function authSetup(extra: Record<string, unknown> = {}) {
     resetStore({
       authenticated: true,

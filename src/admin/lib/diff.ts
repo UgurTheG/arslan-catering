@@ -408,7 +408,7 @@ export function applyRevert(
     // Restore the original array order
     const parentPath = entry.path.slice(0, -1)
     if (parentPath.length === 0) {
-      // Top-level array tab — return the original root directly
+      // Top-level array tab - return the original root directly
       return clone(originalRoot)
     }
     const origArr = getAtPath(originalRoot, parentPath) as unknown[]
@@ -421,7 +421,7 @@ export function applyRevert(
     // remove the element at the array path
     const parentPath = entry.path.slice(0, -1)
     if (parentPath.length === 0) {
-      // Top-level array — splice directly on next
+      // Top-level array - splice directly on next
       if (Array.isArray(next)) {
         const idx = entry.path[entry.path.length - 1] as number
         next.splice(idx, 1)
@@ -438,7 +438,7 @@ export function applyRevert(
     const parentPath = entry.path.slice(0, -1)
     const idx = entry.originalIndex ?? (entry.path[entry.path.length - 1] as number)
     if (parentPath.length === 0) {
-      // Top-level array — splice directly on next
+      // Top-level array - splice directly on next
       if (Array.isArray(next)) {
         next.splice(Math.min(idx, next.length), 0, clone(entry.before))
       }
@@ -523,10 +523,10 @@ export function groupChangeEntries(entries: ChangeEntry[]): ChangeGroup[] {
 }
 
 export function summarizeValue(v: unknown, type?: FieldConfig['type'], truncate = true): string {
-  if (v == null || v === '') return '—'
+  if (v == null || v === '') return '-'
   if (type === 'image' && typeof v === 'string') return v.split('/').pop() || String(v)
   if (type === 'imagelist' && Array.isArray(v)) return `${v.length} Bild(er)`
-  if (type === 'stringlist' && Array.isArray(v)) return v.length ? v.join(', ') : '—'
+  if (type === 'stringlist' && Array.isArray(v)) return v.length ? v.join(', ') : '-'
   if (type === 'textarea' && typeof v === 'string') {
     const t = v.trim().replace(/\s+/g, ' ')
     return truncate && t.length > 80 ? t.slice(0, 80) + '…' : t

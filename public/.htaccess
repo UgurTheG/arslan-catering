@@ -1,12 +1,12 @@
 # ─── SPA fallback for Apache (Hostinger) ────────────────────────────────────
 # Rewrite all non-file requests to index.html so React Router handles routing.
-# On Vercel this file is ignored — vercel.json handles rewrites instead.
+# On Vercel this file is ignored - vercel.json handles rewrites instead.
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # Admin is only available on Vercel — redirect to the Vercel admin
+  # Admin is only available on Vercel - redirect to the Vercel admin
   RewriteRule ^admin(/.*)?$ https://spd-albstadt.vercel.app/admin$1 [R=302,L]
 
   # If the request is for an existing file or directory, serve it directly

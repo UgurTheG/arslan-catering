@@ -13,7 +13,7 @@ import {
 import type { PendingUpload } from '../../admin/types'
 
 // Minimal TABS-shaped objects used to exercise persistDirtyState
-// (the function checks TABS internally — we import the real module).
+// (the function checks TABS internally - we import the real module).
 
 describe('simpleHash', () => {
   it('returns the same hash for the same input', () => {
@@ -172,7 +172,7 @@ describe('persistDirtyState', () => {
   })
 
   it('writes dirty tabs to localStorage after 1 second debounce', async () => {
-    // We need a real tab key that exists in TABS — 'about' has a file
+    // We need a real tab key that exists in TABS - 'about' has a file
     // The function iterates TABS internally, so set up state that differs from original
     const aboutData = {
       titel: 'edited',
@@ -221,7 +221,7 @@ describe('persistDirtyState', () => {
     expect(localStorage.getItem(DRAFT_KEY)).toBeNull()
   })
 
-  it('debounces — only the last call within 1s takes effect', async () => {
+  it('debounces - only the last call within 1s takes effect', async () => {
     const aboutBase = {
       titel: '',
       titelTr: '',

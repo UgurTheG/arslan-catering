@@ -5,7 +5,7 @@ import { SkeletonGrid } from '../SkeletonGrid'
 describe('SkeletonGrid', () => {
   it('renders the correct number of skeleton items', () => {
     const { container } = render(<SkeletonGrid count={5} />)
-    // Each item is a <div> — they are direct children of the Fragment
+    // Each item is a <div> - they are direct children of the Fragment
     expect(container.querySelectorAll('div')).toHaveLength(5)
   })
 

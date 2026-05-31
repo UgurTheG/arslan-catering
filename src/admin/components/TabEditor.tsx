@@ -12,7 +12,7 @@ interface Props {
 }
 
 /**
- * Top-level editor router — dispatches to the appropriate editor based on tab type.
+ * Top-level editor router - dispatches to the appropriate editor based on tab type.
  * Bespoke editors (haushaltsreden, kommunalpolitik) manage their own action bars and
  * publish flows; all other types go through the generic TabEditor.
  */

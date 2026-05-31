@@ -38,7 +38,7 @@ export default function DiffModal({ tabKey, onClose, onRevertAll }: Props) {
       onClose={onClose}
       icon={<FileSearch size={18} className="text-blue-500" />}
       iconBg="bg-blue-50 dark:bg-blue-900/20"
-      title={`Änderungen — ${tab.label}`}
+      title={`Änderungen - ${tab.label}`}
       subtitle={subtitle}
     >
       {groups.length === 0 ? (

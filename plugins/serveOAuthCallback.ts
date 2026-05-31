@@ -213,7 +213,7 @@ export function serveOAuthCallback(env: Record<string, string>): Plugin {
           res.setHeader('Content-Type', 'application/json')
           res.setHeader('Cache-Control', 'no-store')
           res.statusCode = 200
-          // Don't expose the token — only return authentication status
+          // Don't expose the token - only return authentication status
           res.end(JSON.stringify({ authenticated: !!token, expires_at: token ? expiresAt : 0 }))
           return
         }

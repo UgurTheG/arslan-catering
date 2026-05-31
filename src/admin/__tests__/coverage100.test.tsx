@@ -1,5 +1,5 @@
 /**
- * Final coverage-gap tests — targets every remaining uncovered line/branch
+ * Final coverage-gap tests - targets every remaining uncovered line/branch
  * across all admin source files to reach 100 % coverage.
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
@@ -111,9 +111,9 @@ describe('admin/types', () => {
   })
 })
 
-// ─── uiSlice — dark mode from matchMedia ──────────────────────────────────────
+// ─── uiSlice - dark mode from matchMedia ──────────────────────────────────────
 
-describe('uiSlice — dark mode initialisation', () => {
+describe('uiSlice - dark mode initialisation', () => {
   it('falls back to matchMedia when no localStorage preference', () => {
     // The createUISlice IIFE checks localStorage then matchMedia.
     // Lines 24-25: pref is null → fall through to matchMedia.
@@ -121,7 +121,7 @@ describe('uiSlice — dark mode initialisation', () => {
     // Since tests run in happy-dom, matchMedia.matches defaults to false.
     // Just triggering toggleDark exercises the slice setter while verifying init.
     const { toggleDark, darkMode } = useAdminStore.getState()
-    // darkMode was initialised — it's either true or false
+    // darkMode was initialised - it's either true or false
     expect(typeof darkMode).toBe('boolean')
     toggleDark()
     expect(useAdminStore.getState().darkMode).toBe(!darkMode)
@@ -129,19 +129,19 @@ describe('uiSlice — dark mode initialisation', () => {
 
   it('reads "false" from localStorage', () => {
     localStorage.setItem('spd-darkmode', 'false')
-    // Re-create the slice by resetting partially — can't truly re-create zustand store
+    // Re-create the slice by resetting partially - can't truly re-create zustand store
     // so we just verify toggleDark works with false initial
     resetStore({ darkMode: false })
     expect(useAdminStore.getState().darkMode).toBe(false)
   })
 })
 
-// ─── editorSlice — loadData catch path (line 141-143) ─────────────────────────
+// ─── editorSlice - loadData catch path (line 141-143) ─────────────────────────
 
-describe('editorSlice — loadData set() throws', () => {
+describe('editorSlice - loadData set() throws', () => {
   it('handles set() throwing gracefully (fallback to dataLoadErrors)', async () => {
     // We cannot easily make set() throw in zustand, but we can test loadData
-    // when fetch fails for all tabs — that exercises the failedTabs code path.
+    // when fetch fails for all tabs - that exercises the failedTabs code path.
     vi.spyOn(globalThis, 'fetch').mockRejectedValue(new Error('network'))
     resetStore({ dataLoaded: false })
     await act(async () => {
@@ -155,9 +155,9 @@ describe('editorSlice — loadData set() throws', () => {
   })
 })
 
-// ─── publishSlice — upload that doesn't match current paths (line 42-43) ──────
+// ─── publishSlice - upload that doesn't match current paths (line 42-43) ──────
 
-describe('publishSlice — irrelevant pending upload', () => {
+describe('publishSlice - irrelevant pending upload', () => {
   it('keeps uploads not referenced by current data in pendingUploads', async () => {
     const tabKey = 'news'
     resetStore({
@@ -181,11 +181,11 @@ describe('publishSlice — irrelevant pending upload', () => {
   })
 })
 
-// ─── AdminApp — handlePublishAllConfirmed with orphans (lines 104-111) ────────
+// ─── AdminApp - handlePublishAllConfirmed with orphans (lines 104-111) ────────
 
 import AdminApp from '../../admin/AdminApp'
 
-describe('AdminApp — publish-all with orphans', () => {
+describe('AdminApp - publish-all with orphans', () => {
   it('shows OrphanModal when orphans are found during publishAll', async () => {
     // Provide dirty data so publish button is enabled
     const aboutData = { titel: 'A', beschreibung: '', bildUrl: '/images/about/old.webp', werte: [] }
@@ -323,7 +323,7 @@ describe('AdminApp — publish-all with orphans', () => {
         await act(async () => {
           await new Promise(r => setTimeout(r, 50))
         })
-        // OrphanModal appears — click "Behalten" / "Alle behalten" button
+        // OrphanModal appears - click "Behalten" / "Alle behalten" button
         const keepBtn = Array.from(container.querySelectorAll('button')).find(
           b => b.textContent?.includes('behalten') || b.textContent?.includes('Behalten'),
         )
@@ -435,7 +435,7 @@ describe('AdminApp — publish-all with orphans', () => {
     const menuBtn = container.querySelector('button[aria-label="Seitenleiste öffnen"]')
     if (menuBtn) {
       fireEvent.click(menuBtn)
-      // Sidebar should be open — overlay should be visible
+      // Sidebar should be open - overlay should be visible
       expect(container.firstChild).toBeTruthy()
     }
   })
@@ -460,11 +460,11 @@ describe('AdminApp — publish-all with orphans', () => {
   })
 })
 
-// ─── ArrayEditor — drag, filter, and onStructureChange ───────────────────────
+// ─── ArrayEditor - drag, filter, and onStructureChange ───────────────────────
 
 import ArrayEditor from '../../admin/components/ArrayEditor'
 
-describe('ArrayEditor — uncovered branches', () => {
+describe('ArrayEditor - uncovered branches', () => {
   const fields = [
     { key: 'name', label: 'Name', type: 'text' as const },
     { key: 'tags', label: 'Tags', type: 'stringlist' as const },
@@ -578,11 +578,11 @@ describe('ArrayEditor — uncovered branches', () => {
   })
 })
 
-// ─── ItemCardBody — move up/down buttons, FieldRenderer extras ────────────────
+// ─── ItemCardBody - move up/down buttons, FieldRenderer extras ────────────────
 
 import ItemCardBody from '../../admin/components/ItemCardBody'
 
-describe('ItemCardBody — move and FieldRenderer extras', () => {
+describe('ItemCardBody - move and FieldRenderer extras', () => {
   const fields = [{ key: 'name', label: 'Name', type: 'text' as const }]
 
   it('shows move-up button when index > 0 and dragDisabled is false', () => {
@@ -686,11 +686,11 @@ describe('ItemCardBody — move and FieldRenderer extras', () => {
   })
 })
 
-// ─── PreviewModal — replaceUrls recursion, no-entry fallback ──────────────────
+// ─── PreviewModal - replaceUrls recursion, no-entry fallback ──────────────────
 
 import PreviewModal from '../../admin/components/PreviewModal'
 
-describe('PreviewModal — uncovered branches', () => {
+describe('PreviewModal - uncovered branches', () => {
   it('returns null for unknown tab', () => {
     resetStore({
       state: { unknownTab: {} },
@@ -818,12 +818,12 @@ describe('PreviewModal — uncovered branches', () => {
   })
 })
 
-// ─── TabEditor — ObjectEditor with topFields, sections, load-error ────────────
+// ─── TabEditor - ObjectEditor with topFields, sections, load-error ────────────
 
 import TabEditor from '../../admin/components/TabEditor'
 import type { TabConfig } from '../../admin/types'
 
-describe('TabEditor — ObjectEditor and SectionEditor', () => {
+describe('TabEditor - ObjectEditor and SectionEditor', () => {
   it('renders ObjectEditor with topFields and sections', () => {
     // Find a tab that is type=object with topFields and sections
     const kontaktTab = TABS.find(t => t.key === 'kontakt')
@@ -911,11 +911,11 @@ describe('TabEditor — ObjectEditor and SectionEditor', () => {
   })
 })
 
-// ─── DiffModal — structural group with revert ────────────────────────────────
+// ─── DiffModal - structural group with revert ────────────────────────────────
 
 import DiffModal from '../../admin/components/DiffModal'
 
-describe('DiffModal — structural revert button (line 178)', () => {
+describe('DiffModal - structural revert button (line 178)', () => {
   it('renders structural revert button for added items', () => {
     resetStore({
       state: {
@@ -1012,11 +1012,11 @@ describe('DiffModal — structural revert button (line 178)', () => {
   })
 })
 
-// ─── ImageField — crop flow, URL manual, ownUploadUrl sync ───────────────────
+// ─── ImageField - crop flow, URL manual, ownUploadUrl sync ───────────────────
 
 import ImageField from '../../admin/fields/ImageField'
 
-describe('ImageField — uncovered branches', () => {
+describe('ImageField - uncovered branches', () => {
   const imageField = { key: 'bild', label: 'Bild', type: 'image' as const, imageDir: 'news' }
 
   it('shows URL input when toggled, and updates preview on change', () => {
@@ -1041,7 +1041,7 @@ describe('ImageField — uncovered branches', () => {
     const img = container.querySelector('img')
     if (img) {
       fireEvent.error(img)
-      // Preview should be cleared — the dashed placeholder appears
+      // Preview should be cleared - the dashed placeholder appears
     }
     expect(container.firstChild).toBeTruthy()
   })
@@ -1071,7 +1071,7 @@ describe('ImageField — uncovered branches', () => {
   })
 
   it('uses contextItem.name for filename slug', () => {
-    // Trigger crop by selecting a file — we can't fully test CropOverlay since it's excluded,
+    // Trigger crop by selecting a file - we can't fully test CropOverlay since it's excluded,
     // but we can verify the file input triggers setCropFile
     const { container } = render(
       <ImageField
@@ -1102,15 +1102,15 @@ describe('ImageField — uncovered branches', () => {
   })
 })
 
-// ─── diff.ts — summarizeValue uncovered branches ─────────────────────────────
+// ─── diff.ts - summarizeValue uncovered branches ─────────────────────────────
 
 import { summarizeValue } from '../../admin/lib/diff'
 
-describe('summarizeValue — all branches', () => {
-  it('returns "—" for null/undefined/empty string', () => {
-    expect(summarizeValue(null)).toBe('—')
-    expect(summarizeValue(undefined)).toBe('—')
-    expect(summarizeValue('')).toBe('—')
+describe('summarizeValue - all branches', () => {
+  it('returns "-" for null/undefined/empty string', () => {
+    expect(summarizeValue(null)).toBe('-')
+    expect(summarizeValue(undefined)).toBe('-')
+    expect(summarizeValue('')).toBe('-')
   })
 
   it('returns filename for image type', () => {
@@ -1127,7 +1127,7 @@ describe('summarizeValue — all branches', () => {
 
   it('returns joined values for stringlist', () => {
     expect(summarizeValue(['a', 'b', 'c'], 'stringlist')).toBe('a, b, c')
-    expect(summarizeValue([], 'stringlist')).toBe('—')
+    expect(summarizeValue([], 'stringlist')).toBe('-')
   })
 
   it('truncates textarea text > 80 chars', () => {
@@ -1162,11 +1162,11 @@ describe('summarizeValue — all branches', () => {
   })
 })
 
-// ─── diff.ts — applyRevert for moved (nested array) ─────────────────────────
+// ─── diff.ts - applyRevert for moved (nested array) ─────────────────────────
 
 import { applyRevert, diffTab } from '../../admin/lib/diff'
 
-describe('applyRevert — edge cases', () => {
+describe('applyRevert - edge cases', () => {
   const arrayTab: TabConfig = {
     key: 'news',
     label: 'News',
@@ -1303,9 +1303,9 @@ describe('applyRevert — edge cases', () => {
   })
 })
 
-// ─── diff.ts — pending image entries for object tabs ─────────────────────────
+// ─── diff.ts - pending image entries for object tabs ─────────────────────────
 
-describe('diffTab — pending image entries', () => {
+describe('diffTab - pending image entries', () => {
   it('adds pending image entries for array tab', () => {
     const tab: TabConfig = {
       key: 'news',
@@ -1384,11 +1384,11 @@ describe('diffTab — pending image entries', () => {
   })
 })
 
-// ─── LoginScreen — hash error branch ─────────────────────────────────────────
+// ─── LoginScreen - hash error branch ─────────────────────────────────────────
 
 import LoginScreen from '../../admin/components/LoginScreen'
 
-describe('LoginScreen — hash error path', () => {
+describe('LoginScreen - hash error path', () => {
   it('displays hash error from URL', () => {
     // Simulate URL hash with error
     const origHash = window.location.hash
@@ -1411,11 +1411,11 @@ describe('LoginScreen — hash error path', () => {
   })
 })
 
-// ─── IconPickerField — open/close, search, select, scroll close ──────────────
+// ─── IconPickerField - open/close, search, select, scroll close ──────────────
 
 import IconPickerField from '../../admin/fields/IconPickerField'
 
-describe('IconPickerField — uncovered interactions', () => {
+describe('IconPickerField - uncovered interactions', () => {
   it('opens dropdown and filters icons', async () => {
     const onChange = vi.fn()
     const { container } = render(<IconPickerField id="icon-test" value="" onChange={onChange} />)
@@ -1521,11 +1521,11 @@ describe('IconPickerField — uncovered interactions', () => {
   })
 })
 
-// ─── ImageListField — move up/down, URL toggle, add image ────────────────────
+// ─── ImageListField - move up/down, URL toggle, add image ────────────────────
 
 import ImageListField from '../../admin/fields/ImageListField'
 
-describe('ImageListField — move, URL toggle, add', () => {
+describe('ImageListField - move, URL toggle, add', () => {
   const imgsField = {
     key: 'galerie',
     label: 'Galerie',
@@ -1545,7 +1545,7 @@ describe('ImageListField — move, URL toggle, add', () => {
     // Find move-up/down buttons by their arrow icons
     const allButtons = container.querySelectorAll('button')
     expect(allButtons.length).toBeGreaterThan(0)
-    // Move is available — click any arrow button
+    // Move is available - click any arrow button
     const upBtns = Array.from(allButtons).filter(
       b => b.title === 'Ziehen zum Sortieren' || b.querySelector('svg'),
     )
@@ -1683,11 +1683,11 @@ describe('ImageListField — move, URL toggle, add', () => {
   })
 })
 
-// ─── GlobalDiffModal — revert-all confirm flow ───────────────────────────────
+// ─── GlobalDiffModal - revert-all confirm flow ───────────────────────────────
 
 import GlobalDiffModal from '../../admin/components/GlobalDiffModal'
 
-describe('GlobalDiffModal — revert-all flow', () => {
+describe('GlobalDiffModal - revert-all flow', () => {
   it('renders changes and can revert all', async () => {
     resetStore({
       state: { about: { titel: 'Changed', beschreibung: '' } },
@@ -1826,11 +1826,11 @@ describe('openPendingFile', () => {
   })
 })
 
-// ─── github.ts — branch coverage for existing SHA and content-only path ──────
+// ─── github.ts - branch coverage for existing SHA and content-only path ──────
 // These are already well-tested but branch gaps exist at lines 71 and 197.
 // The commitTree function's binary upload + content path is covered below.
 
-describe('github.ts — commitTree branch coverage', () => {
+describe('github.ts - commitTree branch coverage', () => {
   it('commitTree with content-only changes exercises the content path', async () => {
     const { commitTree } = await import('../../admin/lib/github')
     vi.mocked(commitTree).mockResolvedValue({})
@@ -1840,11 +1840,11 @@ describe('github.ts — commitTree branch coverage', () => {
   })
 })
 
-// ─── images.ts — kommunalpolitik dokument scan (lines 61-65) ─────────────────
+// ─── images.ts - kommunalpolitik dokument scan (lines 61-65) ─────────────────
 
 import { collectImagePaths } from '../../admin/lib/images'
 
-describe('collectImagePaths — object tab with sections', () => {
+describe('collectImagePaths - object tab with sections', () => {
   it('collects image URLs from object tab with sections', () => {
     const tab: TabConfig = {
       key: 'venues',
@@ -1872,7 +1872,7 @@ describe('collectImagePaths — object tab with sections', () => {
           bilder: ['/images/venues/a.webp', '/images/venues/b.webp'],
         },
         {
-          vorschau: '', // empty — excluded
+          vorschau: '', // empty - excluded
           bilder: [],
         },
       ],
@@ -1886,9 +1886,9 @@ describe('collectImagePaths — object tab with sections', () => {
   })
 })
 
-// ─── editorSlice — line 342 (findOrphanImagesForTab) ─────────────────────────
+// ─── editorSlice - line 342 (findOrphanImagesForTab) ─────────────────────────
 
-describe('editorSlice — findOrphanImagesForTab', () => {
+describe('editorSlice - findOrphanImagesForTab', () => {
   it('finds orphans when original image removed from a single tab', () => {
     resetStore({
       state: {

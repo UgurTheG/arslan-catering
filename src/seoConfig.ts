@@ -18,7 +18,7 @@ export const SEO_CONFIG: Record<string, SEOMeta> = {
   '/': {
     title: 'Arslan Catering – Ihre Traumhochzeit in Baden-Württemberg',
     description:
-      'Arslan Catering & Events — erstklassige Hochzeitsorganisation, Dekoration und unvergessliche Feiern. Hochzeitssäle in Stuttgart, Albstadt, Balingen und Umgebung.',
+      'Arslan Catering & Events - erstklassige Hochzeitsorganisation, Dekoration und unvergessliche Feiern. Hochzeitssäle in Stuttgart, Albstadt, Balingen und Umgebung.',
     canonical: `${BASE_URL}/`,
     ogImage: DEFAULT_OG_IMAGE,
     ogImageWidth: DEFAULT_OG_IMAGE_WIDTH,
@@ -29,7 +29,7 @@ export const SEO_CONFIG: Record<string, SEOMeta> = {
   '/ueber-uns': {
     title: 'Über uns – Arslan Catering',
     description:
-      'Lernen Sie Arslan Catering kennen — 15 Jahre Erfahrung in der Hochzeitsorganisation, Leidenschaft für Details und über 500 unvergessliche Feiern.',
+      'Lernen Sie Arslan Catering kennen - 15 Jahre Erfahrung in der Hochzeitsorganisation, Leidenschaft für Details und über 500 unvergessliche Feiern.',
     canonical: `${BASE_URL}/ueber-uns`,
     ogImage: DEFAULT_OG_IMAGE,
     ogImageWidth: DEFAULT_OG_IMAGE_WIDTH,
@@ -62,7 +62,7 @@ export const SEO_CONFIG: Record<string, SEOMeta> = {
   '/videos': {
     title: 'Videos – Arslan Catering',
     description:
-      'Erleben Sie die Magie vergangener Hochzeiten in unseren Videos. Echte Momente, echte Emotionen — lassen Sie sich inspirieren.',
+      'Erleben Sie die Magie vergangener Hochzeiten in unseren Videos. Echte Momente, echte Emotionen - lassen Sie sich inspirieren.',
     canonical: `${BASE_URL}/videos`,
     ogImage: DEFAULT_OG_IMAGE,
     ogImageWidth: DEFAULT_OG_IMAGE_WIDTH,
@@ -73,7 +73,7 @@ export const SEO_CONFIG: Record<string, SEOMeta> = {
   '/kontakt': {
     title: 'Kontakt – Arslan Catering',
     description:
-      'Kontaktieren Sie Arslan Catering für Ihre Traumhochzeit. Telefon, WhatsApp, E-Mail oder Kontaktformular — wir sind für Sie da.',
+      'Kontaktieren Sie Arslan Catering für Ihre Traumhochzeit. Telefon, WhatsApp, E-Mail oder Kontaktformular - wir sind für Sie da.',
     canonical: `${BASE_URL}/kontakt`,
     ogImage: DEFAULT_OG_IMAGE,
     ogImageWidth: DEFAULT_OG_IMAGE_WIDTH,

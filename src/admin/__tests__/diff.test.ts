@@ -41,10 +41,10 @@ const objectTab: TabConfig = {
 // ─── summarizeValue ───────────────────────────────────────────────────────────
 
 describe('summarizeValue', () => {
-  it('returns "—" for null, undefined, and empty string', () => {
-    expect(summarizeValue(null)).toBe('—')
-    expect(summarizeValue(undefined)).toBe('—')
-    expect(summarizeValue('')).toBe('—')
+  it('returns "-" for null, undefined, and empty string', () => {
+    expect(summarizeValue(null)).toBe('-')
+    expect(summarizeValue(undefined)).toBe('-')
+    expect(summarizeValue('')).toBe('-')
   })
 
   it('returns filename for image type', () => {
@@ -59,8 +59,8 @@ describe('summarizeValue', () => {
     expect(summarizeValue(['Eins', 'Zwei'], 'stringlist')).toBe('Eins, Zwei')
   })
 
-  it('returns "—" for empty stringlist', () => {
-    expect(summarizeValue([], 'stringlist')).toBe('—')
+  it('returns "-" for empty stringlist', () => {
+    expect(summarizeValue([], 'stringlist')).toBe('-')
   })
 
   it('truncates long text at 80 chars', () => {
@@ -89,7 +89,7 @@ describe('summarizeValue', () => {
   })
 })
 
-// ─── diffTab — array type ─────────────────────────────────────────────────────
+// ─── diffTab - array type ─────────────────────────────────────────────────────
 
 describe('diffTab (array type)', () => {
   it('returns empty array when original and current are identical', () => {
@@ -155,7 +155,7 @@ describe('diffTab (array type)', () => {
   })
 })
 
-// ─── diffTab — object type ────────────────────────────────────────────────────
+// ─── diffTab - object type ────────────────────────────────────────────────────
 
 describe('diffTab (object type)', () => {
   it('detects a changed top-level field', () => {

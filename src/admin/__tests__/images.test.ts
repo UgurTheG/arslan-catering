@@ -3,7 +3,7 @@ import { collectImagePaths } from '../../admin/lib/images'
 
 // ─── collectImagePaths ────────────────────────────────────────────────────────
 
-describe('collectImagePaths — array tab with image fields', () => {
+describe('collectImagePaths - array tab with image fields', () => {
   const tab = { type: 'array', fields: [{ key: 'bildUrl', type: 'image' }] }
 
   it('collects image paths from array items', () => {
@@ -24,7 +24,7 @@ describe('collectImagePaths — array tab with image fields', () => {
   })
 })
 
-describe('collectImagePaths — array tab with imagelist field', () => {
+describe('collectImagePaths - array tab with imagelist field', () => {
   const tab = { type: 'array', fields: [{ key: 'galerie', type: 'imagelist' }] }
 
   it('collects each url from an imagelist', () => {
@@ -36,7 +36,7 @@ describe('collectImagePaths — array tab with imagelist field', () => {
   })
 })
 
-describe('collectImagePaths — object tab with topFields', () => {
+describe('collectImagePaths - object tab with topFields', () => {
   const tab = {
     type: 'object',
     topFields: [{ key: 'heroImage', type: 'image' }],
@@ -49,7 +49,7 @@ describe('collectImagePaths — object tab with topFields', () => {
   })
 })
 
-describe('collectImagePaths — object tab with sections', () => {
+describe('collectImagePaths - object tab with sections', () => {
   const tab = {
     type: 'object',
     sections: [
@@ -73,7 +73,7 @@ describe('collectImagePaths — object tab with sections', () => {
   })
 })
 
-describe('collectImagePaths — object tab with isSingleObject section', () => {
+describe('collectImagePaths - object tab with isSingleObject section', () => {
   const tab = {
     type: 'object',
     sections: [

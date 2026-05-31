@@ -16,7 +16,7 @@ interface AdminSidebarProps {
   publishing: boolean
   dataLoadErrors: string[]
   user: GHUser
-  /** Other users currently active — optional so existing call-sites / tests don't break */
+  /** Other users currently active - optional so existing call-sites / tests don't break */
   presenceUsers?: PresenceUser[]
   onClose: () => void
   onSelectTab: (key: string) => void
@@ -42,7 +42,7 @@ export default function AdminSidebar({
   onToggleDark,
   onLogout,
 }: AdminSidebarProps) {
-  // Swipe-left to close sidebar on mobile — internal implementation detail.
+  // Swipe-left to close sidebar on mobile - internal implementation detail.
   const touchStartX = useRef<number | null>(null)
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
@@ -175,7 +175,7 @@ export default function AdminSidebar({
                 </p>
               </div>
             )}
-            {/* Global changes + Publish all — keyed so AnimatePresence can animate exit */}
+            {/* Global changes + Publish all - keyed so AnimatePresence can animate exit */}
             <AnimatePresence>
               {dirty.size > 0 && (
                 <motion.div

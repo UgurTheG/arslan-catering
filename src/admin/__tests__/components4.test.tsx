@@ -80,11 +80,11 @@ beforeEach(() => {
 })
 afterEach(() => vi.restoreAllMocks())
 
-// ─── ImageListField — deep interactions ──────────────────────────────────────
+// ─── ImageListField - deep interactions ──────────────────────────────────────
 
 import ImageListField from '../../admin/fields/ImageListField'
 
-describe('ImageListField — deep interactions', () => {
+describe('ImageListField - deep interactions', () => {
   const imgsField = {
     key: 'galerie',
     label: 'Galerie',
@@ -130,7 +130,7 @@ describe('ImageListField — deep interactions', () => {
         onChange={onChange}
       />,
     )
-    // The remove button is found — it may trigger an internal state update first
+    // The remove button is found - it may trigger an internal state update first
     // Just verify the component renders the items and has interactive buttons
     const allBtns = container.querySelectorAll('button')
     expect(allBtns.length).toBeGreaterThan(0)

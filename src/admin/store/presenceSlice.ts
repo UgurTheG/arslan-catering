@@ -22,7 +22,7 @@ export interface PresenceSlice {
   remoteSha: string
   /** Polling interval handle (POST heartbeat, always 30 s) */
   _presenceTimer: ReturnType<typeof setInterval> | null
-  /** @deprecated kept for compatibility — always POLL_INTERVAL_IDLE_MS now */
+  /** @deprecated kept for compatibility - always POLL_INTERVAL_IDLE_MS now */
   _presenceInterval: number
   /** Last presence-version received from the server */
   _lastPresenceVersion: number
@@ -42,7 +42,7 @@ export interface PresenceSlice {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-/** Heartbeat interval (ms) — keeps our own presence record alive in KV */
+/** Heartbeat interval (ms) - keeps our own presence record alive in KV */
 const POLL_INTERVAL_IDLE_MS = 30_000
 /** How often (ms) receivers check whether the server version has changed.
  *  500 ms means a tab-switch from another user is visible within half a second. */
@@ -98,7 +98,7 @@ export const createPresenceSlice: StateCreator<AdminState, [], [], PresenceSlice
         set({ _versionTimer: null })
       }
     } catch {
-      // Network error — silently ignore; presence is best-effort
+      // Network error - silently ignore; presence is best-effort
     }
 
     // Also check if the remote branch SHA has moved (someone else published)
@@ -119,7 +119,7 @@ export const createPresenceSlice: StateCreator<AdminState, [], [], PresenceSlice
         }
       }
     } catch {
-      // Ignore — conflict guard at publish time is the hard guarantee
+      // Ignore - conflict guard at publish time is the hard guarantee
     }
   },
 
@@ -138,19 +138,19 @@ export const createPresenceSlice: StateCreator<AdminState, [], [], PresenceSlice
         | { version: number; changed: true; users: PresenceUser[] }
 
       if (!data.changed) {
-        // Nothing changed — update version in case server restarted with 0
+        // Nothing changed - update version in case server restarted with 0
         if (data.version !== _lastPresenceVersion) {
           set({ _lastPresenceVersion: data.version })
         }
         return
       }
 
-      // Something changed — update presence and manage the version timer
+      // Something changed - update presence and manage the version timer
       const newUsers = data.users
       set({ presenceUsers: newUsers, _lastPresenceVersion: data.version })
 
       if (newUsers.length === 0) {
-        // All other users left — stop the fast timer
+        // All other users left - stop the fast timer
         const timer = get()._versionTimer
         if (timer) {
           clearInterval(timer)
@@ -158,7 +158,7 @@ export const createPresenceSlice: StateCreator<AdminState, [], [], PresenceSlice
         }
       }
     } catch {
-      // Network error — silently ignore
+      // Network error - silently ignore
     }
   },
 
@@ -169,7 +169,7 @@ export const createPresenceSlice: StateCreator<AdminState, [], [], PresenceSlice
     // Report immediately on start
     void reportPresence()
 
-    // POST heartbeat every 30 s — keeps our KV entry alive and picks up
+    // POST heartbeat every 30 s - keeps our KV entry alive and picks up
     // any presence changes that the lightweight version check might have missed.
     const timer = setInterval(() => {
       void get().reportPresence()
@@ -212,7 +212,7 @@ export const createPresenceSlice: StateCreator<AdminState, [], [], PresenceSlice
         remoteSha: '',
       })
     }
-    // Best-effort departure notification (explicit logout — page is still alive,
+    // Best-effort departure notification (explicit logout - page is still alive,
     // so a regular fetch DELETE is reliable here).
     if (user) {
       void fetch('/api/admin-presence', {

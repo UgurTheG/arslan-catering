@@ -83,7 +83,7 @@ describe('App - Routing', () => {
       </HelmetProvider>,
     )
 
-    // The catch-all route renders ErrorPage — title fallback is home title
+    // The catch-all route renders ErrorPage - title fallback is home title
     // since '/nonexistent' isn't in PAGE_TITLES map
     const main = container.querySelector('main#main-content')
     expect(main).toBeInTheDocument()
