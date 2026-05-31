@@ -38,7 +38,7 @@ export default function Galerie() {
         <SectionHeader
           sectionRef={ref}
           isInView={isInView}
-          label={lang === 'de' ? 'Unsere Dekorationen' : 'Dekorasyonlarımız'}
+          label={lang === 'de' ? 'Galerie' : 'Galeri'}
           title={t(data?.titel, data?.titelTr, lang) || 'Galerie'}
           description={t(data?.beschreibung, data?.beschreibungTr, lang)}
         />

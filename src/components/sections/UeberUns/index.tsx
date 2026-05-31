@@ -39,7 +39,7 @@ export default function UeberUns() {
         <SectionHeader
           sectionRef={ref}
           isInView={isInView}
-          label={lang === 'de' ? 'Unsere Geschichte' : 'Hikayemiz'}
+          label={lang === 'de' ? 'Über uns' : 'Hakkımızda'}
           title={t(data?.titel, data?.titelTr, lang) || 'Über uns'}
           description={t(data?.beschreibung, data?.beschreibungTr, lang)}
         />
