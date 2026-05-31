@@ -49,7 +49,6 @@ export default function Saeale() {
         <SectionHeader
           sectionRef={ref}
           isInView={isInView}
-          label={lang === 'de' ? 'Exklusive Locations' : 'Özel Mekanlar'}
           title={t(data?.titel, data?.titelTr, lang) || 'Hochzeitssäle'}
           description={t(data?.beschreibung, data?.beschreibungTr, lang)}
         />

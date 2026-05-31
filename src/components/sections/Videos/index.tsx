@@ -49,7 +49,6 @@ export default function Videos() {
         <SectionHeader
           sectionRef={ref}
           isInView={isInView}
-          label={lang === 'de' ? 'Vergangene Feiern' : 'Geçmiş Törenler'}
           title={t(data?.titel, data?.titelTr, lang) || 'Videos'}
           description={t(data?.beschreibung, data?.beschreibungTr, lang)}
         />

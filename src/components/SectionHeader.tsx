@@ -6,8 +6,8 @@ interface SectionHeaderProps {
   sectionRef: RefObject<HTMLDivElement | null>
   /** Whether the section is in the viewport (from useInView in the parent). */
   isInView: boolean
-  /** Small uppercase label above the title, e.g. "Fraktion". */
-  label: string
+  /** Small uppercase label above the title — omit to hide the accent bar entirely. */
+  label?: string
   /** Main heading — accepts ReactNode so inline elements (spans etc.) are supported. */
   title: ReactNode
   /** Optional description paragraph below the heading. Not rendered when falsy. */
@@ -49,16 +49,18 @@ export default function SectionHeader({
       transition={{ duration: 0.6 }}
       className={`relative ${mb}`}
     >
-      <div className="flex items-center gap-3 mb-4">
-        <div
-          className={`h-1 w-12 rounded-full ${inverted ? 'bg-spd-red dark:bg-white/50' : 'bg-spd-red'}`}
-        />
-        <span
-          className={`font-semibold text-sm uppercase tracking-wider ${inverted ? 'text-spd-red dark:text-white/70' : 'text-spd-red'}`}
-        >
-          {label}
-        </span>
-      </div>
+      {label && (
+        <div className="flex items-center gap-3 mb-4">
+          <div
+            className={`h-1 w-12 rounded-full ${inverted ? 'bg-spd-red dark:bg-white/50' : 'bg-spd-red'}`}
+          />
+          <span
+            className={`font-semibold text-sm uppercase tracking-wider ${inverted ? 'text-spd-red dark:text-white/70' : 'text-spd-red'}`}
+          >
+            {label}
+          </span>
+        </div>
+      )}
 
       <h2 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white tracking-tight text-left">
         {title}
